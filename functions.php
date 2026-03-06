@@ -132,6 +132,24 @@ function devfolio_enqueue_assets() {
 }
 add_action( 'wp_enqueue_scripts', 'devfolio_enqueue_assets' );
 
+function devfolio_allow_svg_uploads( $mimes ) {
+	if ( current_user_can( 'manage_options' ) ) {
+		$mimes['svg'] = 'image/svg+xml';
+	}
+	return $mimes;
+}
+add_filter( 'upload_mimes', 'devfolio_allow_svg_uploads' );
+
+function devfolio_fix_svg_mime_type( $data, $file, $filename, $mimes ) {
+	$ext = strtolower( pathinfo( $filename, PATHINFO_EXTENSION ) );
+	if ( 'svg' === $ext ) {
+		$data['ext']  = 'svg';
+		$data['type'] = 'image/svg+xml';
+	}
+	return $data;
+}
+add_filter( 'wp_check_filetype_and_ext', 'devfolio_fix_svg_mime_type', 10, 4 );
+
 function devfolio_primary_menu_fallback() {
 	echo '<ul class="devfolio-nav-links menu-list">';
 	echo '<li><a href="#experience">' . esc_html__( 'Experience', 'devfolio' ) . '</a></li>';

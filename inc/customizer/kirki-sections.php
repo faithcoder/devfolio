@@ -18,12 +18,13 @@ function devfolio_register_kirki_fields() {
 		'devfolio_home_panel',
 		array(
 			'priority'    => 10,
-			'title'       => esc_html__( 'Devfolio Homepage', 'devfolio' ),
+			'title'       => esc_html__( 'Devfolio Options', 'devfolio' ),
 			'description' => esc_html__( 'Homepage global content and style options.', 'devfolio' ),
 		)
 	);
 
 	Kirki::add_section( 'devfolio_hero_section', array( 'title' => esc_html__( 'Hero', 'devfolio' ), 'panel' => 'devfolio_home_panel' ) );
+	Kirki::add_section( 'devfolio_skills_section', array( 'title' => esc_html__( 'Skills', 'devfolio' ), 'panel' => 'devfolio_home_panel' ) );
 	Kirki::add_section( 'devfolio_project_section', array( 'title' => esc_html__( 'Projects', 'devfolio' ), 'panel' => 'devfolio_home_panel' ) );
 	Kirki::add_section( 'devfolio_process_section', array( 'title' => esc_html__( 'Process', 'devfolio' ), 'panel' => 'devfolio_home_panel' ) );
 	Kirki::add_section( 'devfolio_contact_section', array( 'title' => esc_html__( 'Contact', 'devfolio' ), 'panel' => 'devfolio_home_panel' ) );
@@ -39,9 +40,20 @@ function devfolio_register_kirki_fields() {
 	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_hero_cta_primary_url', 'label' => esc_html__( 'Primary CTA URL', 'devfolio' ), 'section' => 'devfolio_hero_section', 'default' => '#contact' ) );
 	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_hero_cta_secondary_text', 'label' => esc_html__( 'Secondary CTA Text', 'devfolio' ), 'section' => 'devfolio_hero_section', 'default' => 'View Profile' ) );
 	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_hero_cta_secondary_url', 'label' => esc_html__( 'Secondary CTA URL', 'devfolio' ), 'section' => 'devfolio_hero_section', 'default' => '#projects' ) );
-	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_social_linkedin', 'label' => esc_html__( 'LinkedIn URL', 'devfolio' ), 'section' => 'devfolio_hero_section', 'default' => 'https://linkedin.com' ) );
-	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_social_github', 'label' => esc_html__( 'GitHub URL', 'devfolio' ), 'section' => 'devfolio_hero_section', 'default' => 'https://github.com' ) );
-	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_social_wordpress', 'label' => esc_html__( 'WordPress URL', 'devfolio' ), 'section' => 'devfolio_hero_section', 'default' => 'https://wordpress.org' ) );
+	Kirki::add_field( 'devfolio_config', array(
+		'type' => 'repeater', 'settings' => 'devfolio_social_profiles', 'label' => esc_html__( 'Social Profiles', 'devfolio' ), 'section' => 'devfolio_hero_section',
+		'default' => array(
+			array( 'label' => 'LinkedIn', 'url' => 'https://linkedin.com', 'icon' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zm2-3a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg>' ),
+			array( 'label' => 'GitHub', 'url' => 'https://github.com', 'icon' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65S8.93 17.38 9 18v4m0 0H6c-1 0-1.5-.5-2-1s-1.5-1-2-1"/></svg>' ),
+			array( 'label' => 'WordPress', 'url' => 'https://wordpress.org', 'icon' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2.1 12.1 7 21l4-9"/><path d="m14.6 21 3.4-7.3c.6-1.3.9-2.4.9-3.5 0-.9-.2-1.7-.4-2.5"/><path d="M7.8 4.7A8 8 0 0 1 20 11.5c0 1.5-.3 2.9-.9 4.2"/><path d="M3 10.5A8 8 0 0 1 7.8 4.7L5.4 10.5"/></svg>' ),
+		),
+		'fields' => array(
+			'label' => array( 'type' => 'text', 'label' => esc_html__( 'Label', 'devfolio' ) ),
+			'url'   => array( 'type' => 'text', 'label' => esc_html__( 'URL', 'devfolio' ) ),
+			'icon_image' => array( 'type' => 'image', 'label' => esc_html__( 'Icon Image (SVG/PNG)', 'devfolio' ) ),
+			'icon'  => array( 'type' => 'textarea', 'label' => esc_html__( 'SVG Icon Markup', 'devfolio' ) ),
+		),
+	) );
 	Kirki::add_field( 'devfolio_config', array(
 		'type' => 'repeater', 'settings' => 'devfolio_hero_stats', 'label' => esc_html__( 'Hero Stats', 'devfolio' ), 'section' => 'devfolio_hero_section',
 		'default' => array(
@@ -56,7 +68,7 @@ function devfolio_register_kirki_fields() {
 		),
 	) );
 	Kirki::add_field( 'devfolio_config', array(
-		'type' => 'repeater', 'settings' => 'devfolio_skill_groups', 'label' => esc_html__( 'Skill Groups', 'devfolio' ), 'section' => 'devfolio_hero_section',
+		'type' => 'repeater', 'settings' => 'devfolio_skill_groups', 'label' => esc_html__( 'Skill Groups', 'devfolio' ), 'section' => 'devfolio_skills_section',
 		'default' => array(
 			array( 'title' => 'Languages', 'tags' => 'PHP, JavaScript (ES6+), TypeScript, SQL' ),
 			array( 'title' => 'WordPress', 'tags' => 'Plugin/Theme Dev, WP-CLI, REST API, Gutenberg Blocks' ),
