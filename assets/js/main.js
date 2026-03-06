@@ -37,32 +37,43 @@ var Devfolio = (function($){
     });
 
     // ── Portfolio Popup ──
-    var devfolioPortfolioItems=[
-      {title:'E-Commerce Platform',category:'Web App',image:'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&h=800&fit=crop',description:'A full-featured e-commerce platform with product management, cart functionality, payment integration, and order tracking. Built with modern technologies for optimal performance.',tech:['React','TypeScript','Node.js','Stripe'],liveUrl:'#',githubUrl:'#'},
-      {title:'Analytics Dashboard',category:'Dashboard',image:'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=800&fit=crop',description:'Real-time analytics dashboard with interactive charts, data filtering, and custom report generation. Designed for data-driven decision making.',tech:['React','D3.js','Python','PostgreSQL'],liveUrl:'#'},
-      {title:'Social Media App',category:'Mobile App',image:'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=1200&h=800&fit=crop',description:'A social media application with real-time messaging, media sharing, stories, and an intelligent feed algorithm.',tech:['React Native','Firebase','Node.js'],liveUrl:'#',githubUrl:'#'},
-      {title:'CMS Plugin Suite',category:'WordPress',image:'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=1200&h=800&fit=crop',description:'A suite of WordPress plugins for content management, SEO optimization, and performance monitoring. Used by thousands of websites.',tech:['PHP','WordPress','React','MySQL'],githubUrl:'#'},
-      {title:'Task Management Tool',category:'SaaS',image:'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=1200&h=800&fit=crop',description:'Project management tool with kanban boards, time tracking, team collaboration, and automated workflows.',tech:['Vue.js','Laravel','Redis'],liveUrl:'#'},
-      {title:'Portfolio Generator',category:'Tool',image:'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=800&fit=crop',description:'An automated portfolio website generator that creates beautiful, responsive portfolio sites from simple configuration files.',tech:['TypeScript','Next.js','Tailwind CSS'],liveUrl:'#',githubUrl:'#'}
-    ];
+    var devfolioPortfolioItems = $('.devfolio-portfolio-card').map(function(){
+      var $card = $(this);
+      var techRaw = String($card.data('tech') || '');
+      return {
+        title: String($card.data('title') || ''),
+        category: String($card.data('category') || ''),
+        image: String($card.data('image') || ''),
+        description: String($card.data('description') || ''),
+        tech: techRaw ? techRaw.split(',').map(function(t){ return $.trim(t); }).filter(Boolean) : [],
+        liveUrl: String($card.data('live-url') || ''),
+        githubUrl: String($card.data('github-url') || '')
+      };
+    }).get();
 
     $('.devfolio-portfolio-card').on('click',function(){
-      var idx=$(this).data('index');
+      var idx=parseInt($(this).data('index'),10);
       var item=devfolioPortfolioItems[idx];
+      if(!item){ return; }
+
       $('.devfolio-portfolio-popup-image img').attr('src',item.image);
       $('.devfolio-portfolio-popup-cat').text(item.category);
       $('.devfolio-portfolio-popup-title').text(item.title);
       $('.devfolio-portfolio-popup-desc').text(item.description);
+
       var tags='';
       item.tech.forEach(function(t){tags+='<span class="devfolio-tech-tag">'+t+'</span>';});
       $('.devfolio-portfolio-popup-tags').html(tags);
+
       var links='';
       if(item.liveUrl) links+='<a href="'+item.liveUrl+'" target="_blank" class="devfolio-link-live">↗ Live Preview</a>';
       if(item.githubUrl) links+='<a href="'+item.githubUrl+'" target="_blank" class="devfolio-link-code">⌥ Source Code</a>';
       $('.devfolio-portfolio-popup-links').html(links);
+
       $('.devfolio-portfolio-popup').addClass('devfolio-active');
       $('body').css('overflow','hidden');
     });
+
     $('.devfolio-portfolio-popup-close').on('click',function(){
       $('.devfolio-portfolio-popup').removeClass('devfolio-active');
       $('body').css('overflow','');
@@ -79,10 +90,24 @@ var Devfolio = (function($){
         $('body').css('overflow','');
       }
     });
+
+    // ── Events data from DOM ──
+    var devfolioEventsData = $('.devfolio-carousel-slide').map(function(){
+      var $slide = $(this);
+      return {
+        src: String($slide.data('src') || $slide.find('img').attr('src') || ''),
+        title: String($slide.data('title') || $slide.find('.devfolio-carousel-caption-title').text() || ''),
+        loc: String($slide.data('loc') || $slide.find('.devfolio-carousel-caption-loc').text() || '')
+      };
+    }).get();
+
     // ── Events Carousel ──
     var devfolioCarouselActive = 0;
     var devfolioCarouselTotal = $('.devfolio-carousel-slide').length;
     var devfolioAutoPlay = null;
+
+    function devfolioStartAutoPlay() {}
+    function devfolioStopAutoPlay() {}
 
     if (devfolioCarouselTotal > 0) {
       // Build dots
@@ -94,7 +119,7 @@ var Devfolio = (function($){
 
       function devfolioUpdateCarousel() {
         $('.devfolio-carousel-slide').each(function() {
-          var idx = parseInt($(this).data('slide'));
+          var idx = parseInt($(this).data('slide'),10);
           var diff = idx - devfolioCarouselActive;
           var total = devfolioCarouselTotal;
           if (diff > total / 2) diff -= total;
@@ -130,15 +155,16 @@ var Devfolio = (function($){
         devfolioUpdateCarousel();
       }
 
-      function devfolioStartAutoPlay() {
+      devfolioStartAutoPlay = function() {
+        if (devfolioAutoPlay) { clearInterval(devfolioAutoPlay); }
         devfolioAutoPlay = setInterval(devfolioCarouselNext, 4000);
-      }
-      function devfolioStopAutoPlay() {
+      };
+      devfolioStopAutoPlay = function() {
         if (devfolioAutoPlay) {
           clearInterval(devfolioAutoPlay);
           devfolioAutoPlay = null;
         }
-      }
+      };
 
       $('.devfolio-carousel-next').on('click', function() {
         devfolioStopAutoPlay();
@@ -152,14 +178,14 @@ var Devfolio = (function($){
       });
       $('.devfolio-carousel-dots').on('click', '.devfolio-carousel-dot', function() {
         devfolioStopAutoPlay();
-        devfolioCarouselActive = parseInt($(this).data('dot'));
+        devfolioCarouselActive = parseInt($(this).data('dot'),10);
         devfolioUpdateCarousel();
         devfolioStartAutoPlay();
       });
 
       // Click active slide to open lightbox
       $('.devfolio-carousel-slide').on('click', function() {
-        var idx = parseInt($(this).data('slide'));
+        var idx = parseInt($(this).data('slide'),10);
         if (idx === devfolioCarouselActive) {
           devfolioStopAutoPlay();
           devfolioOpenEventsLightbox(idx);
@@ -178,19 +204,12 @@ var Devfolio = (function($){
     }
 
     // ── Events Lightbox ──
-    var devfolioEventsData = [
-      { src: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1400&h=900&fit=crop', title: 'WordCamp Asia 2025', loc: 'Manila, Philippines' },
-      { src: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=1400&h=900&fit=crop', title: 'Community Meetup', loc: 'Rangpur, Bangladesh' },
-      { src: 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=1400&h=900&fit=crop', title: 'Tech Conference Talk', loc: 'Speaker Session' },
-      { src: 'https://images.unsplash.com/photo-1591115765373-5f9cf1da241c?w=1400&h=900&fit=crop', title: 'WordPress Workshop', loc: 'Hands-on Training' },
-      { src: 'https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=1400&h=900&fit=crop', title: 'Contributor Day', loc: 'Open Source Sprint' },
-      { src: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1400&h=900&fit=crop', title: 'Networking Event', loc: 'Developer Community' }
-    ];
     var devfolioLightboxIdx = 0;
 
     function devfolioOpenEventsLightbox(idx) {
       devfolioLightboxIdx = idx;
       var item = devfolioEventsData[idx];
+      if (!item) { return; }
       $('.devfolio-events-lightbox-img').attr('src', item.src);
       $('.devfolio-events-lightbox-title').text(item.title);
       $('.devfolio-events-lightbox-loc').text(item.loc);
@@ -204,12 +223,16 @@ var Devfolio = (function($){
     }
 
     $('.devfolio-events-lightbox-close').on('click', devfolioCloseEventsLightbox);
-    $('.devfolio-events-lightbox').on('click', function(e) { if ($(e.target).hasClass('devfolio-events-lightbox')) devfolioCloseEventsLightbox(); });
+    $('.devfolio-events-lightbox').on('click', function(e) {
+      if ($(e.target).hasClass('devfolio-events-lightbox')) devfolioCloseEventsLightbox();
+    });
     $('.devfolio-events-lightbox-prev').on('click', function() {
+      if (!devfolioEventsData.length) { return; }
       devfolioLightboxIdx = (devfolioLightboxIdx - 1 + devfolioEventsData.length) % devfolioEventsData.length;
       devfolioOpenEventsLightbox(devfolioLightboxIdx);
     });
     $('.devfolio-events-lightbox-next').on('click', function() {
+      if (!devfolioEventsData.length) { return; }
       devfolioLightboxIdx = (devfolioLightboxIdx + 1) % devfolioEventsData.length;
       devfolioOpenEventsLightbox(devfolioLightboxIdx);
     });

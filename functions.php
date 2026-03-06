@@ -71,6 +71,22 @@ function devfolio_asset_manifest() {
 	);
 }
 
+function devfolio_get_dynamic_style_vars() {
+	$primary = devfolio_get_theme_mod_value( 'devfolio_style_primary', '#2fad4e' );
+	$accent  = devfolio_get_theme_mod_value( 'devfolio_style_accent', '#24b35a' );
+	$bg      = devfolio_get_theme_mod_value( 'devfolio_style_bg', '#eff1f6' );
+
+	$css  = ':root{';
+	$css .= '--primary:' . sanitize_hex_color( $primary ) . ';';
+	$css .= '--gradient-green:' . sanitize_hex_color( $primary ) . ';';
+	$css .= '--accent:' . sanitize_hex_color( $accent ) . ';';
+	$css .= '--gradient-mint:' . sanitize_hex_color( $accent ) . ';';
+	$css .= '--bg:' . sanitize_hex_color( $bg ) . ';';
+	$css .= '}';
+
+	return $css;
+}
+
 function devfolio_enqueue_assets() {
 	$theme_dir = get_template_directory();
 	$theme_uri = get_template_directory_uri();
@@ -93,6 +109,10 @@ function devfolio_enqueue_assets() {
 				);
 			}
 		}
+	}
+
+	if ( wp_style_is( 'devfolio-main', 'enqueued' ) ) {
+		wp_add_inline_style( 'devfolio-main', devfolio_get_dynamic_style_vars() );
 	}
 
 	if ( ! empty( $assets['js'] ) ) {
@@ -133,12 +153,23 @@ function devfolio_excerpt_text( $post_id, $length = 160 ) {
 	return wp_trim_words( $text, max( 10, (int) floor( $length / 5 ) ), '...' );
 }
 
-$devfolio_tgm_class = get_template_directory() . '/inc/tgm/class-tgm-plugin-activation.php';
-if ( file_exists( $devfolio_tgm_class ) ) {
-	require_once $devfolio_tgm_class;
-}
+$devfolio_includes = array(
+	'/inc/helpers.php',
+	'/inc/cpt/register-cpts.php',
+	'/inc/cmb2/cmb2-experience.php',
+	'/inc/cmb2/cmb2-portfolio.php',
+	'/inc/cmb2/cmb2-events.php',
+	'/inc/cmb2/cmb2-services.php',
+	'/inc/cmb2/cmb2-journey.php',
+	'/inc/customizer/kirki-config.php',
+	'/inc/customizer/kirki-sections.php',
+	'/inc/tgm/class-tgm-plugin-activation.php',
+	'/inc/tgm/tgm-init.php',
+);
 
-$devfolio_tgm_init = get_template_directory() . '/inc/tgm/tgm-init.php';
-if ( file_exists( $devfolio_tgm_init ) ) {
-	require_once $devfolio_tgm_init;
+foreach ( $devfolio_includes as $include_file ) {
+	$path = get_template_directory() . $include_file;
+	if ( file_exists( $path ) ) {
+		require_once $path;
+	}
 }
