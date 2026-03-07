@@ -14,6 +14,22 @@ $steps = devfolio_get_repeater_value(
 		array( 'num' => '04', 'title' => 'QA + Ship', 'desc' => 'Test, notes, smooth launch.' ),
 	)
 );
+
+$steps = array_values(
+	array_filter(
+		(array) $steps,
+		static function ( $step ) {
+			$num   = trim( (string) ( $step['num'] ?? '' ) );
+			$title = trim( (string) ( $step['title'] ?? '' ) );
+			$desc  = trim( (string) ( $step['desc'] ?? '' ) );
+			return '' !== $num || '' !== $title || '' !== $desc;
+		}
+	)
+);
+
+if ( empty( $steps ) ) {
+	return;
+}
 ?>
 <!-- Process -->
 <section id="process" class="devfolio-section">
@@ -22,7 +38,11 @@ $steps = devfolio_get_repeater_value(
     <h2 class="devfolio-section-title devfolio-anim">How I work</h2>
     <div class="devfolio-process-grid">
       <?php foreach ( $steps as $step ) : ?>
-      <div class="devfolio-process-card devfolio-glass devfolio-anim"><span class="devfolio-process-num devfolio-gradient-text"><?php echo esc_html( $step['num'] ?? '' ); ?></span><h3><?php echo esc_html( $step['title'] ?? '' ); ?></h3><p><?php echo esc_html( $step['desc'] ?? '' ); ?></p></div>
+      <div class="devfolio-process-card devfolio-glass devfolio-anim">
+        <?php if ( ! empty( $step['num'] ) ) : ?><span class="devfolio-process-num devfolio-gradient-text"><?php echo esc_html( $step['num'] ?? '' ); ?></span><?php endif; ?>
+        <?php if ( ! empty( $step['title'] ) ) : ?><h3><?php echo esc_html( $step['title'] ?? '' ); ?></h3><?php endif; ?>
+        <?php if ( ! empty( $step['desc'] ) ) : ?><p><?php echo esc_html( $step['desc'] ?? '' ); ?></p><?php endif; ?>
+      </div>
       <?php endforeach; ?>
     </div>
   </div>

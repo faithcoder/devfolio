@@ -34,12 +34,36 @@ $social_profiles = devfolio_get_repeater_value(
 	)
 );
 
-if ( empty( $social_profiles ) ) {
-	$social_profiles = array(
-		array( 'label' => 'LinkedIn', 'url' => devfolio_get_theme_mod_value( 'devfolio_social_linkedin', 'https://linkedin.com' ) ),
-		array( 'label' => 'GitHub', 'url' => devfolio_get_theme_mod_value( 'devfolio_social_github', 'https://github.com' ) ),
-		array( 'label' => 'WordPress', 'url' => devfolio_get_theme_mod_value( 'devfolio_social_wordpress', 'https://wordpress.org' ) ),
-	);
+$hero_stats = array_values(
+	array_filter(
+		(array) $hero_stats,
+		static function ( $stat ) {
+			return ! empty( trim( (string) ( $stat['value'] ?? '' ) ) ) || ! empty( trim( (string) ( $stat['label'] ?? '' ) ) );
+		}
+	)
+);
+
+$social_profiles = array_values(
+	array_filter(
+		(array) $social_profiles,
+		static function ( $profile ) {
+			return ! empty( trim( (string) ( $profile['url'] ?? '' ) ) );
+		}
+	)
+);
+
+if (
+	'' === trim( (string) $hero_label ) &&
+	'' === trim( (string) $hero_before ) &&
+	'' === trim( (string) $hero_highlight ) &&
+	'' === trim( (string) $hero_after ) &&
+	'' === trim( (string) $hero_subtitle ) &&
+	'' === trim( (string) $hero_cta_1_text ) &&
+	'' === trim( (string) $hero_cta_2_text ) &&
+	empty( $social_profiles ) &&
+	empty( $hero_stats )
+) {
+	return;
 }
 ?>
 <!-- Hero -->
@@ -47,25 +71,37 @@ if ( empty( $social_profiles ) ) {
   <div class="devfolio-container">
     <div class="devfolio-hero-layout">
       <div class="devfolio-hero-text">
+        <?php if ( ! empty( $hero_label ) ) : ?>
         <p class="devfolio-label devfolio-anim"><?php echo esc_html( $hero_label ); ?></p>
+        <?php endif; ?>
+        <?php if ( ! empty( $hero_before ) || ! empty( $hero_highlight ) || ! empty( $hero_after ) ) : ?>
         <h1 class="devfolio-anim"><?php echo esc_html( $hero_before ); ?> <span class="devfolio-gradient-text"><?php echo esc_html( $hero_highlight ); ?></span> <?php echo esc_html( $hero_after ); ?></h1>
+        <?php endif; ?>
+        <?php if ( ! empty( $hero_subtitle ) ) : ?>
         <p class="devfolio-subtitle devfolio-anim"><?php echo esc_html( $hero_subtitle ); ?></p>
+        <?php endif; ?>
 
         <div class="devfolio-hero-actions devfolio-anim">
+          <?php if ( ! empty( $hero_cta_1_text ) && ! empty( $hero_cta_1_url ) ) : ?>
           <a href="<?php echo esc_url( $hero_cta_1_url ); ?>" class="devfolio-btn devfolio-btn-glow"><?php echo esc_html( $hero_cta_1_text ); ?> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-7-7 7 7-7 7"/></svg></a>
+          <?php endif; ?>
+          <?php if ( ! empty( $hero_cta_2_text ) && ! empty( $hero_cta_2_url ) ) : ?>
           <a href="<?php echo esc_url( $hero_cta_2_url ); ?>" class="devfolio-btn devfolio-btn-glass"><?php echo esc_html( $hero_cta_2_text ); ?> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6m4-3h6v6m-11 5L21 3"/></svg></a>
+          <?php endif; ?>
+          <?php if ( ! empty( $social_profiles ) ) : ?>
           <div class="devfolio-social-icons">
             <?php foreach ( $social_profiles as $profile ) : ?>
-              <?php if ( empty( $profile['url'] ) ) { continue; } ?>
             <a href="<?php echo esc_url( $profile['url'] ); ?>" target="_blank" class="devfolio-social-icon devfolio-glass" aria-label="<?php echo esc_attr( $profile['label'] ?? 'Social' ); ?>">
               <?php echo devfolio_render_icon( $profile['icon_image'] ?? '', $profile['icon'] ?? '', $profile['label'] ?? 'Social' ); ?>
             </a>
             <?php endforeach; ?>
           </div>
+          <?php endif; ?>
         </div>
       </div>
 
       <!-- Profile Image with tilt -->
+      <?php if ( ! empty( $hero_image ) ) : ?>
       <div class="devfolio-hero-image devfolio-anim">
         <div class="devfolio-tilt-container" id="devfolio-tilt-container">
           <div class="devfolio-tilt-shape devfolio-tilt-shape-1"></div>
@@ -78,12 +114,15 @@ if ( empty( $social_profiles ) ) {
           </div>
         </div>
       </div>
+      <?php endif; ?>
     </div>
 
+    <?php if ( ! empty( $hero_stats ) ) : ?>
     <div class="devfolio-stats-grid devfolio-anim">
       <?php foreach ( $hero_stats as $stat ) : ?>
       <div class="devfolio-stat-card devfolio-glass"><p class="devfolio-stat-value devfolio-gradient-text"><?php echo esc_html( $stat['value'] ?? '' ); ?></p><p class="devfolio-stat-label"><?php echo esc_html( $stat['label'] ?? '' ); ?></p></div>
       <?php endforeach; ?>
     </div>
+    <?php endif; ?>
   </div>
 </section>

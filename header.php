@@ -44,13 +44,19 @@
 			array(
 				'theme_location' => 'primary',
 				'container'      => false,
+				'menu_id'        => 'devfolio-primary-menu',
 				'menu_class'     => 'devfolio-nav-links menu-list',
 				'fallback_cb'    => 'devfolio_primary_menu_fallback',
 			)
 		);
 		?>
-		<button class="devfolio-nav-toggle" aria-label="Toggle menu">
-			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+		<button class="devfolio-nav-toggle" aria-label="Toggle menu" aria-controls="devfolio-primary-menu" aria-expanded="false">
+			<span class="devfolio-nav-icon devfolio-nav-icon-menu" aria-hidden="true">
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+			</span>
+			<span class="devfolio-nav-icon devfolio-nav-icon-close" aria-hidden="true">
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 6 18 18M6 18 18 6"/></svg>
+			</span>
 		</button>
 	</div>
 </nav>

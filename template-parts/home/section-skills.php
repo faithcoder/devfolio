@@ -14,6 +14,21 @@ $skill_groups = devfolio_get_repeater_value(
 		array( 'title' => 'DevOps', 'tags' => 'Docker, CI/CD Pipelines, Git, Composer' ),
 	)
 );
+
+$skill_groups = array_values(
+	array_filter(
+		(array) $skill_groups,
+		static function ( $group ) {
+			$title = trim( (string) ( $group['title'] ?? '' ) );
+			$tags  = trim( (string) ( $group['tags'] ?? '' ) );
+			return '' !== $title || '' !== $tags;
+		}
+	)
+);
+
+if ( empty( $skill_groups ) ) {
+	return;
+}
 ?>
 <!-- Skills -->
 <section id="skills" class="devfolio-section">
@@ -22,13 +37,18 @@ $skill_groups = devfolio_get_repeater_value(
     <h2 class="devfolio-section-title devfolio-anim">Technical Arsenal</h2>
     <div class="devfolio-skills-grid">
       <?php foreach ( $skill_groups as $group ) : ?>
+      <?php $group_tags = devfolio_parse_tag_list( $group['tags'] ?? '' ); ?>
       <div class="devfolio-skill-group devfolio-glass devfolio-anim">
+        <?php if ( ! empty( $group['title'] ) ) : ?>
         <h3 class="devfolio-gradient-text-accent"><?php echo esc_html( $group['title'] ?? '' ); ?></h3>
+        <?php endif; ?>
+        <?php if ( ! empty( $group_tags ) ) : ?>
         <div class="devfolio-skill-tags">
-          <?php foreach ( devfolio_parse_tag_list( $group['tags'] ?? '' ) as $tag ) : ?>
+          <?php foreach ( $group_tags as $tag ) : ?>
           <span class="devfolio-skill-tag"><?php echo esc_html( $tag ); ?></span>
           <?php endforeach; ?>
         </div>
+        <?php endif; ?>
       </div>
       <?php endforeach; ?>
     </div>

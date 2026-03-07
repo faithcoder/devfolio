@@ -10,12 +10,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 function devfolio_get_theme_mod_value( $key, $default = '' ) {
-	$value = get_theme_mod( $key, $default );
-	return ( '' === $value || null === $value ) ? $default : $value;
+	$value = get_theme_mod( $key, null );
+	return null === $value ? $default : $value;
 }
 
 function devfolio_get_repeater_value( $key, $default = array() ) {
-	$value = get_theme_mod( $key, $default );
+	$value = get_theme_mod( $key, null );
+
+	if ( null === $value ) {
+		return $default;
+	}
+
+	if ( '' === $value ) {
+		return array();
+	}
 
 	if ( is_string( $value ) ) {
 		$decoded = json_decode( $value, true );
@@ -25,6 +33,13 @@ function devfolio_get_repeater_value( $key, $default = array() ) {
 	}
 
 	return is_array( $value ) ? $value : $default;
+}
+
+function devfolio_css_value( $value, $fallback = '' ) {
+	if ( '' === $value || null === $value ) {
+		return $fallback;
+	}
+	return preg_replace( '/[^#(),.%\\sa-zA-Z0-9\\-+]/', '', (string) $value );
 }
 
 function devfolio_parse_tag_list( $value ) {

@@ -7,36 +7,35 @@
 
 get_header();
 
-get_template_part( 'template-parts/home/section', 'hero' );
-echo '<div class="devfolio-glow-line"></div>';
+$section_slugs = array(
+	'hero',
+	'experience',
+	'skills',
+	'projects',
+	'portfolio',
+	'services',
+	'process',
+	'origin',
+	'blog',
+	'testimonials',
+	'contact',
+);
 
-get_template_part( 'template-parts/home/section', 'experience' );
-echo '<div class="devfolio-glow-line"></div>';
+$rendered_sections = array();
+foreach ( $section_slugs as $slug ) {
+	ob_start();
+	get_template_part( 'template-parts/home/section', $slug );
+	$section_html = trim( ob_get_clean() );
+	if ( '' !== $section_html ) {
+		$rendered_sections[] = $section_html;
+	}
+}
 
-get_template_part( 'template-parts/home/section', 'skills' );
-echo '<div class="devfolio-glow-line"></div>';
-
-get_template_part( 'template-parts/home/section', 'projects' );
-echo '<div class="devfolio-glow-line"></div>';
-
-get_template_part( 'template-parts/home/section', 'portfolio' );
-echo '<div class="devfolio-glow-line"></div>';
-
-get_template_part( 'template-parts/home/section', 'services' );
-echo '<div class="devfolio-glow-line"></div>';
-
-get_template_part( 'template-parts/home/section', 'process' );
-echo '<div class="devfolio-glow-line"></div>';
-
-get_template_part( 'template-parts/home/section', 'origin' );
-echo '<div class="devfolio-glow-line"></div>';
-
-get_template_part( 'template-parts/home/section', 'blog' );
-echo '<div class="devfolio-glow-line"></div>';
-
-get_template_part( 'template-parts/home/section', 'testimonials' );
-echo '<div class="devfolio-glow-line"></div>';
-
-get_template_part( 'template-parts/home/section', 'contact' );
+foreach ( $rendered_sections as $index => $section_html ) {
+	echo $section_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	if ( $index < count( $rendered_sections ) - 1 ) {
+		echo '<div class="devfolio-glow-line"></div>';
+	}
+}
 
 get_footer();
