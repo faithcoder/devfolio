@@ -36,9 +36,10 @@ if ( empty( $journey_items ) ) {
 		array( 'year' => '2026', 'title' => "What's Next", 'desc' => "Exploring 'vibe coding' and seeking the next long-term architectural role.", 'position' => 'top' ),
 	);
 }
+$section_id = devfolio_get_section_id( 'origin' );
 ?>
 <!-- Origin Timeline - Zigzag Road -->
-<section class="devfolio-section">
+<section id="<?php echo esc_attr( $section_id ); ?>" class="devfolio-section">
   <div class="devfolio-container">
     <p class="devfolio-label devfolio-anim">Origin Story</p>
     <h2 class="devfolio-section-title devfolio-anim">My Journey</h2>

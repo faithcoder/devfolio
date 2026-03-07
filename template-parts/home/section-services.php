@@ -36,9 +36,10 @@ if ( $services_query->have_posts() ) {
 if ( empty( $services ) ) {
 	$services = $default_services;
 }
+$section_id = devfolio_get_section_id( 'services' );
 ?>
 <!-- Services -->
-<section id="services" class="devfolio-section">
+<section id="<?php echo esc_attr( $section_id ); ?>" class="devfolio-section">
   <div class="devfolio-container">
     <p class="devfolio-label devfolio-anim">Services</p>
     <h2 class="devfolio-section-title devfolio-anim">What I can help with</h2>

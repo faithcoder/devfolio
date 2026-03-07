@@ -25,13 +25,14 @@ $skill_groups = array_values(
 		}
 	)
 );
+$section_id = devfolio_get_section_id( 'skills' );
 
 if ( empty( $skill_groups ) ) {
 	return;
 }
 ?>
 <!-- Skills -->
-<section id="skills" class="devfolio-section">
+<section id="<?php echo esc_attr( $section_id ); ?>" class="devfolio-section">
   <div class="devfolio-container">
     <p class="devfolio-label devfolio-anim">Skills</p>
     <h2 class="devfolio-section-title devfolio-anim">Technical Arsenal</h2>

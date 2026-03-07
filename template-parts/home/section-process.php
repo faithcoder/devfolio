@@ -27,12 +27,14 @@ $steps = array_values(
 	)
 );
 
+$section_id = devfolio_get_section_id( 'process' );
+
 if ( empty( $steps ) ) {
 	return;
 }
 ?>
 <!-- Process -->
-<section id="process" class="devfolio-section">
+<section id="<?php echo esc_attr( $section_id ); ?>" class="devfolio-section">
   <div class="devfolio-container">
     <p class="devfolio-label devfolio-anim">Process</p>
     <h2 class="devfolio-section-title devfolio-anim">How I work</h2>

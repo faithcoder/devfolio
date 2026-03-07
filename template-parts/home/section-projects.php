@@ -64,13 +64,14 @@ if ( empty( $events ) ) {
 }
 
 $show_featured = '' !== trim( (string) $featured_label ) || '' !== trim( (string) $featured_title ) || '' !== trim( (string) $featured_desc ) || ! empty( $featured_tags );
+$section_id    = devfolio_get_section_id( 'projects' );
 
 if ( ! $show_featured && empty( $contrib_items ) && empty( $events ) ) {
 	return;
 }
 ?>
 <!-- Projects -->
-<section id="projects" class="devfolio-section">
+<section id="<?php echo esc_attr( $section_id ); ?>" class="devfolio-section">
   <div class="devfolio-container">
     <p class="devfolio-label devfolio-anim">Open Source</p>
     <h2 class="devfolio-section-title devfolio-anim">Contributions & Projects</h2>

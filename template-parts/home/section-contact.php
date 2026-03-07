@@ -10,6 +10,7 @@ $contact_title = devfolio_get_theme_mod_value( 'devfolio_contact_title', 'Contac
 $contact_desc  = devfolio_get_theme_mod_value( 'devfolio_contact_desc', "Tell me what you're building (or what's broken). I'll reply with a clear next step." );
 $contact_email = devfolio_get_theme_mod_value( 'devfolio_contact_email', 'you@example.com' );
 $contact_btn   = devfolio_get_theme_mod_value( 'devfolio_contact_button_text', 'Send a Message' );
+$section_id    = devfolio_get_section_id( 'contact' );
 
 if (
 	'' === trim( (string) $contact_label ) &&
@@ -22,7 +23,7 @@ if (
 }
 ?>
 <!-- Contact -->
-<section id="contact" class="devfolio-section">
+<section id="<?php echo esc_attr( $section_id ); ?>" class="devfolio-section">
   <div class="devfolio-container">
     <div class="devfolio-contact-box devfolio-glass devfolio-anim">
       <div class="devfolio-content">

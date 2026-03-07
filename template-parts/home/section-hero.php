@@ -11,10 +11,11 @@ $hero_highlight   = devfolio_get_theme_mod_value( 'devfolio_hero_title_highlight
 $hero_after       = devfolio_get_theme_mod_value( 'devfolio_hero_title_after', 'that scale.' );
 $hero_subtitle    = devfolio_get_theme_mod_value( 'devfolio_hero_subtitle', '10+ years of experience. Product-focused development, clean code, and reliable delivery. Available for ongoing work or project-based builds.' );
 $hero_cta_1_text  = devfolio_get_theme_mod_value( 'devfolio_hero_cta_primary_text', 'Book a Call' );
-$hero_cta_1_url   = devfolio_get_theme_mod_value( 'devfolio_hero_cta_primary_url', '#contact' );
+$hero_cta_1_url   = devfolio_get_theme_mod_value( 'devfolio_hero_cta_primary_url', '#' . devfolio_get_section_id( 'contact' ) );
 $hero_cta_2_text  = devfolio_get_theme_mod_value( 'devfolio_hero_cta_secondary_text', 'View Profile' );
-$hero_cta_2_url   = devfolio_get_theme_mod_value( 'devfolio_hero_cta_secondary_url', '#projects' );
+$hero_cta_2_url   = devfolio_get_theme_mod_value( 'devfolio_hero_cta_secondary_url', '#' . devfolio_get_section_id( 'projects' ) );
 $hero_image       = devfolio_get_theme_mod_value( 'devfolio_hero_image', get_template_directory_uri() . '/assets/images/profile.jpeg' );
+$hero_section_id  = devfolio_get_section_id( 'hero' );
 $hero_stats       = devfolio_get_repeater_value(
 	'devfolio_hero_stats',
 	array(
@@ -67,7 +68,7 @@ if (
 }
 ?>
 <!-- Hero -->
-<section class="devfolio-hero">
+<section id="<?php echo esc_attr( $hero_section_id ); ?>" class="devfolio-hero">
   <div class="devfolio-container">
     <div class="devfolio-hero-layout">
       <div class="devfolio-hero-text">

@@ -60,9 +60,10 @@ if ( empty( $items ) ) {
 		array( 'text' => 'Exceptional problem-solver with deep WordPress expertise. Built our entire SaaS integration layer from scratch - reliable, clean, and well-documented.', 'name' => 'Emily Rodriguez', 'role' => 'Founder, DevTools Co.', 'initials' => 'ER', 'rating' => '★★★★★' ),
 	);
 }
+$section_id = devfolio_get_section_id( 'testimonials' );
 ?>
 <!-- Testimonials -->
-<section id="testimonials" class="devfolio-section">
+<section id="<?php echo esc_attr( $section_id ); ?>" class="devfolio-section">
   <div class="devfolio-container">
     <p class="devfolio-label devfolio-anim">Testimonials</p>
     <h2 class="devfolio-section-title devfolio-anim">What clients say</h2>

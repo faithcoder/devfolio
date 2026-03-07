@@ -148,17 +148,32 @@ function devfolio_admin_assets( $hook ) {
 add_action( 'admin_enqueue_scripts', 'devfolio_admin_assets' );
 
 function devfolio_primary_menu_fallback() {
+	$sections = devfolio_get_nav_sections();
+	$order    = array( 'hero', 'experience', 'skills', 'projects', 'portfolio', 'services', 'process', 'origin', 'blog', 'testimonials', 'contact' );
+
 	echo '<ul id="devfolio-primary-menu" class="devfolio-nav-links menu-list">';
-	echo '<li><a href="#experience">' . esc_html__( 'Experience', 'devfolio' ) . '</a></li>';
-	echo '<li><a href="#skills">' . esc_html__( 'Skills', 'devfolio' ) . '</a></li>';
-	echo '<li><a href="#projects">' . esc_html__( 'Projects', 'devfolio' ) . '</a></li>';
-	echo '<li><a href="#portfolio">' . esc_html__( 'Portfolio', 'devfolio' ) . '</a></li>';
-	echo '<li><a href="#services">' . esc_html__( 'Services', 'devfolio' ) . '</a></li>';
-	echo '<li><a href="#process">' . esc_html__( 'Process', 'devfolio' ) . '</a></li>';
-	echo '<li><a href="#blog">' . esc_html__( 'Blog', 'devfolio' ) . '</a></li>';
-	echo '<li><a href="#contact">' . esc_html__( 'Contact', 'devfolio' ) . '</a></li>';
+	foreach ( $order as $key ) {
+		if ( empty( $sections[ $key ]['id'] ) ) {
+			continue;
+		}
+		echo '<li><a href="#' . esc_attr( $sections[ $key ]['id'] ) . '">' . esc_html( $sections[ $key ]['label'] ) . '</a></li>';
+	}
 	echo '</ul>';
 }
+
+function devfolio_primary_menu_anchor_links( $atts, $item, $args ) {
+	if ( empty( $args->theme_location ) || 'primary' !== $args->theme_location ) {
+		return $atts;
+	}
+
+	$href = $atts['href'] ?? '';
+	if ( is_string( $href ) && '#' === substr( $href, 0, 1 ) && ! is_front_page() ) {
+		$atts['href'] = home_url( '/' ) . $href;
+	}
+
+	return $atts;
+}
+add_filter( 'nav_menu_link_attributes', 'devfolio_primary_menu_anchor_links', 10, 3 );
 
 function devfolio_excerpt_text( $post_id, $length = 160 ) {
 	$text = get_the_excerpt( $post_id );
@@ -180,6 +195,7 @@ $devfolio_includes = array(
 	'/inc/customizer/kirki-config.php',
 	'/inc/customizer/kirki-sections.php',
 	'/inc/customizer/dynamic-styles.php',
+	'/inc/customizer/customizer-live-preview.php',
 	'/inc/tgm/class-tgm-plugin-activation.php',
 	'/inc/tgm/tgm-init.php',
 );

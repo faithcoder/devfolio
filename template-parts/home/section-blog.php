@@ -4,9 +4,10 @@
  *
  * @package devfolio
  */
+$section_id = devfolio_get_section_id( 'blog' );
 ?>
 <!-- Blog -->
-<section id="blog" class="devfolio-section">
+<section id="<?php echo esc_attr( $section_id ); ?>" class="devfolio-section">
   <div class="devfolio-container">
     <p class="devfolio-label devfolio-anim">Blog</p>
     <h2 class="devfolio-section-title devfolio-anim">Latest Articles</h2>

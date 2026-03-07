@@ -28,8 +28,35 @@ function devfolio_register_kirki_fields() {
 	Kirki::add_section( 'devfolio_project_section', array( 'title' => esc_html__( 'Projects', 'devfolio' ), 'panel' => 'devfolio_home_panel' ) );
 	Kirki::add_section( 'devfolio_process_section', array( 'title' => esc_html__( 'Process', 'devfolio' ), 'panel' => 'devfolio_home_panel' ) );
 	Kirki::add_section( 'devfolio_contact_section', array( 'title' => esc_html__( 'Contact', 'devfolio' ), 'panel' => 'devfolio_home_panel' ) );
+	Kirki::add_section( 'devfolio_navigation_section', array( 'title' => esc_html__( 'Navigation', 'devfolio' ), 'panel' => 'devfolio_home_panel' ) );
 	Kirki::add_section( 'devfolio_styles_section', array( 'title' => esc_html__( 'Style Settings', 'devfolio' ), 'panel' => 'devfolio_home_panel' ) );
 	Kirki::add_section( 'devfolio_typography_section', array( 'title' => esc_html__( 'Typography', 'devfolio' ), 'panel' => 'devfolio_home_panel' ) );
+
+	foreach ( devfolio_get_section_defaults() as $section_key => $section_meta ) {
+		$title = ucfirst( str_replace( '_', ' ', $section_key ) );
+
+		Kirki::add_field(
+			'devfolio_config',
+			array(
+				'type'     => 'text',
+				'settings' => 'devfolio_section_id_' . $section_key,
+				'label'    => sprintf( esc_html__( '%s Section ID', 'devfolio' ), $title ),
+				'section'  => 'devfolio_navigation_section',
+				'default'  => $section_meta['id'],
+			)
+		);
+
+		Kirki::add_field(
+			'devfolio_config',
+			array(
+				'type'     => 'text',
+				'settings' => 'devfolio_nav_label_' . $section_key,
+				'label'    => sprintf( esc_html__( '%s Menu Label', 'devfolio' ), $title ),
+				'section'  => 'devfolio_navigation_section',
+				'default'  => $section_meta['label'],
+			)
+		);
+	}
 
 	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_hero_label', 'label' => esc_html__( 'Hero Label', 'devfolio' ), 'section' => 'devfolio_hero_section', 'default' => 'Senior Developer • Plugins • Performance' ) );
 	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_hero_title_before', 'label' => esc_html__( 'Hero Title (Before Highlight)', 'devfolio' ), 'section' => 'devfolio_hero_section', 'default' => 'I build fast, secure' ) );

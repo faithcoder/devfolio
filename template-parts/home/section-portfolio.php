@@ -43,9 +43,10 @@ if ( $portfolio_query->have_posts() ) {
 if ( empty( $items ) ) {
 	$items = $fallback_items;
 }
+$section_id = devfolio_get_section_id( 'portfolio' );
 ?>
 <!-- Portfolio -->
-<section id="portfolio" class="devfolio-section">
+<section id="<?php echo esc_attr( $section_id ); ?>" class="devfolio-section">
   <div class="devfolio-container">
     <p class="devfolio-label devfolio-anim">Portfolio</p>
     <h2 class="devfolio-section-title devfolio-anim">Featured Work</h2>
