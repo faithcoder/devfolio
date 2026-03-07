@@ -25,5 +25,5 @@ function devfolio_register_service_metabox() {
 	);
 
 	$box->add_field( array( 'name' => __( 'Description', 'devfolio' ), 'id' => 'devfolio_service_desc', 'type' => 'textarea_small' ) );
-	$box->add_field( array( 'name' => __( 'Icon SVG', 'devfolio' ), 'id' => 'devfolio_service_icon_svg', 'type' => 'textarea_code' ) );
+	$box->add_field( array( 'name' => __( 'Icon Image (SVG/PNG)', 'devfolio' ), 'id' => 'devfolio_service_icon_image', 'type' => 'file' ) );
 }

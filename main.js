@@ -239,6 +239,111 @@ var Devfolio = (function($){
     $(document).on('keydown', function(e) {
       if ($('.devfolio-events-lightbox').hasClass('devfolio-active') && e.key === 'Escape') devfolioCloseEventsLightbox();
     });
+
+    // ── Testimonial Slider ──
+    var tSlideIdx = 0;
+    var $tTrack = $('.devfolio-testimonial-track');
+    var tTotal = $tTrack.children('.devfolio-testimonial-card').length;
+    var tAnimating = false;
+
+    if (tTotal > 0) {
+      function devfolioTestimonialCardWidth() {
+        return $tTrack.children('.devfolio-testimonial-card').first().outerWidth(true) || 0;
+      }
+
+      function devfolioBuildTestimonialDots() {
+        var maxDots = Math.max(1, tTotal);
+        var dotsHtml = '';
+        for (var td = 0; td < maxDots; td++) {
+          dotsHtml += '<button class="devfolio-testimonial-dot' + (td === tSlideIdx ? ' devfolio-dot-active' : '') + '" data-tdot="' + td + '"></button>';
+        }
+        $('.devfolio-testimonial-dots').html(dotsHtml);
+      }
+
+      function devfolioUpdateTestimonialSlider() {
+        $('.devfolio-testimonial-dot').removeClass('devfolio-dot-active');
+        $('.devfolio-testimonial-dot[data-tdot="' + tSlideIdx + '"]').addClass('devfolio-dot-active');
+      }
+
+      function devfolioTestimonialNext() {
+        if (tAnimating || tTotal <= 1) return;
+        var cardWidth = devfolioTestimonialCardWidth();
+        if (!cardWidth) return;
+
+        tAnimating = true;
+        $tTrack.css('transition', 'transform .4s ease');
+        $tTrack.css('transform', 'translateX(' + (-cardWidth) + 'px)');
+
+        $tTrack.one('transitionend webkitTransitionEnd', function() {
+          $tTrack.css('transition', 'none');
+          $tTrack.append($tTrack.children('.devfolio-testimonial-card').first());
+          $tTrack.css('transform', 'translateX(0)');
+          tSlideIdx = (tSlideIdx + 1) % tTotal;
+          devfolioUpdateTestimonialSlider();
+          tAnimating = false;
+        });
+      }
+
+      function devfolioTestimonialPrev() {
+        if (tAnimating || tTotal <= 1) return;
+        var cardWidth = devfolioTestimonialCardWidth();
+        if (!cardWidth) return;
+
+        tAnimating = true;
+        $tTrack.css('transition', 'none');
+        $tTrack.prepend($tTrack.children('.devfolio-testimonial-card').last());
+        $tTrack.css('transform', 'translateX(' + (-cardWidth) + 'px)');
+        // Force reflow before animating back.
+        // eslint-disable-next-line no-unused-expressions
+        $tTrack[0].offsetHeight;
+        $tTrack.css('transition', 'transform .4s ease');
+        $tTrack.css('transform', 'translateX(0)');
+
+        $tTrack.one('transitionend webkitTransitionEnd', function() {
+          tSlideIdx = (tSlideIdx - 1 + tTotal) % tTotal;
+          devfolioUpdateTestimonialSlider();
+          tAnimating = false;
+        });
+      }
+
+      function devfolioJumpToDot(target) {
+        if (target === tSlideIdx) return;
+        var safety = 0;
+        while (tSlideIdx !== target && safety < tTotal) {
+          if (((target - tSlideIdx + tTotal) % tTotal) <= ((tSlideIdx - target + tTotal) % tTotal)) {
+            $tTrack.append($tTrack.children('.devfolio-testimonial-card').first());
+            tSlideIdx = (tSlideIdx + 1) % tTotal;
+          } else {
+            $tTrack.prepend($tTrack.children('.devfolio-testimonial-card').last());
+            tSlideIdx = (tSlideIdx - 1 + tTotal) % tTotal;
+          }
+          safety++;
+        }
+        $tTrack.css('transition', 'none');
+        $tTrack.css('transform', 'translateX(0)');
+        devfolioUpdateTestimonialSlider();
+      }
+
+      devfolioBuildTestimonialDots();
+
+      $('.devfolio-testimonial-next').on('click', function () {
+        devfolioTestimonialNext();
+      });
+      $('.devfolio-testimonial-prev').on('click', function () {
+        devfolioTestimonialPrev();
+      });
+      $('.devfolio-testimonial-dots').on('click', '.devfolio-testimonial-dot', function () {
+        var target = parseInt($(this).data('tdot'), 10);
+        if (isNaN(target)) return;
+        devfolioJumpToDot(target);
+      });
+      $(window).on('resize', function () {
+        $tTrack.css('transition', 'none');
+        $tTrack.css('transform', 'translateX(0)');
+      });
+
+      devfolioUpdateTestimonialSlider();
+    }
   }
 
   // Auto-init on DOM ready

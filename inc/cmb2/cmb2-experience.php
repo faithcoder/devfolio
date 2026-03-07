@@ -27,5 +27,5 @@ function devfolio_register_experience_metabox() {
 	$box->add_field( array( 'name' => __( 'Role', 'devfolio' ), 'id' => 'devfolio_experience_role', 'type' => 'text' ) );
 	$box->add_field( array( 'name' => __( 'Period', 'devfolio' ), 'id' => 'devfolio_experience_period', 'type' => 'text' ) );
 	$box->add_field( array( 'name' => __( 'Description', 'devfolio' ), 'id' => 'devfolio_experience_desc', 'type' => 'textarea_small' ) );
-	$box->add_field( array( 'name' => __( 'Icon SVG (Optional)', 'devfolio' ), 'id' => 'devfolio_experience_icon_svg', 'type' => 'textarea_code' ) );
+	$box->add_field( array( 'name' => __( 'Icon Image (SVG/PNG)', 'devfolio' ), 'id' => 'devfolio_experience_icon_image', 'type' => 'file' ) );
 }

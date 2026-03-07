@@ -34,6 +34,9 @@ echo '<div class="devfolio-glow-line"></div>';
 get_template_part( 'template-parts/home/section', 'blog' );
 echo '<div class="devfolio-glow-line"></div>';
 
+get_template_part( 'template-parts/home/section', 'testimonials' );
+echo '<div class="devfolio-glow-line"></div>';
+
 get_template_part( 'template-parts/home/section', 'contact' );
 
 get_footer();

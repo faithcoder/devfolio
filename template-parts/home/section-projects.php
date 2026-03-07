@@ -12,12 +12,12 @@ $featured_tags  = devfolio_parse_tag_list( devfolio_get_theme_mod_value( 'devfol
 $contrib_items  = devfolio_get_repeater_value( 'devfolio_contributions', array() );
 
 if ( empty( $contrib_items ) ) {
-	$contrib_items = array(
-		array( 'title' => 'Core Contributor', 'icon_svg' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>' ),
-		array( 'title' => 'Docs Contributor', 'icon_svg' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>' ),
-		array( 'title' => 'Meetup Organizer', 'icon_svg' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>' ),
-		array( 'title' => 'Plugin Developer', 'icon_svg' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="6" x2="6" y1="3" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>' ),
-	);
+		$contrib_items = array(
+			array( 'title' => 'Core Contributor', 'icon_image' => '', 'icon_svg' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>' ),
+			array( 'title' => 'Docs Contributor', 'icon_image' => '', 'icon_svg' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>' ),
+			array( 'title' => 'Meetup Organizer', 'icon_image' => '', 'icon_svg' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>' ),
+			array( 'title' => 'Plugin Developer', 'icon_image' => '', 'icon_svg' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="6" x2="6" y1="3" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>' ),
+		);
 }
 
 $event_fallback = array(
@@ -73,7 +73,7 @@ if ( empty( $events ) ) {
     </div>
     <div class="devfolio-contrib-grid">
       <?php foreach ( $contrib_items as $item ) : ?>
-      <div class="devfolio-contrib-card devfolio-glass devfolio-anim"><div class="devfolio-contrib-icon"><?php echo devfolio_render_svg( $item['icon_svg'] ?? '' ); ?></div><span><?php echo esc_html( $item['title'] ?? '' ); ?></span></div>
+      <div class="devfolio-contrib-card devfolio-glass devfolio-anim"><div class="devfolio-contrib-icon"><?php echo devfolio_render_icon( $item['icon_image'] ?? '', $item['icon_svg'] ?? '', $item['title'] ?? 'Icon' ); ?></div><span><?php echo esc_html( $item['title'] ?? '' ); ?></span></div>
       <?php endforeach; ?>
     </div>
 

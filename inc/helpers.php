@@ -105,6 +105,14 @@ function devfolio_render_svg( $svg_markup ) {
 	return wp_kses( $svg_markup, $allowed );
 }
 
+function devfolio_render_icon( $icon_image = '', $svg_markup = '', $alt = '' ) {
+	if ( ! empty( $icon_image ) ) {
+		return '<img src="' . esc_url( $icon_image ) . '" alt="' . esc_attr( $alt ) . '" width="20" height="20" />';
+	}
+
+	return devfolio_render_svg( $svg_markup );
+}
+
 function devfolio_get_image_url( $post_id, $meta_key = '', $fallback = '' ) {
 	if ( ! empty( $meta_key ) ) {
 		$meta_url = get_post_meta( $post_id, $meta_key, true );

@@ -35,13 +35,13 @@ $default_icon = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" 
           $period   = get_post_meta( get_the_ID(), 'devfolio_experience_period', true );
           $meta     = trim( $role . ( $period ? ' | ' . $period : '' ) );
           $desc     = get_post_meta( get_the_ID(), 'devfolio_experience_desc', true );
-          $icon_svg = get_post_meta( get_the_ID(), 'devfolio_experience_icon_svg', true );
+          $icon_img = get_post_meta( get_the_ID(), 'devfolio_experience_icon_image', true );
           ?>
       <div class="devfolio-timeline-item devfolio-anim-left">
         <div class="devfolio-timeline-dot"></div>
         <div class="devfolio-timeline-card devfolio-glass">
           <div class="devfolio-job-header">
-            <div class="devfolio-job-icon"><?php echo devfolio_render_svg( $icon_svg ? $icon_svg : $default_icon ); ?></div>
+            <div class="devfolio-job-icon"><?php echo devfolio_render_icon( $icon_img, $default_icon, get_the_title() ); ?></div>
             <div><p class="devfolio-job-title"><?php the_title(); ?></p><p class="devfolio-job-meta"><?php echo esc_html( $meta ); ?></p></div>
           </div>
           <p class="devfolio-job-desc"><?php echo esc_html( $desc ? $desc : get_the_excerpt() ); ?></p>
@@ -54,7 +54,7 @@ $default_icon = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" 
         <div class="devfolio-timeline-dot"></div>
         <div class="devfolio-timeline-card devfolio-glass">
           <div class="devfolio-job-header">
-            <div class="devfolio-job-icon"><?php echo devfolio_render_svg( $default_icon ); ?></div>
+            <div class="devfolio-job-icon"><?php echo devfolio_render_icon( '', $default_icon, $item['title'] ); ?></div>
             <div><p class="devfolio-job-title"><?php echo esc_html( $item['title'] ); ?></p><p class="devfolio-job-meta"><?php echo esc_html( $item['meta'] ); ?></p></div>
           </div>
           <p class="devfolio-job-desc"><?php echo esc_html( $item['desc'] ); ?></p>

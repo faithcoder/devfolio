@@ -58,11 +58,7 @@ if ( empty( $social_profiles ) ) {
             <?php foreach ( $social_profiles as $profile ) : ?>
               <?php if ( empty( $profile['url'] ) ) { continue; } ?>
             <a href="<?php echo esc_url( $profile['url'] ); ?>" target="_blank" class="devfolio-social-icon devfolio-glass" aria-label="<?php echo esc_attr( $profile['label'] ?? 'Social' ); ?>">
-              <?php if ( ! empty( $profile['icon_image'] ) ) : ?>
-              <img src="<?php echo esc_url( $profile['icon_image'] ); ?>" alt="<?php echo esc_attr( $profile['label'] ?? 'Social' ); ?>" width="20" height="20" />
-              <?php else : ?>
-              <?php echo devfolio_render_svg( $profile['icon'] ?? '' ); ?>
-              <?php endif; ?>
+              <?php echo devfolio_render_icon( $profile['icon_image'] ?? '', $profile['icon'] ?? '', $profile['label'] ?? 'Social' ); ?>
             </a>
             <?php endforeach; ?>
           </div>
