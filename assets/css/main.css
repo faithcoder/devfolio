@@ -373,7 +373,7 @@ button{cursor:pointer;border:none;font-family:var(--font-button);font-size:var(-
 /* ── Testimonials Slider ───────────────────────── */
 .devfolio-testimonial-slider{position:relative;overflow:hidden;padding:0 48px}
 .devfolio-testimonial-track{display:flex;transition:transform .4s ease}
-.devfolio-testimonial-card{padding:32px;display:flex;flex-direction:column;min-width:calc(33.333% - 16px);margin:0 8px;flex-shrink:0;box-sizing:border-box}
+.devfolio-testimonial-card{padding:32px;display:flex;flex-direction:column;min-width:calc(33.333% - 16px);margin:0 8px;flex-shrink:1;box-sizing:border-box}
 .devfolio-testimonial-quote{color:var(--primary);opacity:.3;margin-bottom:16px}
 .devfolio-testimonial-text{font-size:14px;color:var(--muted-fg);line-height:1.7;margin-bottom:24px;flex:1}
 .devfolio-testimonial-stars{color:var(--primary);font-size:14px;letter-spacing:2px;margin-bottom:16px}
