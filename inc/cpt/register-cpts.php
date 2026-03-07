@@ -27,11 +27,15 @@ function devfolio_register_cpts() {
 			'name'          => __( 'Services', 'devfolio' ),
 			'singular_name' => __( 'Service', 'devfolio' ),
 		),
-		'devfolio_journey'    => array(
-			'name'          => __( 'Journey Items', 'devfolio' ),
-			'singular_name' => __( 'Journey Item', 'devfolio' ),
-		),
-	);
+			'devfolio_journey'    => array(
+				'name'          => __( 'Journey Items', 'devfolio' ),
+				'singular_name' => __( 'Journey Item', 'devfolio' ),
+			),
+			'devfolio_testimonial' => array(
+				'name'          => __( 'Testimonials', 'devfolio' ),
+				'singular_name' => __( 'Testimonial', 'devfolio' ),
+			),
+		);
 
 	foreach ( $cpts as $slug => $labels ) {
 		register_post_type(

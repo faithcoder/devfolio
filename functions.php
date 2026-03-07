@@ -179,6 +179,7 @@ $devfolio_includes = array(
 	'/inc/cmb2/cmb2-events.php',
 	'/inc/cmb2/cmb2-services.php',
 	'/inc/cmb2/cmb2-journey.php',
+	'/inc/cmb2/cmb2-testimonials.php',
 	'/inc/customizer/kirki-config.php',
 	'/inc/customizer/kirki-sections.php',
 	'/inc/tgm/class-tgm-plugin-activation.php',
