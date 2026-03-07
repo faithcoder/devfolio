@@ -8,10 +8,10 @@
 $skill_groups = devfolio_get_repeater_value(
 	'devfolio_skill_groups',
 	array(
-		array( 'title' => 'Languages', 'tags' => 'PHP, JavaScript (ES6+), TypeScript, SQL' ),
-		array( 'title' => 'WordPress', 'tags' => 'Plugin/Theme Dev, WP-CLI, REST API, Gutenberg Blocks' ),
-		array( 'title' => 'Frameworks', 'tags' => 'Laravel, React.js, Vue.js, Tailwind CSS' ),
-		array( 'title' => 'DevOps', 'tags' => 'Docker, CI/CD Pipelines, Git, Composer' ),
+		array( 'title' => 'Support Operations', 'tags' => 'Troubleshooting, Problem Solving, Customer Support, Documentation Writing, Communication, Website Migration' ),
+		array( 'title' => 'WordPress & CMS', 'tags' => 'WordPress Theme Development, Elementor Widget Development, WooCommerce, Shopify Store Design, Landing Page Design' ),
+		array( 'title' => 'Technical Stack', 'tags' => 'HTML/CSS, Bootstrap, TailwindCSS, PHP, MySQL, JavaScript, ReactJS, jQuery, AJAX, WP CLI, WP REST API' ),
+		array( 'title' => 'Tools & Workflow', 'tags' => 'HelpScout, ThriveDesk, Ticksy, Tawk.to, Crisp, Git, ClickUp, BrowserStack, Slack, Figma, cPanel, WHM, FTP' ),
 	)
 );
 
@@ -35,7 +35,7 @@ if ( empty( $skill_groups ) ) {
 <section id="<?php echo esc_attr( $section_id ); ?>" class="devfolio-section">
   <div class="devfolio-container">
     <p class="devfolio-label devfolio-anim">Skills</p>
-    <h2 class="devfolio-section-title devfolio-anim">Technical Arsenal</h2>
+    <h2 class="devfolio-section-title devfolio-anim">Skills & Toolset</h2>
     <div class="devfolio-skills-grid">
       <?php foreach ( $skill_groups as $group ) : ?>
       <?php $group_tags = devfolio_parse_tag_list( $group['tags'] ?? '' ); ?>

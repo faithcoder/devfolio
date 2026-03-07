@@ -5,11 +5,11 @@
  * @package devfolio
  */
 
-$contact_label = devfolio_get_theme_mod_value( 'devfolio_contact_label', 'Get in touch' );
-$contact_title = devfolio_get_theme_mod_value( 'devfolio_contact_title', 'Contact' );
-$contact_desc  = devfolio_get_theme_mod_value( 'devfolio_contact_desc', "Tell me what you're building (or what's broken). I'll reply with a clear next step." );
-$contact_email = devfolio_get_theme_mod_value( 'devfolio_contact_email', 'you@example.com' );
-$contact_btn   = devfolio_get_theme_mod_value( 'devfolio_contact_button_text', 'Send a Message' );
+$contact_label = devfolio_get_theme_mod_value( 'devfolio_contact_label', 'Let us talk support' );
+$contact_title = devfolio_get_theme_mod_value( 'devfolio_contact_title', 'Need WordPress Support Help?' );
+$contact_desc  = devfolio_get_theme_mod_value( 'devfolio_contact_desc', 'For plugin support workflows, troubleshooting systems, or documentation planning, reach me at acc.arif@gmail.com or +8801769179697.' );
+$contact_email = devfolio_get_theme_mod_value( 'devfolio_contact_email', 'acc.arif@gmail.com' );
+$contact_btn   = devfolio_get_theme_mod_value( 'devfolio_contact_button_text', 'Email Md Abdullah Al Arif' );
 $section_id    = devfolio_get_section_id( 'contact' );
 
 if (

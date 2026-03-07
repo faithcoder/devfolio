@@ -14,9 +14,9 @@ $services_query = new WP_Query(
 );
 
 $default_services = array(
-	array( 'title' => 'Plugin & UI Architecture', 'desc' => 'Custom plugins, Gutenberg Blocks, and modern UIs with React/TypeScript. Focus on REST APIs and scalable data syncing.', 'icon' => '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect width="7" height="7" x="14" y="3" rx="1"/><path d="M10 21V8a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1H3"/></svg>' ),
-	array( 'title' => 'Performance & Modernization', 'desc' => 'Optimizing legacy codebases, improving Core Web Vitals, and hardening stability for high-traffic environments.', 'icon' => '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>' ),
-	array( 'title' => 'SaaS & Integrations', 'desc' => 'Full-lifecycle API integrations, webhooks, and CI/CD workflows for plugin development and SaaS platforms.', 'icon' => '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>' ),
+	array( 'title' => 'WordPress Technical Support', 'desc' => 'Troubleshoot plugin and theme conflicts, Elementor compatibility, licensing, and subscription issues with clear, actionable guidance.', 'icon' => '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 1 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1v-7h3z"/><path d="M3 14h3v7H5a2 2 0 0 1-2-2z"/></svg>' ),
+	array( 'title' => 'Documentation & Video Guides', 'desc' => 'Write structured knowledgebase articles and record short screencasts so users can resolve common issues quickly and independently.', 'icon' => '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13 10 17v-8l6 4z"/></svg>' ),
+	array( 'title' => 'Store Setup & Migration Support', 'desc' => 'Assist with WooCommerce and Shopify store setup, migration tasks, and post-launch issue handling across hosting and performance environments.', 'icon' => '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 7h18"/><path d="M5 7l1 12h12l1-12"/><path d="M9 11v4"/><path d="M15 11v4"/></svg>' ),
 );
 $default_service_icon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>';
 
@@ -42,8 +42,8 @@ $section_id = devfolio_get_section_id( 'services' );
 <section id="<?php echo esc_attr( $section_id ); ?>" class="devfolio-section">
   <div class="devfolio-container">
     <p class="devfolio-label devfolio-anim">Services</p>
-    <h2 class="devfolio-section-title devfolio-anim">What I can help with</h2>
-    <p class="devfolio-services-subtitle devfolio-anim">Clean builds, solid debugging, and product-level quality.</p>
+    <h2 class="devfolio-section-title devfolio-anim">How I Can Help Your Users</h2>
+    <p class="devfolio-services-subtitle devfolio-anim">Support-first execution with technical depth and clear communication.</p>
     <div class="devfolio-services-grid">
       <?php foreach ( $services as $service ) : ?>
       <div class="devfolio-service-card devfolio-glass devfolio-anim">
