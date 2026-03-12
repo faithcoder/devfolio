@@ -278,6 +278,15 @@ var Devfolio = (function($){
       if ($('.devfolio-events-lightbox').hasClass('devfolio-active') && e.key === 'Escape') devfolioCloseEventsLightbox();
     });
 
+    // ── Tab switching ──
+    $('.devfolio-tab-trigger').on('click',function(){
+      var tab=$(this).data('tab');
+      $('.devfolio-tab-trigger').removeClass('devfolio-tab-active');
+      $(this).addClass('devfolio-tab-active');
+      $('.devfolio-tab-panel').removeClass('devfolio-tab-panel-active');
+      $('.devfolio-tab-panel[data-panel="'+tab+'"]').addClass('devfolio-tab-panel-active');
+    });
+
     // ── Testimonial Slider ──
     var tSlideIdx = 0;
     var $tTrack = $('.devfolio-testimonial-track');

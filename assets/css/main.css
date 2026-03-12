@@ -201,6 +201,21 @@ button{cursor:pointer;border:none;font-family:var(--font-button);font-size:var(-
 .devfolio-skill-tag{padding:6px 14px;font-size:13px;border-radius:999px;background:color-mix(in srgb, var(--primary) 10%, transparent);color:var(--primary);border:1px solid color-mix(in srgb, var(--primary) 20%, transparent)}
 @media(max-width:768px){.devfolio-skills-grid{grid-template-columns:1fr}}
 
+/* ── Tabs ──────────────────────────────────────── */
+.devfolio-tabs-list{display:flex;gap:4px;background:var(--glass-bg);backdrop-filter:blur(12px);border:1px solid var(--border);border-radius:12px;padding:4px;margin-bottom:32px;width:fit-content}
+.devfolio-tab-trigger{display:inline-flex;align-items:center;gap:8px;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:500;color:var(--muted-fg);background:none;transition:all .2s}
+.devfolio-tab-trigger:hover{color:var(--fg)}
+.devfolio-tab-trigger.devfolio-tab-active{background:var(--primary);color:var(--primary-fg)}
+.devfolio-tab-panel{display:none}
+.devfolio-tab-panel.devfolio-tab-panel-active{display:block;animation:devfolio-fade-in .3s ease}
+@keyframes devfolio-fade-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:768px){.devfolio-tabs-list{width:100%}.devfolio-tab-trigger{flex:1;justify-content:center;padding:10px 12px;font-size:13px}}
+
+/* ── Education Timeline Variant ───────────────── */
+.devfolio-timeline-education::before{background:linear-gradient(to bottom,color-mix(in srgb, var(--accent) 50%, transparent),color-mix(in srgb, var(--secondary) 50%, transparent),transparent)}
+.devfolio-timeline-dot.devfolio-dot-accent{background:var(--accent);box-shadow:0 0 12px color-mix(in srgb, var(--accent) 50%, transparent)}
+.devfolio-job-icon.devfolio-icon-accent{background:color-mix(in srgb, var(--accent) 10%, transparent);color:var(--accent)}
+
 /* ── Projects ──────────────────────────────────── */
 .devfolio-featured-project{padding:32px;position:relative;overflow:hidden;margin-bottom:32px}
 .devfolio-featured-project::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,color-mix(in srgb, var(--primary) 5%, transparent),color-mix(in srgb, var(--accent) 5%, transparent))}

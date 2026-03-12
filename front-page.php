@@ -10,6 +10,7 @@ get_header();
 $section_slugs = array(
 	'hero',
 	'experience',
+	'about',
 	'skills',
 	'projects',
 	'portfolio',
