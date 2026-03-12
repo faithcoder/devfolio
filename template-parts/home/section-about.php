@@ -69,13 +69,13 @@ $default_edu_icon = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="
     <h2 class="devfolio-section-title devfolio-anim">Skills, Experience &amp; Education</h2>
     <div class="devfolio-tabs devfolio-anim">
       <div class="devfolio-tabs-list">
-        <button class="devfolio-tab-trigger devfolio-tab-active" data-tab="skills"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg> Skills</button>
-        <button class="devfolio-tab-trigger" data-tab="experience"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="7" rx="2"/><path d="M16 3h-8l-2 4h12z"/></svg> Experience</button>
+        <button class="devfolio-tab-trigger" data-tab="skills"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg> Skills</button>
+        <button class="devfolio-tab-trigger devfolio-tab-active" data-tab="experience"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="7" rx="2"/><path d="M16 3h-8l-2 4h12z"/></svg> Experience</button>
         <button class="devfolio-tab-trigger" data-tab="education"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.1 2.7 3 6 3s6-1.9 6-3v-5"/></svg> Education</button>
       </div>
 
       <!-- Skills Tab -->
-      <div class="devfolio-tab-panel devfolio-tab-panel-active" data-panel="skills">
+      <div class="devfolio-tab-panel" data-panel="skills">
         <div class="devfolio-skills-grid">
           <?php if ( ! empty( $skill_groups ) ) : ?>
             <?php foreach ( $skill_groups as $group ) : ?>
@@ -98,7 +98,7 @@ $default_edu_icon = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="
       </div>
 
       <!-- Experience Tab -->
-      <div class="devfolio-tab-panel" data-panel="experience">
+      <div class="devfolio-tab-panel devfolio-tab-panel-active" data-panel="experience">
         <div class="devfolio-timeline">
           <?php if ( $experience_query->have_posts() ) : ?>
             <?php while ( $experience_query->have_posts() ) : $experience_query->the_post(); ?>
