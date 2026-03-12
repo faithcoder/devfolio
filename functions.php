@@ -187,6 +187,7 @@ $devfolio_includes = array(
 	'/inc/helpers.php',
 	'/inc/cpt/register-cpts.php',
 	'/inc/cmb2/cmb2-experience.php',
+	'/inc/cmb2/cmb2-education.php',
 	'/inc/cmb2/cmb2-portfolio.php',
 	'/inc/cmb2/cmb2-events.php',
 	'/inc/cmb2/cmb2-services.php',

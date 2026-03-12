@@ -32,6 +32,8 @@ function devfolio_register_kirki_fields() {
 	Kirki::add_section( 'devfolio_styles_section', array( 'title' => esc_html__( 'Style Settings', 'devfolio' ), 'panel' => 'devfolio_home_panel' ) );
 	Kirki::add_section( 'devfolio_typography_section', array( 'title' => esc_html__( 'Typography', 'devfolio' ), 'panel' => 'devfolio_home_panel' ) );
 
+	Kirki::add_section( 'devfolio_homepage_layout', array( 'title' => esc_html__( 'Homepage Layout', 'devfolio' ), 'panel' => 'devfolio_home_panel', 'priority' => 1 ) );
+
 	foreach ( devfolio_get_section_defaults() as $section_key => $section_meta ) {
 		$title = ucfirst( str_replace( '_', ' ', $section_key ) );
 
@@ -58,7 +60,75 @@ function devfolio_register_kirki_fields() {
 		);
 	}
 
+	// ── Homepage Layout Sorters & Toggles ──
+	$layout_choices = array();
+	foreach ( devfolio_get_section_defaults() as $section_key => $section_meta ) {
+		// Include the "About" section we hardcoded earlier in front-page.php but missing in the defaults array
+		$layout_choices[ $section_key ] = $section_meta['label'];
+
+		Kirki::add_field(
+			'devfolio_config',
+			array(
+				'type'     => 'switch',
+				'settings' => 'devfolio_enable_' . $section_key,
+				'label'    => sprintf( esc_html__( 'Enable %s', 'devfolio' ), $section_meta['label'] ),
+				'section'  => 'devfolio_homepage_layout',
+				'default'  => true,
+				'choices'  => array(
+					'on'  => esc_html__( 'On', 'devfolio' ),
+					'off' => esc_html__( 'Off', 'devfolio' ),
+				),
+			)
+		);
+	}
+
+	// Also add the newly built About section to the toggles since it isn't in devfolio_get_section_defaults()
+	$about_key = 'about';
+	$about_label = esc_html__( 'About', 'devfolio' );
+	$layout_choices[ $about_key ] = $about_label;
+
+	Kirki::add_field(
+		'devfolio_config',
+		array(
+			'type'     => 'switch',
+			'settings' => 'devfolio_enable_' . $about_key,
+			'label'    => sprintf( esc_html__( 'Enable %s', 'devfolio' ), $about_label ),
+			'section'  => 'devfolio_homepage_layout',
+			'default'  => true,
+			'choices'  => array(
+				'on'  => esc_html__( 'On', 'devfolio' ),
+				'off' => esc_html__( 'Off', 'devfolio' ),
+			),
+		)
+	);
+
+	Kirki::add_field(
+		'devfolio_config',
+		array(
+			'type'     => 'sortable',
+			'settings' => 'devfolio_home_sections_order',
+			'label'    => esc_html__( 'Homepage Section Order', 'devfolio' ),
+			'section'  => 'devfolio_homepage_layout',
+			'default'  => array(
+				'hero',
+				'experience',
+				'about',
+				'skills',
+				'projects',
+				'portfolio',
+				'services',
+				'process',
+				'origin',
+				'blog',
+				'testimonials',
+				'contact',
+			),
+			'choices'  => $layout_choices,
+		)
+	);
+
 	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_hero_label', 'label' => esc_html__( 'Hero Label', 'devfolio' ), 'section' => 'devfolio_hero_section', 'default' => 'Support Engineer • WordPress • Customer Success' ) );
+
 	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_hero_title_before', 'label' => esc_html__( 'Hero Title (Before Highlight)', 'devfolio' ), 'section' => 'devfolio_hero_section', 'default' => 'I help users solve' ) );
 	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_hero_title_highlight', 'label' => esc_html__( 'Hero Highlight', 'devfolio' ), 'section' => 'devfolio_hero_section', 'default' => 'WordPress plugin and theme issues' ) );
 	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_hero_title_after', 'label' => esc_html__( 'Hero Title (After Highlight)', 'devfolio' ), 'section' => 'devfolio_hero_section', 'default' => 'with clear, reliable support.' ) );

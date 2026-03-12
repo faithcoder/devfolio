@@ -35,6 +35,10 @@ function devfolio_register_cpts() {
 				'name'          => __( 'Testimonials', 'devfolio' ),
 				'singular_name' => __( 'Testimonial', 'devfolio' ),
 			),
+			'devfolio_education'  => array(
+				'name'          => __( 'Education Items', 'devfolio' ),
+				'singular_name' => __( 'Education Item', 'devfolio' ),
+			),
 		);
 
 	foreach ( $cpts as $slug => $labels ) {

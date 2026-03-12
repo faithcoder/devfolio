@@ -150,6 +150,7 @@ function devfolio_get_section_defaults() {
 	return array(
 		'hero'         => array( 'id' => 'home', 'label' => __( 'Home', 'devfolio' ) ),
 		'experience'   => array( 'id' => 'experience', 'label' => __( 'Experience', 'devfolio' ) ),
+		'about'        => array( 'id' => 'about', 'label' => __( 'About', 'devfolio' ) ),
 		'skills'       => array( 'id' => 'skills', 'label' => __( 'Skills', 'devfolio' ) ),
 		'projects'     => array( 'id' => 'projects', 'label' => __( 'Projects', 'devfolio' ) ),
 		'portfolio'    => array( 'id' => 'portfolio', 'label' => __( 'Portfolio', 'devfolio' ) ),
