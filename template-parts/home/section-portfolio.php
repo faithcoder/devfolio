@@ -14,12 +14,12 @@ $portfolio_query = new WP_Query(
 );
 
 $fallback_items = array(
-	array( 'title' => 'E-Commerce Platform', 'category' => 'Web App', 'image' => 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop', 'desc' => 'A full-featured e-commerce platform with product management, cart functionality, payment integration, and order tracking. Built with modern technologies for optimal performance.', 'tech' => 'React, TypeScript, Node.js', 'live' => '#', 'github' => '#' ),
-	array( 'title' => 'Analytics Dashboard', 'category' => 'Dashboard', 'image' => 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop', 'desc' => 'Real-time analytics dashboard with interactive charts, data filtering, and custom report generation. Designed for data-driven decision making.', 'tech' => 'React, D3.js, Python', 'live' => '#', 'github' => '' ),
-	array( 'title' => 'Social Media App', 'category' => 'Mobile App', 'image' => 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=600&h=400&fit=crop', 'desc' => 'A social media application with real-time messaging, media sharing, stories, and an intelligent feed algorithm.', 'tech' => 'React Native, Firebase, Node.js', 'live' => '#', 'github' => '#' ),
-	array( 'title' => 'CMS Plugin Suite', 'category' => 'WordPress', 'image' => 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=600&h=400&fit=crop', 'desc' => 'A suite of WordPress plugins for content management, SEO optimization, and performance monitoring. Used by thousands of websites.', 'tech' => 'PHP, WordPress, React', 'live' => '', 'github' => '#' ),
-	array( 'title' => 'Task Management Tool', 'category' => 'SaaS', 'image' => 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=600&h=400&fit=crop', 'desc' => 'Project management tool with kanban boards, time tracking, team collaboration, and automated workflows.', 'tech' => 'Vue.js, Laravel, Redis', 'live' => '#', 'github' => '' ),
-	array( 'title' => 'Portfolio Generator', 'category' => 'Tool', 'image' => 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop', 'desc' => 'An automated portfolio website generator that creates beautiful, responsive portfolio sites from simple configuration files.', 'tech' => 'TypeScript, Next.js, Tailwind', 'live' => '#', 'github' => '#' ),
+	array( 'title' => 'Shadhin Block Theme', 'category' => 'WordPress Theme', 'image' => 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=600&h=400&fit=crop', 'desc' => 'A minimal block theme based on Gutenberg, published on WordPress.org. Built following the official Gutenberg design standards.', 'tech' => 'PHP, Gutenberg, CSS', 'live' => 'https://wordpress.org/themes/shadhin/', 'github' => '' ),
+	array( 'title' => 'AutoChat Plugin', 'category' => 'WordPress Plugin', 'image' => 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=400&fit=crop', 'desc' => 'Contributed to the design and development of the settings page as a frontend developer using HTML, CSS, and jQuery.', 'tech' => 'PHP, jQuery, HTML/CSS', 'live' => 'https://wordpress.org/plugins/autochat/', 'github' => '' ),
+	array( 'title' => 'Media Profile Avatar', 'category' => 'WordPress Plugin', 'image' => 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600&h=400&fit=crop', 'desc' => 'A plugin that allows users to upload their profile pictures from the WordPress Media Library instead of Gravatar.', 'tech' => 'PHP, WordPress', 'live' => 'https://wordpress.org/plugins/media-profile-avatar/', 'github' => '' ),
+	array( 'title' => 'ToborLife AI – WooCommerce Page', 'category' => 'WooCommerce', 'image' => 'https://images.unsplash.com/photo-1555421689-d68471e189f2?w=600&h=400&fit=crop', 'desc' => 'Custom product page development using WooCommerce. Figma to WordPress conversion with full responsiveness.', 'tech' => 'WooCommerce, PHP, CSS', 'live' => '#', 'github' => '' ),
+	array( 'title' => 'XpeedStudio Theme Contributions', 'category' => 'WordPress Theme', 'image' => 'https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&h=400&fit=crop', 'desc' => 'Fixing PHP errors, adding One Click Demo Importer, and integrating new features into Elementor Widget Controller for Evenex, Medizco, BLO, Politino, and Seocify themes.', 'tech' => 'PHP, Elementor, CSS', 'live' => '#', 'github' => '' ),
+	array( 'title' => 'Webba Booking Documentation', 'category' => 'Documentation', 'image' => 'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&h=400&fit=crop', 'desc' => 'Authored 20+ knowledge base articles and video tutorials for Webba Booking plugin users.', 'tech' => 'Documentation, Video', 'live' => 'https://webba-booking.com', 'github' => '' ),
 );
 
 $items = array();
@@ -39,6 +39,10 @@ if ( $portfolio_query->have_posts() ) {
 	}
 	wp_reset_postdata();
 }
+
+$portfolio_label = devfolio_get_theme_mod_value( 'devfolio_portfolio_label', 'Portfolio' );
+$portfolio_title = devfolio_get_theme_mod_value( 'devfolio_portfolio_title', 'Featured Projects' );
+$portfolio_desc  = devfolio_get_theme_mod_value( 'devfolio_portfolio_desc', 'A selection of WordPress themes, plugins, and contributions built over the years.' );
 
 if ( empty( $items ) ) {
 	$items = $fallback_items;

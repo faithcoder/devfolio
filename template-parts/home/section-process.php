@@ -8,10 +8,10 @@
 $steps = devfolio_get_repeater_value(
 	'devfolio_process_steps',
 	array(
-		array( 'num' => '01', 'title' => 'Clarify scope', 'desc' => 'Quick questions, no confusion.' ),
-		array( 'num' => '02', 'title' => 'Plan', 'desc' => 'Estimate + milestones.' ),
-		array( 'num' => '03', 'title' => 'Build', 'desc' => 'Staging first, clean commits.' ),
-		array( 'num' => '04', 'title' => 'QA + Ship', 'desc' => 'Test, notes, smooth launch.' ),
+		array( 'num' => '01', 'title' => 'Clarify Scope', 'desc' => 'Understand the core issue, reproduce gracefully, and clear up any confusion immediately.' ),
+		array( 'num' => '02', 'title' => 'Debug & Plan', 'desc' => 'Dig deep into conflicts, create test environments, and find optimal, non-invasive solutions.' ),
+		array( 'num' => '03', 'title' => 'Build or Fix', 'desc' => 'Write custom code, adjust configurations, or provide foolproof steps to resolve the problem.' ),
+		array( 'num' => '04', 'title' => 'Document & QA', 'desc' => 'Test thoroughly, deliver screencasts or knowledgebase articles for extended support.' ),
 	)
 );
 

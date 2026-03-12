@@ -29,11 +29,11 @@ if ( $journey_query->have_posts() ) {
 
 if ( empty( $journey_items ) ) {
 	$journey_items = array(
-		array( 'year' => '2012', 'title' => 'The Beginning', 'desc' => 'Started with small WordPress customizations, discovering the ecosystem.', 'position' => 'top' ),
-		array( 'year' => '2013', 'title' => 'First Plugin', 'desc' => 'Published first plugin on WordPress.org, entering open-source development.', 'position' => 'bottom' ),
-		array( 'year' => '2019', 'title' => 'Community Builder', 'desc' => 'Founded the Rangpur WordPress Meetup chapter, organizing 27+ events.', 'position' => 'top' ),
-		array( 'year' => '2025', 'title' => 'Global Stage', 'desc' => 'Attended WordCamp Asia and wrapped up tenure at InstaWP after leading the engineering team.', 'position' => 'bottom' ),
-		array( 'year' => '2026', 'title' => "What's Next", 'desc' => "Exploring 'vibe coding' and seeking the next long-term architectural role.", 'position' => 'top' ),
+		array( 'year' => '2014', 'title' => 'Freelance Developer', 'desc' => 'Transitioned HTML to WP themes and built eCommerce solutions on Fiverr & Upwork.', 'position' => 'top' ),
+		array( 'year' => '2021', 'title' => 'Sharing Knowledge', 'desc' => 'Empowered students as an Associate Mentor in WP Theme Development at SoftTech-IT.', 'position' => 'bottom' ),
+		array( 'year' => '2022', 'title' => 'Technical Support', 'desc' => 'Assisted daily users with plugin queries and setups at CodeAstrology.', 'position' => 'top' ),
+		array( 'year' => '2023', 'title' => 'Scaling Impact', 'desc' => 'Managed CRM and WordPress.org forums at Roxnor supporting WPmet products.', 'position' => 'bottom' ),
+		array( 'year' => '2025', 'title' => 'Continued Growth', 'desc' => 'Joined Webba Booking to deliver exceptional user experiences and debug conflicts.', 'position' => 'top' ),
 	);
 }
 $section_id = devfolio_get_section_id( 'origin' );

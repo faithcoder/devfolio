@@ -330,7 +330,7 @@ button {
   top: 8%;
   right: 8%;
   opacity: .6;
-  animation: devfolio-shape-drift-1 18s ease-in-out infinite
+  animation: devfolio-shape-drift-1 4s ease-in-out infinite
 }
 
 .devfolio-shape-2 {
@@ -341,7 +341,7 @@ button {
   right: 5%;
   border-radius: 1.5rem;
   opacity: .4;
-  animation: devfolio-shape-drift-2 22s ease-in-out infinite
+  animation: devfolio-shape-drift-2 8s ease-in-out infinite
 }
 
 .devfolio-shape-3 {
@@ -352,7 +352,7 @@ button {
   left: 3%;
   border-radius: 1.2rem;
   opacity: .5;
-  animation: devfolio-shape-drift-3 26s ease-in-out infinite
+  animation: devfolio-shape-drift-3 12s ease-in-out infinite
 }
 
 .devfolio-dot {

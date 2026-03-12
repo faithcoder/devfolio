@@ -9,10 +9,10 @@
 $skill_groups = devfolio_get_repeater_value(
 	'devfolio_skill_groups',
 	array(
-		array( 'title' => 'Languages', 'tags' => 'PHP, JavaScript (ES6+), TypeScript, SQL' ),
-		array( 'title' => 'WordPress', 'tags' => 'Plugin/Theme Dev, WP-CLI, REST API, Gutenberg Blocks' ),
-		array( 'title' => 'Frameworks', 'tags' => 'Laravel, React.js, Vue.js, Tailwind CSS' ),
-		array( 'title' => 'DevOps', 'tags' => 'Docker, CI/CD Pipelines, Git, Composer' ),
+		array( 'title' => 'Support Operations', 'tags' => 'Troubleshooting, Problem Solving, Customer Support, Documentation Writing, Communication, Website Migration' ),
+		array( 'title' => 'WordPress & CMS', 'tags' => 'WordPress Theme Development, Elementor Widget Development, WooCommerce, Shopify Store Design, Landing Page Design' ),
+		array( 'title' => 'Technical Stack', 'tags' => 'HTML/CSS, Bootstrap, TailwindCSS, PHP, MySQL, JavaScript, ReactJS, jQuery, AJAX, WP CLI, WP REST API' ),
+		array( 'title' => 'Tools & Workflow', 'tags' => 'HelpScout, ThriveDesk, Ticksy, Tawk.to, Crisp, Git, ClickUp, BrowserStack, Slack, Figma, cPanel, WHM, FTP' ),
 	)
 );
 
@@ -37,10 +37,11 @@ $experience_query = new WP_Query(
 );
 
 $default_experience = array(
-	array( 'title' => 'Convey Digital', 'meta' => 'Senior WordPress Developer (Contract) | May 2025 – Dec 2025', 'desc' => 'Delivered high-performance, secure B2B WordPress solutions for enterprise clients.' ),
-	array( 'title' => 'InstaWP', 'meta' => 'Team Lead & Senior WordPress Developer | Sep 2022 – Apr 2025', 'desc' => 'Architected and built the InstaWP Connect plugin from the ground up.' ),
-	array( 'title' => 'UpdraftPlus', 'meta' => 'WordPress Plugin Developer | Jun 2021 – Aug 2022', 'desc' => 'Maintained one of the world\'s most popular backup plugins with 3M+ active installs.' ),
-	array( 'title' => 'PickPlugins', 'meta' => 'Lead WordPress Developer | Jun 2014 – May 2020', 'desc' => 'Anchored the team for 6 years, managing flagship plugins.' ),
+	array( 'title' => 'Webba Booking', 'meta' => 'Support Engineer | Oct 2025 - PRESENT', 'desc' => 'Provided technical support, managed queries via HelpScout, resolved plugin/theme conflicts, and reported bugs via ClickUp.' ),
+	array( 'title' => 'Roxnor', 'meta' => 'Support Engineer | Jan 2023 - Sep 2025', 'desc' => 'Customer Support for WPmet plugins and GetGenie AI. Handled technical queries, troubleshooting, and created documentation/screencasts.' ),
+	array( 'title' => 'CodeAstrology', 'meta' => 'Technical Support Engineer | Apr 2022 – Dec 2022', 'desc' => 'Provided support for WooCommerce-based plugins via live chat using Tawk.to and Crisp, assisting 15-20 customers daily.' ),
+	array( 'title' => 'SoftTech-IT Institute', 'meta' => 'Associate Mentor, WP Theme Development | Mar 2021 – Oct 2023', 'desc' => 'Led theme development classes covering HTML to WordPress conversion, custom posts, Elementor, and Redux.' ),
+	array( 'title' => 'Freelance CMS Developer', 'meta' => 'Fiverr & Upwork | Nov 2014 – Jan 2021', 'desc' => 'Created outstanding websites using Elementor, WooCommerce, Shopify, and transitioned HTML to WordPress themes.' ),
 );
 
 // --- 3. Fetch Education ---
@@ -53,9 +54,8 @@ $education_query = new WP_Query(
 );
 
 $default_education = array(
-	array( 'title' => 'B.Sc. in Computer Science & Engineering', 'meta' => 'Begum Rokeya University, Rangpur | 2015 – 2019', 'desc' => 'Focused on software engineering, algorithms, and web technologies.' ),
-	array( 'title' => 'Higher Secondary Certificate (HSC)', 'meta' => 'Rangpur Cadet College | 2012 – 2014', 'desc' => 'Science group with emphasis on mathematics and physics.' ),
-	array( 'title' => 'Secondary School Certificate (SSC)', 'meta' => 'Rangpur Zilla School | 2010 – 2012', 'desc' => 'Achieved top marks in science and mathematics.' ),
+	array( 'title' => 'Post Graduate Diploma in IT (PGDICT)', 'meta' => 'BKIICT | Jun 2023 - Jul 2024', 'desc' => 'Information and Communication Technology focus.' ),
+	array( 'title' => 'Executive M.B.A. (EMBA)', 'meta' => 'Presidency University, Bangladesh | Feb 2021 - Jun 2022', 'desc' => 'Executive postgraduate business program.' ),
 );
 
 $default_icon = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="7" rx="2"/><path d="M16 3h-8l-2 4h12z"/></svg>';

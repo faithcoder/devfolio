@@ -5,11 +5,11 @@
  * @package devfolio
  */
 
-$hero_label       = devfolio_get_theme_mod_value( 'devfolio_hero_label', 'Support Engineer • WordPress • Customer Success' );
+$hero_label       = devfolio_get_theme_mod_value( 'devfolio_hero_label', 'Support Engineer • WordPress Developer • Customer Success' );
 $hero_before      = devfolio_get_theme_mod_value( 'devfolio_hero_title_before', 'I help users solve' );
-$hero_highlight   = devfolio_get_theme_mod_value( 'devfolio_hero_title_highlight', 'WordPress plugin and theme issues' );
-$hero_after       = devfolio_get_theme_mod_value( 'devfolio_hero_title_after', 'with clear, reliable support.' );
-$hero_subtitle    = devfolio_get_theme_mod_value( 'devfolio_hero_subtitle', 'Support Engineer at Webba Booking. Over 5+ years in technical support and 6,000+ unique users assisted via CRM, live chat, and WordPress forums.' );
+$hero_highlight   = devfolio_get_theme_mod_value( 'devfolio_hero_title_highlight', 'complex WordPress issues & build dynamic themes' );
+$hero_after       = devfolio_get_theme_mod_value( 'devfolio_hero_title_after', 'with a user-first approach.' );
+$hero_subtitle    = devfolio_get_theme_mod_value( 'devfolio_hero_subtitle', 'Support Engineer at Webba Booking with 5+ years of experience assisting 6,000+ users. Expert in technical troubleshooting, theme development, and extending Elementor.' );
 $hero_cta_1_text  = devfolio_get_theme_mod_value( 'devfolio_hero_cta_primary_text', 'Contact Me' );
 $hero_cta_1_url   = devfolio_get_theme_mod_value( 'devfolio_hero_cta_primary_url', '#' . devfolio_get_section_id( 'contact' ) );
 $hero_cta_2_text  = devfolio_get_theme_mod_value( 'devfolio_hero_cta_secondary_text', 'View Contributions' );
@@ -22,7 +22,7 @@ $hero_stats       = devfolio_get_repeater_value(
 		array( 'value' => '5+', 'label' => 'Years Support Experience' ),
 		array( 'value' => '6,000+', 'label' => 'Users Supported' ),
 		array( 'value' => '15-20/day', 'label' => 'Avg Daily Support' ),
-		array( 'value' => 'Remote', 'label' => 'Global Team Collaboration' ),
+		array( 'value' => 'Themes & Plugins', 'label' => 'WordPress Development' ),
 	)
 );
 
