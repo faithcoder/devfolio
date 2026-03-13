@@ -57,3 +57,51 @@
 .cmb2-wrap .cmb-add-row-button {
   border-radius: 8px;
 }
+
+/* ── Table layout for CMB2 meta box rows ─────────────────────── */
+/* Displays label (th) and field (td) side-by-side like a table  */
+
+.cmb2-postbox .cmb2-wrap table.cmb2-metabox {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.cmb2-postbox .cmb2-wrap .cmb-row {
+  display: table;
+  width: 100%;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.cmb2-postbox .cmb2-wrap .cmb-th,
+.cmb2-postbox .cmb2-wrap .cmb-td {
+  display: table-cell;
+  vertical-align: middle;
+  padding: 10px 12px;
+}
+
+.cmb2-postbox .cmb2-wrap .cmb-th {
+  width: 180px;
+  min-width: 140px;
+  padding: 10px 16px 10px 12px;
+}
+
+.cmb2-postbox .cmb2-wrap .cmb-th label {
+  white-space: nowrap;
+}
+
+/* Make every input/textarea/select full-width inside the td */
+.cmb2-postbox .cmb2-wrap .cmb-td input[type="text"],
+.cmb2-postbox .cmb2-wrap .cmb-td input[type="url"],
+.cmb2-postbox .cmb2-wrap .cmb-td input[type="email"],
+.cmb2-postbox .cmb2-wrap .cmb-td input[type="number"],
+.cmb2-postbox .cmb2-wrap .cmb-td textarea,
+.cmb2-postbox .cmb2-wrap .cmb-td select {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Keep file-upload rows readable */
+.cmb2-postbox .cmb2-wrap .cmb-td .cmb2-media-status {
+  margin-top: 6px;
+}
