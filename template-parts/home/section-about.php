@@ -9,10 +9,10 @@
 $skill_groups = devfolio_get_repeater_value(
 	'devfolio_skill_groups',
 	array(
-		array( 'title' => 'Support Operations', 'tags' => 'Troubleshooting, Problem Solving, Customer Support, Documentation Writing, Communication, Website Migration' ),
-		array( 'title' => 'WordPress & CMS', 'tags' => 'WordPress Theme Development, Elementor Widget Development, WooCommerce, Shopify Store Design, Landing Page Design' ),
-		array( 'title' => 'Technical Stack', 'tags' => 'HTML/CSS, Bootstrap, TailwindCSS, PHP, MySQL, JavaScript, ReactJS, jQuery, AJAX, WP CLI, WP REST API' ),
-		array( 'title' => 'Tools & Workflow', 'tags' => 'HelpScout, ThriveDesk, Ticksy, Tawk.to, Crisp, Git, ClickUp, BrowserStack, Slack, Figma, cPanel, WHM, FTP' ),
+		array( 'title' => 'Programming Languages', 'tags' => 'PHP, Javascript, Python' ),
+		array( 'title' => 'Frameworks & Platforms', 'tags' => 'Laravel, Vue.Js, Node/Express.Js, React.Js, React Native, Next.Js, Flutter' ),
+		array( 'title' => 'Databases & Backend', 'tags' => 'SQL (MySQL, PostgreSQL), NoSQL (MongoDB), JWT, Passport, REST API' ),
+		array( 'title' => 'Frontend & Tools', 'tags' => 'HTML, CSS, Tailwind CSS, Material UI, Docker, Git, GitHub, GitLab, Linux' ),
 	)
 );
 
@@ -37,11 +37,10 @@ $experience_query = new WP_Query(
 );
 
 $default_experience = array(
-	array( 'title' => 'Webba Booking', 'meta' => 'Support Engineer | Oct 2025 - PRESENT', 'desc' => 'Provided technical support, managed queries via HelpScout, resolved plugin/theme conflicts, and reported bugs via ClickUp.' ),
-	array( 'title' => 'Roxnor', 'meta' => 'Support Engineer | Jan 2023 - Sep 2025', 'desc' => 'Customer Support for WPmet plugins and GetGenie AI. Handled technical queries, troubleshooting, and created documentation/screencasts.' ),
-	array( 'title' => 'CodeAstrology', 'meta' => 'Technical Support Engineer | Apr 2022 – Dec 2022', 'desc' => 'Provided support for WooCommerce-based plugins via live chat using Tawk.to and Crisp, assisting 15-20 customers daily.' ),
-	array( 'title' => 'SoftTech-IT Institute', 'meta' => 'Associate Mentor, WP Theme Development | Mar 2021 – Oct 2023', 'desc' => 'Led theme development classes covering HTML to WordPress conversion, custom posts, Elementor, and Redux.' ),
-	array( 'title' => 'Freelance CMS Developer', 'meta' => 'Fiverr & Upwork | Nov 2014 – Jan 2021', 'desc' => 'Created outstanding websites using Elementor, WooCommerce, Shopify, and transitioned HTML to WordPress themes.' ),
+	array( 'title' => 'REALTY.COM, LLC.', 'meta' => 'Software Engineer (Full Stack) | April 2022 - Present', 'desc' => 'Developing & maintaining mobile apps, designing architecture, writing unit tests, and developing backend REST APIs for 1M+ active listings.' ),
+	array( 'title' => 'EXPRESS SYSTEMS & PARTS NETWORK INC.', 'meta' => 'Software Engineer (Full Stack) | November 2021 - April 2022', 'desc' => 'Designed architecture, developed mobile apps, backend REST APIs, and e-commerce sites for medical equipment services.' ),
+	array( 'title' => 'TF INTERNET ApS', 'meta' => 'Software Engineer | June 2019 - November 2021', 'desc' => 'Worked for Denmark-based IT firm creating client and in-house products, handling full-stack development and UI implementations.' ),
+	array( 'title' => 'LinkingCC', 'meta' => 'Junior Software Engineer | January 2018 - June 2019', 'desc' => 'Contributed to 20+ live projects developing web-based applications and fixing bugs on existing applications.' ),
 );
 
 // --- 3. Fetch Education ---
@@ -54,24 +53,35 @@ $education_query = new WP_Query(
 );
 
 $default_education = array(
-	array( 'title' => 'Post Graduate Diploma in IT (PGDICT)', 'meta' => 'BKIICT | Jun 2023 - Jul 2024', 'desc' => 'Information and Communication Technology focus.' ),
-	array( 'title' => 'Executive M.B.A. (EMBA)', 'meta' => 'Presidency University, Bangladesh | Feb 2021 - Jun 2022', 'desc' => 'Executive postgraduate business program.' ),
+	array( 'title' => 'B.Sc. in Computer Science and Engineering', 'meta' => 'International University of Scholars | 2023 - Present', 'desc' => 'Currently pursuing undergraduate degree in Computer Science.' ),
+	array( 'title' => 'Diploma in Telecommunication Engineering', 'meta' => 'Jashore Polytechnic Institute | 2016 - 2021', 'desc' => 'Completed diploma in Telecommunication Engineering.' ),
+	array( 'title' => 'Secondary School Certificate', 'meta' => 'RB Govt High School, Joypurhat | 2015 - 2016', 'desc' => 'Completed secondary education.' ),
 );
 
 $default_icon = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="7" rx="2"/><path d="M16 3h-8l-2 4h12z"/></svg>';
 $default_edu_icon = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.1 2.7 3 6 3s6-1.9 6-3v-5"/></svg>';
+$about_label      = devfolio_get_theme_mod_value( 'devfolio_about_label', 'About Me' );
+$about_title      = devfolio_get_theme_mod_value( 'devfolio_about_title', 'Skills, Experience & Education' );
+$about_desc       = devfolio_get_theme_mod_value( 'devfolio_about_desc', '' );
+$about_tab_skills = devfolio_get_theme_mod_value( 'devfolio_about_tab_skills', 'Skills' );
+$about_tab_exp    = devfolio_get_theme_mod_value( 'devfolio_about_tab_experience', 'Experience' );
+$about_tab_edu    = devfolio_get_theme_mod_value( 'devfolio_about_tab_education', 'Education' );
+$section_id       = devfolio_get_section_id( 'about' );
 ?>
 
 <!-- About — Tabbed Section -->
-<section id="about" class="devfolio-section">
+<section id="<?php echo esc_attr( $section_id ); ?>" class="devfolio-section">
   <div class="devfolio-container">
-    <p class="devfolio-label devfolio-anim">About Me</p>
-    <h2 class="devfolio-section-title devfolio-anim">Skills, Experience &amp; Education</h2>
+    <p class="devfolio-label devfolio-anim"><?php echo esc_html( $about_label ); ?></p>
+    <h2 class="devfolio-section-title devfolio-anim"><?php echo esc_html( $about_title ); ?></h2>
+    <?php if ( ! empty( $about_desc ) ) : ?>
+    <p class="devfolio-section-desc devfolio-anim"><?php echo esc_html( $about_desc ); ?></p>
+    <?php endif; ?>
     <div class="devfolio-tabs devfolio-anim">
       <div class="devfolio-tabs-list">
-        <button class="devfolio-tab-trigger" data-tab="skills"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg> Skills</button>
-        <button class="devfolio-tab-trigger devfolio-tab-active" data-tab="experience"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="7" rx="2"/><path d="M16 3h-8l-2 4h12z"/></svg> Experience</button>
-        <button class="devfolio-tab-trigger" data-tab="education"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.1 2.7 3 6 3s6-1.9 6-3v-5"/></svg> Education</button>
+        <button class="devfolio-tab-trigger" data-tab="skills"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg> <?php echo esc_html( $about_tab_skills ); ?></button>
+        <button class="devfolio-tab-trigger devfolio-tab-active" data-tab="experience"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="7" rx="2"/><path d="M16 3h-8l-2 4h12z"/></svg> <?php echo esc_html( $about_tab_exp ); ?></button>
+        <button class="devfolio-tab-trigger" data-tab="education"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.1 2.7 3 6 3s6-1.9 6-3v-5"/></svg> <?php echo esc_html( $about_tab_edu ); ?></button>
       </div>
 
       <!-- Skills Tab -->

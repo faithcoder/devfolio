@@ -5,12 +5,18 @@
  * @package devfolio
  */
 $section_id = devfolio_get_section_id( 'blog' );
+$blog_label = devfolio_get_theme_mod_value( 'devfolio_blog_label', 'Blog' );
+$blog_title = devfolio_get_theme_mod_value( 'devfolio_blog_title', 'Latest Articles' );
+$blog_desc  = devfolio_get_theme_mod_value( 'devfolio_blog_desc', '' );
 ?>
 <!-- Blog -->
 <section id="<?php echo esc_attr( $section_id ); ?>" class="devfolio-section">
   <div class="devfolio-container">
-    <p class="devfolio-label devfolio-anim">Blog</p>
-    <h2 class="devfolio-section-title devfolio-anim">Latest Articles</h2>
+    <p class="devfolio-label devfolio-anim"><?php echo esc_html( $blog_label ); ?></p>
+    <h2 class="devfolio-section-title devfolio-anim"><?php echo esc_html( $blog_title ); ?></h2>
+    <?php if ( ! empty( $blog_desc ) ) : ?>
+    <p class="devfolio-section-desc devfolio-anim"><?php echo esc_html( $blog_desc ); ?></p>
+    <?php endif; ?>
     <div class="devfolio-blog-grid">
       <?php
       $devfolio_blog_query = new WP_Query(

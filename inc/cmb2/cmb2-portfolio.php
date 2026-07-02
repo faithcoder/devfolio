@@ -26,7 +26,7 @@ function devfolio_register_portfolio_metabox() {
 
 	$box->add_field( array( 'name' => __( 'Category', 'devfolio' ), 'id' => 'devfolio_portfolio_category', 'type' => 'text' ) );
 	$box->add_field( array( 'name' => __( 'Card Description', 'devfolio' ), 'id' => 'devfolio_portfolio_short_desc', 'type' => 'textarea_small' ) );
-	$box->add_field( array( 'name' => __( 'Popup Description', 'devfolio' ), 'id' => 'devfolio_portfolio_popup_desc', 'type' => 'textarea' ) );
+	$box->add_field( array( 'name' => __( 'Project Overview', 'devfolio' ), 'id' => 'devfolio_portfolio_popup_desc', 'type' => 'textarea' ) );
 	$box->add_field( array( 'name' => __( 'Tech List (comma separated)', 'devfolio' ), 'id' => 'devfolio_portfolio_tech', 'type' => 'text' ) );
 	$box->add_field( array( 'name' => __( 'Live URL', 'devfolio' ), 'id' => 'devfolio_portfolio_live_url', 'type' => 'text_url' ) );
 	$box->add_field( array( 'name' => __( 'GitHub URL', 'devfolio' ), 'id' => 'devfolio_portfolio_github_url', 'type' => 'text_url' ) );

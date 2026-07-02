@@ -23,6 +23,14 @@ function devfolio_register_cpts() {
 			'name'          => __( 'Events', 'devfolio' ),
 			'singular_name' => __( 'Event', 'devfolio' ),
 		),
+		'devfolio_denim' => array(
+			'name'          => __( 'Denim Innovations', 'devfolio' ),
+			'singular_name' => __( 'Denim Innovation', 'devfolio' ),
+		),
+		'devfolio_denim_video' => array(
+			'name'          => __( 'Denim Innovation Videos', 'devfolio' ),
+			'singular_name' => __( 'Denim Innovation Video', 'devfolio' ),
+		),
 		'devfolio_service'    => array(
 			'name'          => __( 'Services', 'devfolio' ),
 			'singular_name' => __( 'Service', 'devfolio' ),

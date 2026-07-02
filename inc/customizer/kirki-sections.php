@@ -24,9 +24,16 @@ function devfolio_register_kirki_fields() {
 	);
 
 	Kirki::add_section( 'devfolio_hero_section', array( 'title' => esc_html__( 'Hero', 'devfolio' ), 'panel' => 'devfolio_home_panel' ) );
+	Kirki::add_section( 'devfolio_about_section', array( 'title' => esc_html__( 'About', 'devfolio' ), 'panel' => 'devfolio_home_panel' ) );
 	Kirki::add_section( 'devfolio_skills_section', array( 'title' => esc_html__( 'Skills', 'devfolio' ), 'panel' => 'devfolio_home_panel' ) );
-	Kirki::add_section( 'devfolio_project_section', array( 'title' => esc_html__( 'Projects', 'devfolio' ), 'panel' => 'devfolio_home_panel' ) );
+	Kirki::add_section( 'devfolio_experience_section', array( 'title' => esc_html__( 'Experience', 'devfolio' ), 'panel' => 'devfolio_home_panel' ) );
+	Kirki::add_section( 'devfolio_project_section', array( 'title' => esc_html__( 'Contributions', 'devfolio' ), 'panel' => 'devfolio_home_panel' ) );
+	Kirki::add_section( 'devfolio_portfolio_section', array( 'title' => esc_html__( 'Portfolio', 'devfolio' ), 'panel' => 'devfolio_home_panel' ) );
+	Kirki::add_section( 'devfolio_services_section', array( 'title' => esc_html__( 'Services', 'devfolio' ), 'panel' => 'devfolio_home_panel' ) );
 	Kirki::add_section( 'devfolio_process_section', array( 'title' => esc_html__( 'Process', 'devfolio' ), 'panel' => 'devfolio_home_panel' ) );
+	Kirki::add_section( 'devfolio_origin_section', array( 'title' => esc_html__( 'Origin', 'devfolio' ), 'panel' => 'devfolio_home_panel' ) );
+	Kirki::add_section( 'devfolio_blog_section', array( 'title' => esc_html__( 'Blog', 'devfolio' ), 'panel' => 'devfolio_home_panel' ) );
+	Kirki::add_section( 'devfolio_testimonials_section', array( 'title' => esc_html__( 'Testimonials', 'devfolio' ), 'panel' => 'devfolio_home_panel' ) );
 	Kirki::add_section( 'devfolio_contact_section', array( 'title' => esc_html__( 'Contact', 'devfolio' ), 'panel' => 'devfolio_home_panel' ) );
 	Kirki::add_section( 'devfolio_navigation_section', array( 'title' => esc_html__( 'Navigation', 'devfolio' ), 'panel' => 'devfolio_home_panel' ) );
 	Kirki::add_section( 'devfolio_styles_section', array( 'title' => esc_html__( 'Style Settings', 'devfolio' ), 'panel' => 'devfolio_home_panel' ) );
@@ -127,17 +134,25 @@ function devfolio_register_kirki_fields() {
 		)
 	);
 
-	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_hero_label', 'label' => esc_html__( 'Hero Label', 'devfolio' ), 'section' => 'devfolio_hero_section', 'default' => 'Support Engineer • WordPress Developer • Customer Success' ) );
+	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_hero_label', 'label' => esc_html__( 'Hero Label', 'devfolio' ), 'section' => 'devfolio_hero_section', 'default' => 'Software Engineer • Full Stack Developer' ) );
 
-	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_hero_title_before', 'label' => esc_html__( 'Hero Title (Before Highlight)', 'devfolio' ), 'section' => 'devfolio_hero_section', 'default' => 'I help users solve' ) );
-	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_hero_title_highlight', 'label' => esc_html__( 'Hero Highlight', 'devfolio' ), 'section' => 'devfolio_hero_section', 'default' => 'complex WordPress issues & build dynamic themes' ) );
-	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_hero_title_after', 'label' => esc_html__( 'Hero Title (After Highlight)', 'devfolio' ), 'section' => 'devfolio_hero_section', 'default' => 'with a user-first approach.' ) );
-	Kirki::add_field( 'devfolio_config', array( 'type' => 'textarea', 'settings' => 'devfolio_hero_subtitle', 'label' => esc_html__( 'Hero Subtitle', 'devfolio' ), 'section' => 'devfolio_hero_section', 'default' => 'Support Engineer at Webba Booking with 5+ years of experience assisting 6,000+ users. Expert in technical troubleshooting, theme development, and extending Elementor.' ) );
+	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_hero_title_before', 'label' => esc_html__( 'Hero Title (Before Highlight)', 'devfolio' ), 'section' => 'devfolio_hero_section', 'default' => 'I build scalable' ) );
+	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_hero_title_highlight', 'label' => esc_html__( 'Hero Highlight', 'devfolio' ), 'section' => 'devfolio_hero_section', 'default' => 'web and mobile applications' ) );
+	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_hero_title_after', 'label' => esc_html__( 'Hero Title (After Highlight)', 'devfolio' ), 'section' => 'devfolio_hero_section', 'default' => 'for a smarter world.' ) );
+	Kirki::add_field( 'devfolio_config', array( 'type' => 'textarea', 'settings' => 'devfolio_hero_subtitle', 'label' => esc_html__( 'Hero Subtitle', 'devfolio' ), 'section' => 'devfolio_hero_section', 'default' => 'Software Engineer with expertise in Laravel, React, Next.js, and Mobile App Development. Dedicated to building innovative solutions that make the world easier and faster.' ) );
 	Kirki::add_field( 'devfolio_config', array( 'type' => 'image', 'settings' => 'devfolio_hero_image', 'label' => esc_html__( 'Hero Image', 'devfolio' ), 'section' => 'devfolio_hero_section', 'default' => '' ) );
 	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_hero_cta_primary_text', 'label' => esc_html__( 'Primary CTA Text', 'devfolio' ), 'section' => 'devfolio_hero_section', 'default' => 'Contact Me' ) );
 	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_hero_cta_primary_url', 'label' => esc_html__( 'Primary CTA URL', 'devfolio' ), 'section' => 'devfolio_hero_section', 'default' => '#contact' ) );
 	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_hero_cta_secondary_text', 'label' => esc_html__( 'Secondary CTA Text', 'devfolio' ), 'section' => 'devfolio_hero_section', 'default' => 'View Contributions' ) );
 	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_hero_cta_secondary_url', 'label' => esc_html__( 'Secondary CTA URL', 'devfolio' ), 'section' => 'devfolio_hero_section', 'default' => '#projects' ) );
+	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_denim_section_title', 'label' => esc_html__( 'Denim Innovation Title', 'devfolio' ), 'section' => 'devfolio_hero_section', 'default' => 'Denim Innovation' ) );
+	Kirki::add_field( 'devfolio_config', array( 'type' => 'textarea', 'settings' => 'devfolio_denim_section_subtitle', 'label' => esc_html__( 'Denim Innovation Subtitle', 'devfolio' ), 'section' => 'devfolio_hero_section', 'default' => 'Experimental washes, product ideas, and visual concept development showcased in an interactive 3D slider.' ) );
+	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_about_label', 'label' => esc_html__( 'About Label', 'devfolio' ), 'section' => 'devfolio_about_section', 'default' => 'About Me' ) );
+	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_about_title', 'label' => esc_html__( 'About Title', 'devfolio' ), 'section' => 'devfolio_about_section', 'default' => 'Skills, Experience & Education' ) );
+	Kirki::add_field( 'devfolio_config', array( 'type' => 'textarea', 'settings' => 'devfolio_about_desc', 'label' => esc_html__( 'About Description', 'devfolio' ), 'section' => 'devfolio_about_section', 'default' => '' ) );
+	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_about_tab_skills', 'label' => esc_html__( 'About Tab: Skills', 'devfolio' ), 'section' => 'devfolio_about_section', 'default' => 'Skills' ) );
+	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_about_tab_experience', 'label' => esc_html__( 'About Tab: Experience', 'devfolio' ), 'section' => 'devfolio_about_section', 'default' => 'Experience' ) );
+	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_about_tab_education', 'label' => esc_html__( 'About Tab: Education', 'devfolio' ), 'section' => 'devfolio_about_section', 'default' => 'Education' ) );
 	Kirki::add_field( 'devfolio_config', array(
 		'type' => 'repeater', 'settings' => 'devfolio_social_profiles', 'label' => esc_html__( 'Social Profiles', 'devfolio' ), 'section' => 'devfolio_hero_section',
 		'default' => array(
@@ -156,23 +171,26 @@ function devfolio_register_kirki_fields() {
 	Kirki::add_field( 'devfolio_config', array(
 		'type' => 'repeater', 'settings' => 'devfolio_hero_stats', 'label' => esc_html__( 'Hero Stats', 'devfolio' ), 'section' => 'devfolio_hero_section',
 		'default' => array(
-			array( 'value' => '5+', 'label' => 'Years Support Experience' ),
-			array( 'value' => '6,000+', 'label' => 'Users Supported' ),
-			array( 'value' => '15-20/day', 'label' => 'Avg Daily Support' ),
-			array( 'value' => 'Themes & Plugins', 'label' => 'WordPress Development' ),
+			array( 'value' => '6+', 'label' => 'Years Experience' ),
+			array( 'value' => '20+', 'label' => 'Projects Completed' ),
+			array( 'value' => '4+', 'label' => 'Companies Worked' ),
+			array( 'value' => 'Full Stack', 'label' => 'Development Focus' ),
 		),
 		'fields' => array(
 			'value' => array( 'type' => 'text', 'label' => esc_html__( 'Value', 'devfolio' ) ),
 			'label' => array( 'type' => 'text', 'label' => esc_html__( 'Label', 'devfolio' ) ),
 		),
 	) );
+	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_skills_label', 'label' => esc_html__( 'Skills Label', 'devfolio' ), 'section' => 'devfolio_skills_section', 'default' => 'Skills' ) );
+	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_skills_title', 'label' => esc_html__( 'Skills Title', 'devfolio' ), 'section' => 'devfolio_skills_section', 'default' => 'Skills & Toolset' ) );
+	Kirki::add_field( 'devfolio_config', array( 'type' => 'textarea', 'settings' => 'devfolio_skills_desc', 'label' => esc_html__( 'Skills Description', 'devfolio' ), 'section' => 'devfolio_skills_section', 'default' => '' ) );
 	Kirki::add_field( 'devfolio_config', array(
 		'type' => 'repeater', 'settings' => 'devfolio_skill_groups', 'label' => esc_html__( 'Skill Groups', 'devfolio' ), 'section' => 'devfolio_skills_section',
 		'default' => array(
-			array( 'title' => 'Support Operations', 'tags' => 'Troubleshooting, Problem Solving, Customer Support, Documentation Writing, Communication, Website Migration' ),
-			array( 'title' => 'WordPress & CMS', 'tags' => 'WordPress Theme Development, Elementor Widget Development, WooCommerce, Shopify Store Design, Landing Page Design' ),
-			array( 'title' => 'Technical Stack', 'tags' => 'HTML/CSS, Bootstrap, TailwindCSS, PHP, MySQL, JavaScript, ReactJS, jQuery, AJAX, WP CLI, WP REST API' ),
-			array( 'title' => 'Tools & Workflow', 'tags' => 'HelpScout, ThriveDesk, Ticksy, Tawk.to, Crisp, Git, ClickUp, BrowserStack, Slack, Figma, cPanel, WHM, FTP' ),
+			array( 'title' => 'Programming Languages', 'tags' => 'PHP, Javascript, Python' ),
+			array( 'title' => 'Frameworks & Platforms', 'tags' => 'Laravel, Vue.Js, Node/Express.Js, React.Js, React Native, Next.Js, Flutter' ),
+			array( 'title' => 'Databases & Backend', 'tags' => 'SQL (MySQL, PostgreSQL), NoSQL (MongoDB), JWT, Passport, REST API' ),
+			array( 'title' => 'Frontend & Tools', 'tags' => 'HTML, CSS, Tailwind CSS, Material UI, Docker, Git, GitHub, GitLab, Linux' ),
 		),
 		'fields' => array(
 			'title' => array( 'type' => 'text', 'label' => esc_html__( 'Group Title', 'devfolio' ) ),
@@ -180,17 +198,25 @@ function devfolio_register_kirki_fields() {
 		),
 	) );
 
-	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_featured_label', 'label' => esc_html__( 'Featured Label', 'devfolio' ), 'section' => 'devfolio_project_section', 'default' => 'WordPress Theme Development' ) );
-	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_featured_title', 'label' => esc_html__( 'Featured Title', 'devfolio' ), 'section' => 'devfolio_project_section', 'default' => 'Shadhin Block Theme & XpeedStudio Themes' ) );
-	Kirki::add_field( 'devfolio_config', array( 'type' => 'textarea', 'settings' => 'devfolio_featured_desc', 'label' => esc_html__( 'Featured Description', 'devfolio' ), 'section' => 'devfolio_project_section', 'default' => 'Built minimal block themes, fixed PHP errors, integrated Elementor Widget Controller, and created custom WooCommerce product pages for themes like Evenex, Medizco, BLO, Politino, and Seocify.' ) );
-	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_featured_tags', 'label' => esc_html__( 'Featured Tags (comma separated)', 'devfolio' ), 'section' => 'devfolio_project_section', 'default' => 'Block Theme, PHP, Elementor, WooCommerce, Plugin Development' ) );
+	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_experience_label', 'label' => esc_html__( 'Experience Label', 'devfolio' ), 'section' => 'devfolio_experience_section', 'default' => 'Experience' ) );
+	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_experience_title', 'label' => esc_html__( 'Experience Title', 'devfolio' ), 'section' => 'devfolio_experience_section', 'default' => 'Support & Technical Experience' ) );
+	Kirki::add_field( 'devfolio_config', array( 'type' => 'textarea', 'settings' => 'devfolio_experience_desc', 'label' => esc_html__( 'Experience Description', 'devfolio' ), 'section' => 'devfolio_experience_section', 'default' => '' ) );
+	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_contributions_label', 'label' => esc_html__( 'Contributions Label', 'devfolio' ), 'section' => 'devfolio_project_section', 'default' => 'Open Source' ) );
+	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_contributions_title', 'label' => esc_html__( 'Contributions Title', 'devfolio' ), 'section' => 'devfolio_project_section', 'default' => 'Contributions & Support Work' ) );
+	Kirki::add_field( 'devfolio_config', array( 'type' => 'textarea', 'settings' => 'devfolio_contributions_desc', 'label' => esc_html__( 'Contributions Description', 'devfolio' ), 'section' => 'devfolio_project_section', 'default' => '' ) );
+	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_featured_label', 'label' => esc_html__( 'Featured Label', 'devfolio' ), 'section' => 'devfolio_project_section', 'default' => 'Full Stack Development' ) );
+	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_featured_title', 'label' => esc_html__( 'Featured Title', 'devfolio' ), 'section' => 'devfolio_project_section', 'default' => 'Built Scalable Apps for REALTY.COM' ) );
+	Kirki::add_field( 'devfolio_config', array( 'type' => 'textarea', 'settings' => 'devfolio_featured_desc', 'label' => esc_html__( 'Featured Description', 'devfolio' ), 'section' => 'devfolio_project_section', 'default' => 'Developing and maintaining mobile applications and robust back-ends for scale. Writing unit tests, designing application architecture, and crafting APIs to serve over 1,000,000+ real estate listings.' ) );
+	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_featured_tags', 'label' => esc_html__( 'Featured Tags (comma separated)', 'devfolio' ), 'section' => 'devfolio_project_section', 'default' => 'React Native, Node.js, Laravel, Mobile App, Architecture' ) );
+	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_events_title', 'label' => esc_html__( 'Events Title', 'devfolio' ), 'section' => 'devfolio_project_section', 'default' => 'Events & Conferences' ) );
+	Kirki::add_field( 'devfolio_config', array( 'type' => 'textarea', 'settings' => 'devfolio_events_subtitle', 'label' => esc_html__( 'Events Subtitle', 'devfolio' ), 'section' => 'devfolio_project_section', 'default' => 'Moments from WordCamps, meetups, and community events' ) );
 	Kirki::add_field( 'devfolio_config', array(
 		'type' => 'repeater', 'settings' => 'devfolio_contributions', 'label' => esc_html__( 'Contribution Cards', 'devfolio' ), 'section' => 'devfolio_project_section',
 		'default' => array(
-			array( 'title' => 'Support Engineer', 'icon_image' => '', 'icon_svg' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 1 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1v-7h3z"/><path d="M3 14h3v7H5a2 2 0 0 1-2-2z"/></svg>' ),
-			array( 'title' => 'Documentation Writer', 'icon_image' => '', 'icon_svg' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8"/><path d="M8 17h8"/><path d="M8 9h2"/></svg>' ),
-			array( 'title' => 'WordPress Contributor', 'icon_image' => '', 'icon_svg' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2.1 12.1 7 21l4-9"/><path d="m14.6 21 3.4-7.3c.6-1.3.9-2.4.9-3.5"/></svg>' ),
-			array( 'title' => 'Video Tutorials', 'icon_image' => '', 'icon_svg' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58"/><path d="m10 15 5-3-5-3z"/></svg>' ),
+			array( 'title' => 'Mobile App Developer', 'icon_image' => '', 'icon_svg' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 18h.01M8 21h8a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2z"/></svg>' ),
+			array( 'title' => 'Backend Architect', 'icon_image' => '', 'icon_svg' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5v14"/></svg>' ),
+			array( 'title' => 'Frontend Engineer', 'icon_image' => '', 'icon_svg' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>' ),
+			array( 'title' => 'Database Designer', 'icon_image' => '', 'icon_svg' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>' ),
 		),
 		'fields' => array(
 			'title'    => array( 'type' => 'text', 'label' => esc_html__( 'Card Title', 'devfolio' ) ),
@@ -199,13 +225,24 @@ function devfolio_register_kirki_fields() {
 		),
 	) );
 
+	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_portfolio_label', 'label' => esc_html__( 'Portfolio Label', 'devfolio' ), 'section' => 'devfolio_portfolio_section', 'default' => 'Portfolio' ) );
+	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_portfolio_title', 'label' => esc_html__( 'Portfolio Title', 'devfolio' ), 'section' => 'devfolio_portfolio_section', 'default' => 'Featured Projects' ) );
+	Kirki::add_field( 'devfolio_config', array( 'type' => 'textarea', 'settings' => 'devfolio_portfolio_desc', 'label' => esc_html__( 'Portfolio Description', 'devfolio' ), 'section' => 'devfolio_portfolio_section', 'default' => 'A selection of WordPress themes, plugins, and contributions built over the years.' ) );
+	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_services_label', 'label' => esc_html__( 'Services Label', 'devfolio' ), 'section' => 'devfolio_services_section', 'default' => 'Services' ) );
+	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_services_title', 'label' => esc_html__( 'Services Title', 'devfolio' ), 'section' => 'devfolio_services_section', 'default' => 'How I Can Help Your Users' ) );
+	Kirki::add_field( 'devfolio_config', array( 'type' => 'textarea', 'settings' => 'devfolio_services_desc', 'label' => esc_html__( 'Services Description', 'devfolio' ), 'section' => 'devfolio_services_section', 'default' => 'Support-first execution with technical depth and clear communication.' ) );
+	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_process_label', 'label' => esc_html__( 'Process Label', 'devfolio' ), 'section' => 'devfolio_process_section', 'default' => 'Process' ) );
+	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_process_title', 'label' => esc_html__( 'Process Title', 'devfolio' ), 'section' => 'devfolio_process_section', 'default' => 'How I work' ) );
+	Kirki::add_field( 'devfolio_config', array( 'type' => 'textarea', 'settings' => 'devfolio_process_desc', 'label' => esc_html__( 'Process Description', 'devfolio' ), 'section' => 'devfolio_process_section', 'default' => '' ) );
+	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_denim_video_section_title', 'label' => esc_html__( 'Denim Innovation Videography Title', 'devfolio' ), 'section' => 'devfolio_process_section', 'default' => 'Denim Innovation Videography' ) );
+	Kirki::add_field( 'devfolio_config', array( 'type' => 'textarea', 'settings' => 'devfolio_denim_video_section_subtitle', 'label' => esc_html__( 'Denim Innovation Videography Subtitle', 'devfolio' ), 'section' => 'devfolio_process_section', 'default' => 'YouTube and hosted videos presented in the same interactive 3D slider style.' ) );
 	Kirki::add_field( 'devfolio_config', array(
 		'type' => 'repeater', 'settings' => 'devfolio_process_steps', 'label' => esc_html__( 'Process Steps', 'devfolio' ), 'section' => 'devfolio_process_section',
 		'default' => array(
-			array( 'num' => '01', 'title' => 'Clarify Scope', 'desc' => 'Understand the core issue, reproduce gracefully, and clear up any confusion immediately.' ),
-			array( 'num' => '02', 'title' => 'Debug & Plan', 'desc' => 'Dig deep into conflicts, create test environments, and find optimal, non-invasive solutions.' ),
-			array( 'num' => '03', 'title' => 'Build or Fix', 'desc' => 'Write custom code, adjust configurations, or provide foolproof steps to resolve the problem.' ),
-			array( 'num' => '04', 'title' => 'Document & QA', 'desc' => 'Test thoroughly, deliver screencasts or knowledgebase articles for extended support.' ),
+			array( 'num' => '01', 'title' => 'Architecture & Flowchart', 'desc' => 'Design robust application architecture and operation flowcharts for scalable enterprise systems.' ),
+			array( 'num' => '02', 'title' => 'Backend & APIs', 'desc' => 'Develop secure, fast, and documented REST APIs focusing on logic, databases, and continuous integration.' ),
+			array( 'num' => '03', 'title' => 'Frontend & Mobile UI', 'desc' => 'Build pixel-perfect user interfaces from Figma templates for Web and Mobile platforms.' ),
+			array( 'num' => '04', 'title' => 'Unit Testing & Maintenance', 'desc' => 'Write thorough unit tests and fix ongoing bugs to maintain an excellent user experience.' ),
 		),
 		'fields' => array(
 			'num'   => array( 'type' => 'text', 'label' => esc_html__( 'Step Number', 'devfolio' ) ),
@@ -214,11 +251,20 @@ function devfolio_register_kirki_fields() {
 		),
 	) );
 
+	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_origin_label', 'label' => esc_html__( 'Origin Label', 'devfolio' ), 'section' => 'devfolio_origin_section', 'default' => 'Origin Story' ) );
+	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_origin_title', 'label' => esc_html__( 'Origin Title', 'devfolio' ), 'section' => 'devfolio_origin_section', 'default' => 'My Journey' ) );
+	Kirki::add_field( 'devfolio_config', array( 'type' => 'textarea', 'settings' => 'devfolio_origin_desc', 'label' => esc_html__( 'Origin Description', 'devfolio' ), 'section' => 'devfolio_origin_section', 'default' => '' ) );
+	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_blog_label', 'label' => esc_html__( 'Blog Label', 'devfolio' ), 'section' => 'devfolio_blog_section', 'default' => 'Blog' ) );
+	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_blog_title', 'label' => esc_html__( 'Blog Title', 'devfolio' ), 'section' => 'devfolio_blog_section', 'default' => 'Latest Articles' ) );
+	Kirki::add_field( 'devfolio_config', array( 'type' => 'textarea', 'settings' => 'devfolio_blog_desc', 'label' => esc_html__( 'Blog Description', 'devfolio' ), 'section' => 'devfolio_blog_section', 'default' => '' ) );
+	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_testimonials_label', 'label' => esc_html__( 'Testimonials Label', 'devfolio' ), 'section' => 'devfolio_testimonials_section', 'default' => 'Testimonials' ) );
+	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_testimonials_title', 'label' => esc_html__( 'Testimonials Title', 'devfolio' ), 'section' => 'devfolio_testimonials_section', 'default' => 'What clients say' ) );
+	Kirki::add_field( 'devfolio_config', array( 'type' => 'textarea', 'settings' => 'devfolio_testimonials_desc', 'label' => esc_html__( 'Testimonials Description', 'devfolio' ), 'section' => 'devfolio_testimonials_section', 'default' => '' ) );
 	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_contact_label', 'label' => esc_html__( 'Contact Label', 'devfolio' ), 'section' => 'devfolio_contact_section', 'default' => 'Let us talk support' ) );
-	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_contact_title', 'label' => esc_html__( 'Contact Title', 'devfolio' ), 'section' => 'devfolio_contact_section', 'default' => 'Need Technical Support or Development Help?' ) );
-	Kirki::add_field( 'devfolio_config', array( 'type' => 'textarea', 'settings' => 'devfolio_contact_desc', 'label' => esc_html__( 'Contact Description', 'devfolio' ), 'section' => 'devfolio_contact_section', 'default' => 'For plugin support workflows, troubleshooting systems, WP migrations, or custom theme development, reach me at acc.arif@gmail.com or +8801769179697.' ) );
-	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_contact_email', 'label' => esc_html__( 'Contact Email', 'devfolio' ), 'section' => 'devfolio_contact_section', 'default' => 'acc.arif@gmail.com' ) );
-	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_contact_button_text', 'label' => esc_html__( 'Contact Button Text', 'devfolio' ), 'section' => 'devfolio_contact_section', 'default' => 'Email Md Abdullah Al Arif' ) );
+	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_contact_title', 'label' => esc_html__( 'Contact Title', 'devfolio' ), 'section' => 'devfolio_contact_section', 'default' => 'Looking for a Software Engineer?' ) );
+	Kirki::add_field( 'devfolio_config', array( 'type' => 'textarea', 'settings' => 'devfolio_contact_desc', 'label' => esc_html__( 'Contact Description', 'devfolio' ), 'section' => 'devfolio_contact_section', 'default' => 'For mobile applications, full-stack backends, or any innovative ideas, reach out to me via email or LinkedIn.' ) );
+	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_contact_email', 'label' => esc_html__( 'Contact Email', 'devfolio' ), 'section' => 'devfolio_contact_section', 'default' => 'shuvogoswamii@gmail.com' ) );
+	Kirki::add_field( 'devfolio_config', array( 'type' => 'text', 'settings' => 'devfolio_contact_button_text', 'label' => esc_html__( 'Contact Button Text', 'devfolio' ), 'section' => 'devfolio_contact_section', 'default' => 'Email Shuvo Goswami' ) );
 
 	Kirki::add_field( 'devfolio_config', array( 'type' => 'color', 'settings' => 'devfolio_style_primary', 'label' => esc_html__( 'Primary Color', 'devfolio' ), 'section' => 'devfolio_styles_section', 'default' => '#2fad4e' ) );
 	Kirki::add_field( 'devfolio_config', array( 'type' => 'color', 'settings' => 'devfolio_style_accent', 'label' => esc_html__( 'Accent Color', 'devfolio' ), 'section' => 'devfolio_styles_section', 'default' => '#24b35a' ) );

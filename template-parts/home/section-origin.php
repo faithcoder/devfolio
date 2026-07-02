@@ -29,20 +29,26 @@ if ( $journey_query->have_posts() ) {
 
 if ( empty( $journey_items ) ) {
 	$journey_items = array(
-		array( 'year' => '2014', 'title' => 'Freelance Developer', 'desc' => 'Transitioned HTML to WP themes and built eCommerce solutions on Fiverr & Upwork.', 'position' => 'top' ),
-		array( 'year' => '2021', 'title' => 'Sharing Knowledge', 'desc' => 'Empowered students as an Associate Mentor in WP Theme Development at SoftTech-IT.', 'position' => 'bottom' ),
-		array( 'year' => '2022', 'title' => 'Technical Support', 'desc' => 'Assisted daily users with plugin queries and setups at CodeAstrology.', 'position' => 'top' ),
-		array( 'year' => '2023', 'title' => 'Scaling Impact', 'desc' => 'Managed CRM and WordPress.org forums at Roxnor supporting WPmet products.', 'position' => 'bottom' ),
-		array( 'year' => '2025', 'title' => 'Continued Growth', 'desc' => 'Joined Webba Booking to deliver exceptional user experiences and debug conflicts.', 'position' => 'top' ),
+		array( 'year' => '2016', 'title' => 'Start Exploring', 'desc' => 'Began my journey with a Diploma in Telecommunication Engineering at Jashore Polytechnic Institute.', 'position' => 'top' ),
+		array( 'year' => '2018', 'title' => 'First Tech Role', 'desc' => 'Joined LinkingCC as a Junior Software Engineer, contributing to over 20+ live web projects.', 'position' => 'bottom' ),
+		array( 'year' => '2019', 'title' => 'International Exposure', 'desc' => 'Worked with Denmark-based TF INTERNET ApS, handling client products and full-stack development.', 'position' => 'top' ),
+		array( 'year' => '2021', 'title' => 'E-Commerce & Medical', 'desc' => 'Transitioned to EXPRESS SYSTEMS & PARTS NETWORK INC., building mobile apps and complex architectures.', 'position' => 'bottom' ),
+		array( 'year' => '2022', 'title' => 'Scaling at REALTY.COM', 'desc' => 'Joined REALTY.COM as a Software Engineer, scaling their infrastructure for over 1M+ active property listings.', 'position' => 'top' ),
 	);
 }
 $section_id = devfolio_get_section_id( 'origin' );
+$origin_label = devfolio_get_theme_mod_value( 'devfolio_origin_label', 'Origin Story' );
+$origin_title = devfolio_get_theme_mod_value( 'devfolio_origin_title', 'My Journey' );
+$origin_desc  = devfolio_get_theme_mod_value( 'devfolio_origin_desc', '' );
 ?>
 <!-- Origin Timeline - Zigzag Road -->
 <section id="<?php echo esc_attr( $section_id ); ?>" class="devfolio-section">
   <div class="devfolio-container">
-    <p class="devfolio-label devfolio-anim">Origin Story</p>
-    <h2 class="devfolio-section-title devfolio-anim">My Journey</h2>
+    <p class="devfolio-label devfolio-anim"><?php echo esc_html( $origin_label ); ?></p>
+    <h2 class="devfolio-section-title devfolio-anim"><?php echo esc_html( $origin_title ); ?></h2>
+    <?php if ( ! empty( $origin_desc ) ) : ?>
+    <p class="devfolio-section-desc devfolio-anim"><?php echo esc_html( $origin_desc ); ?></p>
+    <?php endif; ?>
     <div class="devfolio-zigzag-road devfolio-anim">
       <!-- Straight horizontal road line -->
       <div class="devfolio-road-line"></div>

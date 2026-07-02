@@ -26,6 +26,9 @@ $skill_groups = array_values(
 	)
 );
 $section_id = devfolio_get_section_id( 'skills' );
+$skills_label = devfolio_get_theme_mod_value( 'devfolio_skills_label', 'Skills' );
+$skills_title = devfolio_get_theme_mod_value( 'devfolio_skills_title', 'Skills & Toolset' );
+$skills_desc  = devfolio_get_theme_mod_value( 'devfolio_skills_desc', '' );
 
 if ( empty( $skill_groups ) ) {
 	return;
@@ -34,8 +37,11 @@ if ( empty( $skill_groups ) ) {
 <!-- Skills -->
 <section id="<?php echo esc_attr( $section_id ); ?>" class="devfolio-section">
   <div class="devfolio-container">
-    <p class="devfolio-label devfolio-anim">Skills</p>
-    <h2 class="devfolio-section-title devfolio-anim">Skills & Toolset</h2>
+    <p class="devfolio-label devfolio-anim"><?php echo esc_html( $skills_label ); ?></p>
+    <h2 class="devfolio-section-title devfolio-anim"><?php echo esc_html( $skills_title ); ?></h2>
+    <?php if ( ! empty( $skills_desc ) ) : ?>
+    <p class="devfolio-section-desc devfolio-anim"><?php echo esc_html( $skills_desc ); ?></p>
+    <?php endif; ?>
     <div class="devfolio-skills-grid">
       <?php foreach ( $skill_groups as $group ) : ?>
       <?php $group_tags = devfolio_parse_tag_list( $group['tags'] ?? '' ); ?>

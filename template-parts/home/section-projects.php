@@ -5,11 +5,16 @@
  * @package devfolio
  */
 
-$featured_label = devfolio_get_theme_mod_value( 'devfolio_featured_label', 'Support Impact' );
-$featured_title = devfolio_get_theme_mod_value( 'devfolio_featured_title', 'WordPress Product Support at Scale' );
-$featured_desc  = devfolio_get_theme_mod_value( 'devfolio_featured_desc', 'Supported 6,000+ unique users across CRM, live chat, and WordPress forums. Delivered fast, clear resolutions for plugin conflicts, licensing, migrations, and compatibility issues.' );
-$featured_tags  = devfolio_parse_tag_list( devfolio_get_theme_mod_value( 'devfolio_featured_tags', 'WordPress Support, WooCommerce, Elementor, Documentation, Debugging' ) );
+$featured_label = devfolio_get_theme_mod_value( 'devfolio_featured_label', 'Full Stack Development' );
+$featured_title = devfolio_get_theme_mod_value( 'devfolio_featured_title', 'Built Scalable Apps for REALTY.COM' );
+$featured_desc  = devfolio_get_theme_mod_value( 'devfolio_featured_desc', 'Developing and maintaining mobile applications and robust back-ends for scale. Writing unit tests, designing application architecture, and crafting APIs to serve over 1,000,000+ real estate listings.' );
+$featured_tags  = devfolio_parse_tag_list( devfolio_get_theme_mod_value( 'devfolio_featured_tags', 'React Native, Node.js, Laravel, Mobile App, Architecture' ) );
 $contrib_items  = devfolio_get_repeater_value( 'devfolio_contributions', array() );
+$contributions_label = devfolio_get_theme_mod_value( 'devfolio_contributions_label', 'Open Source' );
+$contributions_title = devfolio_get_theme_mod_value( 'devfolio_contributions_title', 'Contributions & Support Work' );
+$contributions_desc  = devfolio_get_theme_mod_value( 'devfolio_contributions_desc', '' );
+$events_title        = devfolio_get_theme_mod_value( 'devfolio_events_title', 'Events & Conferences' );
+$events_subtitle     = devfolio_get_theme_mod_value( 'devfolio_events_subtitle', 'Moments from WordCamps, meetups, and community events' );
 
 $contrib_items = array_values(
 	array_filter(
@@ -22,20 +27,20 @@ $contrib_items = array_values(
 
 if ( null === get_theme_mod( 'devfolio_contributions', null ) ) {
 	$contrib_items = array(
-			array( 'title' => 'Support Engineer', 'icon_image' => '', 'icon_svg' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 1 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1v-7h3z"/><path d="M3 14h3v7H5a2 2 0 0 1-2-2z"/></svg>' ),
-			array( 'title' => 'Documentation Writer', 'icon_image' => '', 'icon_svg' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8"/><path d="M8 17h8"/><path d="M8 9h2"/></svg>' ),
-			array( 'title' => 'WordPress Contributor', 'icon_image' => '', 'icon_svg' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2.1 12.1 7 21l4-9"/><path d="m14.6 21 3.4-7.3c.6-1.3.9-2.4.9-3.5"/></svg>' ),
-			array( 'title' => 'Video Tutorials', 'icon_image' => '', 'icon_svg' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58"/><path d="m10 15 5-3-5-3z"/></svg>' ),
+			array( 'title' => 'Mobile App Developer', 'icon_image' => '', 'icon_svg' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 18h.01M8 21h8a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2z"/></svg>' ),
+			array( 'title' => 'Backend Architect', 'icon_image' => '', 'icon_svg' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5v14"/></svg>' ),
+			array( 'title' => 'Frontend Engineer', 'icon_image' => '', 'icon_svg' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>' ),
+			array( 'title' => 'Database Designer', 'icon_image' => '', 'icon_svg' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>' ),
 		);
 }
 
 $event_fallback = array(
-	array( 'src' => 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=500&fit=crop', 'title' => 'WordCamp Asia 2025', 'loc' => 'Manila, Philippines' ),
-	array( 'src' => 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=800&h=500&fit=crop', 'title' => 'Community Meetup', 'loc' => 'Rangpur, Bangladesh' ),
-	array( 'src' => 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800&h=500&fit=crop', 'title' => 'Tech Conference Talk', 'loc' => 'Speaker Session' ),
-	array( 'src' => 'https://images.unsplash.com/photo-1591115765373-5f9cf1da241c?w=800&h=500&fit=crop', 'title' => 'WordPress Workshop', 'loc' => 'Hands-on Training' ),
-	array( 'src' => 'https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=800&h=500&fit=crop', 'title' => 'Contributor Day', 'loc' => 'Open Source Sprint' ),
-	array( 'src' => 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&h=500&fit=crop', 'title' => 'Networking Event', 'loc' => 'Developer Community' ),
+	array( 'src' => 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=500&fit=crop', 'title' => 'Computer Science Education Week', 'loc' => 'Trainer / Speaker' ),
+	array( 'src' => 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=800&h=500&fit=crop', 'title' => 'Hour of Code', 'loc' => 'Local Tech Meetup' ),
+	array( 'src' => 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800&h=500&fit=crop', 'title' => 'React & Node.js Conference', 'loc' => 'Attendee' ),
+	array( 'src' => 'https://images.unsplash.com/photo-1591115765373-5f9cf1da241c?w=800&h=500&fit=crop', 'title' => 'Laravel Developer Summit', 'loc' => 'Online Summit' ),
+	array( 'src' => 'https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=800&h=500&fit=crop', 'title' => 'Hackathon Mentor', 'loc' => 'Bangladesh Open Source' ),
+	array( 'src' => 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&h=500&fit=crop', 'title' => 'Local Developer Community', 'loc' => 'Rajshahi / Jessore' ),
 );
 
 $events_query = new WP_Query(
@@ -73,8 +78,11 @@ if ( ! $show_featured && empty( $contrib_items ) && empty( $events ) ) {
 <!-- Projects -->
 <section id="<?php echo esc_attr( $section_id ); ?>" class="devfolio-section">
   <div class="devfolio-container">
-    <p class="devfolio-label devfolio-anim">Open Source</p>
-    <h2 class="devfolio-section-title devfolio-anim">Contributions & Support Work</h2>
+    <p class="devfolio-label devfolio-anim"><?php echo esc_html( $contributions_label ); ?></p>
+    <h2 class="devfolio-section-title devfolio-anim"><?php echo esc_html( $contributions_title ); ?></h2>
+    <?php if ( ! empty( $contributions_desc ) ) : ?>
+    <p class="devfolio-section-desc devfolio-anim"><?php echo esc_html( $contributions_desc ); ?></p>
+    <?php endif; ?>
     <?php if ( $show_featured ) : ?>
     <div class="devfolio-featured-project devfolio-glass devfolio-anim">
       <div class="devfolio-content">
@@ -108,44 +116,35 @@ if ( ! $show_featured && empty( $contrib_items ) && empty( $events ) ) {
     <?php if ( ! empty( $events ) ) : ?>
     <!-- Events & Conferences Carousel -->
     <div class="devfolio-events-section devfolio-anim">
-      <h3 class="devfolio-events-title">Events & Conferences</h3>
-      <p class="devfolio-events-subtitle">Moments from WordCamps, meetups, and community events</p>
+      <h3 class="devfolio-events-title"><?php echo esc_html( $events_title ); ?></h3>
+      <?php if ( ! empty( $events_subtitle ) ) : ?>
+      <p class="devfolio-events-subtitle"><?php echo esc_html( $events_subtitle ); ?></p>
+      <?php endif; ?>
 
-      <div class="devfolio-carousel-wrap">
-        <div class="devfolio-carousel-viewport">
-          <div class="devfolio-carousel-track">
-            <?php foreach ( $events as $index => $event ) : ?>
-            <div class="devfolio-carousel-slide" data-slide="<?php echo esc_attr( $index ); ?>" data-src="<?php echo esc_url( $event['src'] ); ?>" data-title="<?php echo esc_attr( $event['title'] ); ?>" data-loc="<?php echo esc_attr( $event['loc'] ); ?>">
-              <div class="devfolio-carousel-card devfolio-glass">
-                <div class="devfolio-carousel-img-wrap"><img src="<?php echo esc_url( $event['src'] ); ?>" alt="<?php echo esc_attr( $event['title'] ); ?>" loading="lazy"/><div class="devfolio-carousel-img-overlay"></div><div class="devfolio-carousel-caption"><p class="devfolio-carousel-caption-title"><?php echo esc_html( $event['title'] ); ?></p><p class="devfolio-carousel-caption-loc"><?php echo esc_html( $event['loc'] ); ?></p></div></div>
+      <div class="devfolio-carousel" data-carousel-lightbox="events">
+        <div class="devfolio-carousel-wrap">
+          <div class="devfolio-carousel-viewport">
+            <div class="devfolio-carousel-track">
+              <?php foreach ( $events as $index => $event ) : ?>
+              <div class="devfolio-carousel-slide" data-slide="<?php echo esc_attr( $index ); ?>" data-src="<?php echo esc_url( $event['src'] ); ?>" data-title="<?php echo esc_attr( $event['title'] ); ?>" data-subtitle="<?php echo esc_attr( $event['loc'] ); ?>">
+                <div class="devfolio-carousel-card devfolio-glass">
+                  <div class="devfolio-carousel-img-wrap"><img src="<?php echo esc_url( $event['src'] ); ?>" alt="<?php echo esc_attr( $event['title'] ); ?>" loading="lazy"/><div class="devfolio-carousel-img-overlay"></div><div class="devfolio-carousel-caption"><p class="devfolio-carousel-caption-title"><?php echo esc_html( $event['title'] ); ?></p><p class="devfolio-carousel-caption-subtitle devfolio-carousel-caption-loc"><?php echo esc_html( $event['loc'] ); ?></p></div></div>
+                </div>
               </div>
+              <?php endforeach; ?>
             </div>
-            <?php endforeach; ?>
           </div>
+          <button class="devfolio-carousel-btn devfolio-carousel-prev" aria-label="Previous">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+          </button>
+          <button class="devfolio-carousel-btn devfolio-carousel-next" aria-label="Next">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </button>
         </div>
-        <button class="devfolio-carousel-btn devfolio-carousel-prev" aria-label="Previous">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
-        </button>
-        <button class="devfolio-carousel-btn devfolio-carousel-next" aria-label="Next">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-        </button>
+        <div class="devfolio-carousel-dots"></div>
       </div>
-      <div class="devfolio-carousel-dots"></div>
     </div>
 
-    <!-- Lightbox for Events -->
-    <div class="devfolio-events-lightbox">
-      <div class="devfolio-events-lightbox-inner">
-        <button class="devfolio-lightbox-btn devfolio-lightbox-close devfolio-events-lightbox-close" aria-label="Close">✕</button>
-        <img class="devfolio-events-lightbox-img" src="" alt=""/>
-        <div class="devfolio-events-lightbox-info">
-          <p class="devfolio-events-lightbox-title"></p>
-          <p class="devfolio-events-lightbox-loc"></p>
-        </div>
-        <button class="devfolio-lightbox-btn devfolio-events-lightbox-prev" aria-label="Previous">‹</button>
-        <button class="devfolio-lightbox-btn devfolio-events-lightbox-next" aria-label="Next">›</button>
-      </div>
-    </div>
     <?php endif; ?>
   </div>
 </section>

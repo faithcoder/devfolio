@@ -183,6 +183,26 @@ function devfolio_excerpt_text( $post_id, $length = 160 ) {
 	return wp_trim_words( $text, max( 10, (int) floor( $length / 5 ) ), '...' );
 }
 
+function devfolio_register_query_vars( $vars ) {
+	$vars[] = 'devfolio_portfolio_demo';
+
+	return $vars;
+}
+add_filter( 'query_vars', 'devfolio_register_query_vars' );
+
+function devfolio_portfolio_demo_template( $template ) {
+	$demo_slug = get_query_var( 'devfolio_portfolio_demo' );
+
+	if ( ! $demo_slug || ! devfolio_get_fallback_portfolio_item( $demo_slug ) ) {
+		return $template;
+	}
+
+	$demo_template = get_template_directory() . '/single-devfolio_portfolio.php';
+
+	return file_exists( $demo_template ) ? $demo_template : $template;
+}
+add_filter( 'template_include', 'devfolio_portfolio_demo_template' );
+
 $devfolio_includes = array(
 	'/inc/helpers.php',
 	'/inc/cpt/register-cpts.php',
@@ -190,6 +210,8 @@ $devfolio_includes = array(
 	'/inc/cmb2/cmb2-education.php',
 	'/inc/cmb2/cmb2-portfolio.php',
 	'/inc/cmb2/cmb2-events.php',
+	'/inc/cmb2/cmb2-denim-innovation.php',
+	'/inc/cmb2/cmb2-denim-videography.php',
 	'/inc/cmb2/cmb2-services.php',
 	'/inc/cmb2/cmb2-journey.php',
 	'/inc/cmb2/cmb2-testimonials.php',

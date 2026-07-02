@@ -23,12 +23,18 @@ $default_experience = array(
 
 $default_icon = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="7" rx="2"/><path d="M16 3h-8l-2 4h12z"/></svg>';
 $section_id   = devfolio_get_section_id( 'experience' );
+$experience_label = devfolio_get_theme_mod_value( 'devfolio_experience_label', 'Experience' );
+$experience_title = devfolio_get_theme_mod_value( 'devfolio_experience_title', 'Support & Technical Experience' );
+$experience_desc  = devfolio_get_theme_mod_value( 'devfolio_experience_desc', '' );
 ?>
 <!-- Experience -->
 <section id="<?php echo esc_attr( $section_id ); ?>" class="devfolio-section">
   <div class="devfolio-container">
-    <p class="devfolio-label devfolio-anim">Experience</p>
-    <h2 class="devfolio-section-title devfolio-anim">Support & Technical Experience</h2>
+    <p class="devfolio-label devfolio-anim"><?php echo esc_html( $experience_label ); ?></p>
+    <h2 class="devfolio-section-title devfolio-anim"><?php echo esc_html( $experience_title ); ?></h2>
+    <?php if ( ! empty( $experience_desc ) ) : ?>
+    <p class="devfolio-section-desc devfolio-anim"><?php echo esc_html( $experience_desc ); ?></p>
+    <?php endif; ?>
     <div class="devfolio-timeline">
       <?php if ( $experience_query->have_posts() ) : ?>
         <?php while ( $experience_query->have_posts() ) : $experience_query->the_post(); ?>

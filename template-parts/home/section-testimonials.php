@@ -61,12 +61,18 @@ if ( empty( $items ) ) {
 	);
 }
 $section_id = devfolio_get_section_id( 'testimonials' );
+$testimonials_label = devfolio_get_theme_mod_value( 'devfolio_testimonials_label', 'Testimonials' );
+$testimonials_title = devfolio_get_theme_mod_value( 'devfolio_testimonials_title', 'What clients say' );
+$testimonials_desc  = devfolio_get_theme_mod_value( 'devfolio_testimonials_desc', '' );
 ?>
 <!-- Testimonials -->
 <section id="<?php echo esc_attr( $section_id ); ?>" class="devfolio-section">
   <div class="devfolio-container">
-    <p class="devfolio-label devfolio-anim">Testimonials</p>
-    <h2 class="devfolio-section-title devfolio-anim">What clients say</h2>
+    <p class="devfolio-label devfolio-anim"><?php echo esc_html( $testimonials_label ); ?></p>
+    <h2 class="devfolio-section-title devfolio-anim"><?php echo esc_html( $testimonials_title ); ?></h2>
+    <?php if ( ! empty( $testimonials_desc ) ) : ?>
+    <p class="devfolio-section-desc devfolio-anim"><?php echo esc_html( $testimonials_desc ); ?></p>
+    <?php endif; ?>
     <div class="devfolio-testimonial-slider devfolio-anim">
       <div class="devfolio-testimonial-track">
         <?php foreach ( $items as $index => $item ) : ?>
