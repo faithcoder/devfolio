@@ -27,25 +27,20 @@ function devfolio_get_theme_mod_image_url( $key, $default = '' ) {
 	return (string) $value;
 }
 
-function devfolio_get_repeater_value( $key, $default = array() ) {
-	$value = get_theme_mod( $key, null );
-
-	if ( null === $value ) {
-		return $default;
+function devfolio_get_block_attr( $args, $key, $default = '' ) {
+	if ( isset( $args[ $key ] ) && '' !== $args[ $key ] && null !== $args[ $key ] ) {
+		return $args[ $key ];
 	}
 
-	if ( '' === $value ) {
-		return array();
+	return $default;
+}
+
+function devfolio_get_block_array_attr( $args, $key, $default = array() ) {
+	if ( isset( $args[ $key ] ) && is_array( $args[ $key ] ) && ! empty( $args[ $key ] ) ) {
+		return $args[ $key ];
 	}
 
-	if ( is_string( $value ) ) {
-		$decoded = json_decode( $value, true );
-		if ( JSON_ERROR_NONE === json_last_error() && is_array( $decoded ) ) {
-			return $decoded;
-		}
-	}
-
-	return is_array( $value ) ? $value : $default;
+	return $default;
 }
 
 function devfolio_css_value( $value, $fallback = '' ) {
@@ -62,6 +57,42 @@ function devfolio_parse_tag_list( $value ) {
 	$items = preg_split( '/\s*,\s*/', (string) $value );
 	$items = array_filter( array_map( 'trim', $items ) );
 	return array_values( $items );
+}
+
+function devfolio_excerpt_text( $post_id = null, $length = 180 ) {
+	$post_id = $post_id ? (int) $post_id : get_the_ID();
+	$length  = max( 1, (int) $length );
+
+	if ( ! $post_id ) {
+		return '';
+	}
+
+	$excerpt = get_the_excerpt( $post_id );
+
+	if ( '' === trim( (string) $excerpt ) ) {
+		$content = get_post_field( 'post_content', $post_id );
+		if ( function_exists( 'excerpt_remove_blocks' ) ) {
+			$content = excerpt_remove_blocks( $content );
+		}
+		$content = strip_shortcodes( $content );
+		$excerpt = wp_strip_all_tags( $content, true );
+	}
+
+	$excerpt = trim( preg_replace( '/\s+/', ' ', (string) $excerpt ) );
+
+	if ( function_exists( 'mb_strlen' ) && function_exists( 'mb_substr' ) ) {
+		if ( mb_strlen( $excerpt ) <= $length ) {
+			return $excerpt;
+		}
+
+		return rtrim( mb_substr( $excerpt, 0, $length ), " \t\n\r\0\x0B.,;:" ) . '...';
+	}
+
+	if ( strlen( $excerpt ) <= $length ) {
+		return $excerpt;
+	}
+
+	return rtrim( substr( $excerpt, 0, $length ), " \t\n\r\0\x0B.,;:" ) . '...';
 }
 
 function devfolio_render_svg( $svg_markup ) {
@@ -141,85 +172,6 @@ function devfolio_render_icon( $icon_image = '', $svg_markup = '', $alt = '' ) {
 	return devfolio_render_svg( $svg_markup );
 }
 
-function devfolio_get_image_url( $post_id, $meta_key = '', $fallback = '' ) {
-	if ( ! empty( $meta_key ) ) {
-		$meta_url = get_post_meta( $post_id, $meta_key, true );
-		if ( ! empty( $meta_url ) ) {
-			return esc_url( $meta_url );
-		}
-	}
-
-	if ( has_post_thumbnail( $post_id ) ) {
-		$thumb = get_the_post_thumbnail_url( $post_id, 'large' );
-		if ( $thumb ) {
-			return esc_url( $thumb );
-		}
-	}
-
-	return esc_url( $fallback );
-}
-
-function devfolio_get_youtube_video_id( $url ) {
-	$url = trim( (string) $url );
-
-	if ( '' === $url ) {
-		return '';
-	}
-
-	$parts = wp_parse_url( $url );
-	if ( empty( $parts['host'] ) ) {
-		return '';
-	}
-
-	$host      = strtolower( (string) $parts['host'] );
-	$path      = trim( (string) ( $parts['path'] ?? '' ), '/' );
-	$candidate = '';
-
-	if ( false !== strpos( $host, 'youtu.be' ) ) {
-		$candidate = strtok( $path, '/' );
-	} elseif ( false !== strpos( $host, 'youtube.com' ) || false !== strpos( $host, 'youtube-nocookie.com' ) ) {
-		if ( 'watch' === $path ) {
-			parse_str( (string) ( $parts['query'] ?? '' ), $query_args );
-			$candidate = (string) ( $query_args['v'] ?? '' );
-		} elseif ( 0 === strpos( $path, 'embed/' ) ) {
-			$candidate = substr( $path, 6 );
-		} elseif ( 0 === strpos( $path, 'shorts/' ) ) {
-			$candidate = substr( $path, 7 );
-		}
-	}
-
-	$candidate = strtok( $candidate, '?&/' );
-
-	return preg_match( '/^[A-Za-z0-9_-]{6,}$/', $candidate ) ? $candidate : '';
-}
-
-function devfolio_get_youtube_embed_url( $video_id ) {
-	$video_id = trim( (string) $video_id );
-
-	if ( '' === $video_id ) {
-		return '';
-	}
-
-	return sprintf(
-		'https://www.youtube.com/embed/%s?autoplay=1&rel=0&modestbranding=1&playsinline=1',
-		rawurlencode( $video_id )
-	);
-}
-
-function devfolio_get_video_placeholder_image( $title = '' ) {
-	$label = trim( (string) $title );
-	if ( '' === $label ) {
-		$label = __( 'Video', 'devfolio' );
-	}
-
-	$svg = sprintf(
-		'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675"><defs><linearGradient id="g" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#2fad4e"/><stop offset="1" stop-color="#24b35a"/></linearGradient></defs><rect width="1200" height="675" fill="#0f1712"/><rect x="32" y="32" width="1136" height="611" rx="30" fill="url(#g)" opacity=".22"/><circle cx="600" cy="338" r="88" fill="rgba(255,255,255,.92)"/><polygon points="570,286 570,390 654,338" fill="#18301c"/><text x="600" y="560" text-anchor="middle" fill="#f4f8f5" font-family="Arial, sans-serif" font-size="38">%s</text></svg>',
-		esc_html( wp_trim_words( $label, 6, '...' ) )
-	);
-
-	return 'data:image/svg+xml;charset=utf-8,' . rawurlencode( $svg );
-}
-
 function devfolio_has_valid_url( $url ) {
 	$url = trim( (string) $url );
 
@@ -290,27 +242,7 @@ function devfolio_get_fallback_portfolio_items() {
 		),
 	);
 
-	foreach ( $items as $index => $item ) {
-		$items[ $index ]['permalink'] = add_query_arg( 'devfolio_portfolio_demo', $item['slug'], home_url( '/' ) );
-	}
-
 	return $items;
-}
-
-function devfolio_get_fallback_portfolio_item( $slug ) {
-	$slug = sanitize_title( (string) $slug );
-
-	if ( '' === $slug ) {
-		return null;
-	}
-
-	foreach ( devfolio_get_fallback_portfolio_items() as $item ) {
-		if ( $slug === $item['slug'] ) {
-			return $item;
-		}
-	}
-
-	return null;
 }
 
 function devfolio_get_section_defaults() {

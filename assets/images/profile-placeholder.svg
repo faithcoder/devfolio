@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1100" role="img" aria-labelledby="title desc">
+  <title id="title">Profile Placeholder</title>
+  <desc id="desc">Abstract profile placeholder illustration for Devfolio hero block.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#eff1f6"/>
+      <stop offset="100%" stop-color="#d6f0dc"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#2fad4e"/>
+      <stop offset="100%" stop-color="#24b35a"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="1100" rx="64" fill="url(#bg)"/>
+  <circle cx="450" cy="360" r="180" fill="url(#accent)" opacity="0.2"/>
+  <circle cx="450" cy="330" r="150" fill="#fcfdfd"/>
+  <path d="M220 930c36-176 154-262 230-262 76 0 194 86 230 262" fill="#fcfdfd"/>
+  <circle cx="450" cy="320" r="110" fill="#d6f0dc"/>
+  <path d="M300 910c44-118 110-170 150-170s106 52 150 170" fill="#2fad4e" opacity="0.18"/>
+</svg>

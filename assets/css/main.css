@@ -654,54 +654,6 @@ button {
   margin-top: 48px
 }
 
-.devfolio-denim-innovation {
-  margin-top: 40px
-}
-
-.devfolio-denim-innovation-head {
-  margin-bottom: 28px
-}
-
-.devfolio-denim-carousel .devfolio-carousel-wrap {
-  height: 340px
-}
-
-.devfolio-denim-carousel .devfolio-carousel-slide {
-  width: min(380px, calc(100% - 88px))
-}
-
-.devfolio-denim-video-carousel .devfolio-carousel-img-wrap::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(0, 0, 0, .12) 0%, rgba(0, 0, 0, .45) 100%);
-  z-index: 1
-}
-
-.devfolio-video-play-badge {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transform: translate(-50%, -50%);
-  background: rgba(255, 255, 255, .88);
-  color: var(--fg);
-  font-size: 28px;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, .22);
-  z-index: 2;
-  transition: transform .25s ease, background .25s ease
-}
-
-.devfolio-carousel-slide.devfolio-slide-active:hover .devfolio-video-play-badge {
-  transform: translate(-50%, -50%) scale(1.08);
-  background: rgba(255, 255, 255, .96)
-}
-
 .devfolio-stat-card {
   padding: 20px
 }
@@ -1872,15 +1824,6 @@ button {
     height: 280px
   }
 
-  .devfolio-denim-carousel .devfolio-carousel-wrap {
-    height: 260px
-  }
-
-  .devfolio-video-play-badge {
-    width: 60px;
-    height: 60px;
-    font-size: 22px
-  }
 }
 
 /* ── Events Lightbox ──────────────────────────── */
@@ -1949,79 +1892,6 @@ button {
   top: 50%;
   transform: translateY(-50%);
   font-size: 20px
-}
-
-/* ── Video Lightbox ───────────────────────────── */
-.devfolio-video-lightbox {
-  position: fixed;
-  inset: 0;
-  z-index: 100;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  background: var(--overlay-bg);
-  backdrop-filter: blur(var(--overlay-blur));
-  padding: 16px
-}
-
-.devfolio-video-lightbox.devfolio-active {
-  display: flex
-}
-
-.devfolio-video-lightbox-inner {
-  position: relative;
-  max-width: 960px;
-  width: 100%;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, .24);
-  padding: 20px
-}
-
-.devfolio-video-lightbox-media {
-  position: relative;
-  aspect-ratio: 16/9;
-  overflow: hidden;
-  border-radius: calc(var(--radius) - 4px);
-  background: #08100a
-}
-
-.devfolio-video-lightbox-media iframe,
-.devfolio-video-lightbox-media video {
-  width: 100%;
-  height: 100%;
-  display: block;
-  border: 0
-}
-
-.devfolio-video-lightbox-info {
-  padding-top: 18px
-}
-
-.devfolio-video-lightbox-title {
-  font-family: var(--font-heading);
-  font-size: 24px;
-  font-weight: 700;
-  color: var(--fg)
-}
-
-.devfolio-video-lightbox-subtitle {
-  margin-top: 6px;
-  font-size: 13px;
-  color: var(--accent)
-}
-
-.devfolio-video-lightbox-desc {
-  margin-top: 10px;
-  font-size: 14px;
-  line-height: 1.7;
-  color: var(--muted-fg)
-}
-
-.devfolio-video-lightbox-close {
-  top: -12px;
-  right: -12px
 }
 
 /* ── Blog ──────────────────────────────────────── */
@@ -2337,72 +2207,6 @@ button {
 .devfolio-anim-left.devfolio-visible {
   opacity: 1;
   transform: translateX(0)
-}
-
-/* ── Single Post Layout & Sidebar ──────────────────────────── */
-.devfolio-layout-with-sidebar {
-  display: grid;
-  grid-template-columns: 1fr 340px;
-  gap: 40px;
-  align-items: start;
-}
-
-@media(max-width:992px) {
-  .devfolio-layout-with-sidebar {
-    grid-template-columns: 1fr;
-  }
-}
-
-.devfolio-sidebar {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-}
-
-.devfolio-sidebar .widget {
-  background: var(--glass-bg);
-  backdrop-filter: blur(var(--glass-blur));
-  -webkit-backdrop-filter: blur(var(--glass-blur));
-  border: 1px solid var(--glass-border);
-  border-radius: 16px;
-  padding: 24px;
-}
-
-.devfolio-sidebar .widget-title {
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 20px;
-  color: var(--fg);
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--border);
-}
-
-.devfolio-sidebar .widget ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.devfolio-sidebar .widget ul li {
-  padding: 10px 0;
-  border-bottom: 1px solid var(--border);
-}
-
-.devfolio-sidebar .widget ul li:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
-}
-
-.devfolio-sidebar .widget ul li a {
-  color: var(--muted-fg);
-  text-decoration: none;
-  transition: color 0.2s ease;
-  display: flex;
-  justify-content: space-between;
-}
-
-.devfolio-sidebar .widget ul li a:hover {
-  color: var(--primary);
 }
 
 /* ── Comments Section ───────── */

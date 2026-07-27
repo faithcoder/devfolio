@@ -9,20 +9,148 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-function devfolio_get_home_block_definitions() {
+function devfolio_get_home_block_specs() {
 	return array(
-		'hero'         => __( 'Hero Section', 'devfolio' ),
-		'experience'   => __( 'Experience Section', 'devfolio' ),
-		'about'        => __( 'About Section', 'devfolio' ),
-		'skills'       => __( 'Skills Section', 'devfolio' ),
-		'projects'     => __( 'Projects Section', 'devfolio' ),
-		'portfolio'    => __( 'Portfolio Section', 'devfolio' ),
-		'services'     => __( 'Services Section', 'devfolio' ),
-		'process'      => __( 'Process Section', 'devfolio' ),
-		'origin'       => __( 'Origin Section', 'devfolio' ),
-		'blog'         => __( 'Blog Section', 'devfolio' ),
-		'testimonials' => __( 'Testimonials Section', 'devfolio' ),
-		'contact'      => __( 'Contact Section', 'devfolio' ),
+		'hero'         => array(
+			'title'       => __( 'Hero Section', 'devfolio' ),
+			'description' => __( 'Intro section with hero copy, actions, socials, and stats.', 'devfolio' ),
+			'attributes'  => array(
+				'heroLabel'        => array( 'type' => 'string', 'default' => '' ),
+				'heroTitleBefore'  => array( 'type' => 'string', 'default' => '' ),
+				'heroTitleHighlight'=> array( 'type' => 'string', 'default' => '' ),
+				'heroTitleAfter'   => array( 'type' => 'string', 'default' => '' ),
+				'heroSubtitle'     => array( 'type' => 'string', 'default' => '' ),
+				'primaryText'      => array( 'type' => 'string', 'default' => '' ),
+				'primaryUrl'       => array( 'type' => 'string', 'default' => '' ),
+				'secondaryText'    => array( 'type' => 'string', 'default' => '' ),
+				'secondaryUrl'     => array( 'type' => 'string', 'default' => '' ),
+				'heroImage'        => array( 'type' => 'string', 'default' => '' ),
+				'heroStats'        => array( 'type' => 'array', 'default' => array() ),
+				'socialProfiles'   => array( 'type' => 'array', 'default' => array() ),
+			),
+		),
+		'experience'   => array(
+			'title'       => __( 'Experience Section', 'devfolio' ),
+			'description' => __( 'Timeline cards for work experience.', 'devfolio' ),
+			'attributes'  => array(
+				'label' => array( 'type' => 'string', 'default' => '' ),
+				'titleText' => array( 'type' => 'string', 'default' => '' ),
+				'desc' => array( 'type' => 'string', 'default' => '' ),
+				'items' => array( 'type' => 'array', 'default' => array() ),
+			),
+		),
+		'about'        => array(
+			'title'       => __( 'About Section', 'devfolio' ),
+			'description' => __( 'Tabbed skills, experience, and education section.', 'devfolio' ),
+			'attributes'  => array(
+				'label' => array( 'type' => 'string', 'default' => '' ),
+				'titleText' => array( 'type' => 'string', 'default' => '' ),
+				'desc' => array( 'type' => 'string', 'default' => '' ),
+				'tabSkills' => array( 'type' => 'string', 'default' => '' ),
+				'tabExperience' => array( 'type' => 'string', 'default' => '' ),
+				'tabEducation' => array( 'type' => 'string', 'default' => '' ),
+				'skillGroups' => array( 'type' => 'array', 'default' => array() ),
+				'experienceItems' => array( 'type' => 'array', 'default' => array() ),
+				'educationItems' => array( 'type' => 'array', 'default' => array() ),
+			),
+		),
+		'skills'       => array(
+			'title'       => __( 'Skills Section', 'devfolio' ),
+			'description' => __( 'Skill groups and tags.', 'devfolio' ),
+			'attributes'  => array(
+				'label' => array( 'type' => 'string', 'default' => '' ),
+				'titleText' => array( 'type' => 'string', 'default' => '' ),
+				'desc' => array( 'type' => 'string', 'default' => '' ),
+				'skillGroups' => array( 'type' => 'array', 'default' => array() ),
+			),
+		),
+		'projects'     => array(
+			'title'       => __( 'Projects Section', 'devfolio' ),
+			'description' => __( 'Featured project, contribution cards, and event gallery.', 'devfolio' ),
+			'attributes'  => array(
+				'label' => array( 'type' => 'string', 'default' => '' ),
+				'titleText' => array( 'type' => 'string', 'default' => '' ),
+				'desc' => array( 'type' => 'string', 'default' => '' ),
+				'featuredLabel' => array( 'type' => 'string', 'default' => '' ),
+				'featuredTitle' => array( 'type' => 'string', 'default' => '' ),
+				'featuredDesc' => array( 'type' => 'string', 'default' => '' ),
+				'featuredTags' => array( 'type' => 'string', 'default' => '' ),
+				'contributionItems' => array( 'type' => 'array', 'default' => array() ),
+				'eventsTitle' => array( 'type' => 'string', 'default' => '' ),
+				'eventsSubtitle' => array( 'type' => 'string', 'default' => '' ),
+				'events' => array( 'type' => 'array', 'default' => array() ),
+			),
+		),
+		'portfolio'    => array(
+			'title'       => __( 'Portfolio Section', 'devfolio' ),
+			'description' => __( 'Portfolio cards.', 'devfolio' ),
+			'attributes'  => array(
+				'label' => array( 'type' => 'string', 'default' => '' ),
+				'titleText' => array( 'type' => 'string', 'default' => '' ),
+				'desc' => array( 'type' => 'string', 'default' => '' ),
+				'items' => array( 'type' => 'array', 'default' => array() ),
+			),
+		),
+		'services'     => array(
+			'title'       => __( 'Services Section', 'devfolio' ),
+			'description' => __( 'Service cards.', 'devfolio' ),
+			'attributes'  => array(
+				'label' => array( 'type' => 'string', 'default' => '' ),
+				'titleText' => array( 'type' => 'string', 'default' => '' ),
+				'desc' => array( 'type' => 'string', 'default' => '' ),
+				'items' => array( 'type' => 'array', 'default' => array() ),
+			),
+		),
+		'process'      => array(
+			'title'       => __( 'Process Section', 'devfolio' ),
+			'description' => __( 'Process step cards.', 'devfolio' ),
+			'attributes'  => array(
+				'label' => array( 'type' => 'string', 'default' => '' ),
+				'titleText' => array( 'type' => 'string', 'default' => '' ),
+				'desc' => array( 'type' => 'string', 'default' => '' ),
+				'steps' => array( 'type' => 'array', 'default' => array() ),
+			),
+		),
+		'origin'       => array(
+			'title'       => __( 'Origin Section', 'devfolio' ),
+			'description' => __( 'Journey timeline.', 'devfolio' ),
+			'attributes'  => array(
+				'label' => array( 'type' => 'string', 'default' => '' ),
+				'titleText' => array( 'type' => 'string', 'default' => '' ),
+				'desc' => array( 'type' => 'string', 'default' => '' ),
+				'items' => array( 'type' => 'array', 'default' => array() ),
+			),
+		),
+		'blog'         => array(
+			'title'       => __( 'Blog Section', 'devfolio' ),
+			'description' => __( 'Recent posts section.', 'devfolio' ),
+			'attributes'  => array(
+				'label' => array( 'type' => 'string', 'default' => '' ),
+				'titleText' => array( 'type' => 'string', 'default' => '' ),
+				'desc' => array( 'type' => 'string', 'default' => '' ),
+			),
+		),
+		'testimonials' => array(
+			'title'       => __( 'Testimonials Section', 'devfolio' ),
+			'description' => __( 'Testimonial slider content.', 'devfolio' ),
+			'attributes'  => array(
+				'label' => array( 'type' => 'string', 'default' => '' ),
+				'titleText' => array( 'type' => 'string', 'default' => '' ),
+				'desc' => array( 'type' => 'string', 'default' => '' ),
+				'items' => array( 'type' => 'array', 'default' => array() ),
+			),
+		),
+		'contact'      => array(
+			'title'       => __( 'Contact Section', 'devfolio' ),
+			'description' => __( 'Contact call to action.', 'devfolio' ),
+			'attributes'  => array(
+				'label' => array( 'type' => 'string', 'default' => '' ),
+				'titleText' => array( 'type' => 'string', 'default' => '' ),
+				'desc' => array( 'type' => 'string', 'default' => '' ),
+				'email' => array( 'type' => 'string', 'default' => '' ),
+				'buttonText' => array( 'type' => 'string', 'default' => '' ),
+			),
+		),
 	);
 }
 
@@ -36,7 +164,7 @@ function devfolio_register_block_editor_assets() {
 	wp_register_script(
 		'devfolio-editor-blocks',
 		get_template_directory_uri() . '/assets/js/editor-blocks.js',
-		array( 'wp-blocks', 'wp-element', 'wp-components', 'wp-i18n', 'wp-server-side-render', 'wp-block-editor' ),
+		array( 'wp-blocks', 'wp-element', 'wp-components', 'wp-i18n', 'wp-block-editor', 'wp-server-side-render' ),
 		filemtime( $script ),
 		true
 	);
@@ -45,7 +173,7 @@ function devfolio_register_block_editor_assets() {
 		'devfolio-editor-blocks',
 		'devfolioBlocks',
 		array(
-			'blocks' => devfolio_get_home_block_definitions(),
+			'specs' => devfolio_get_home_block_specs(),
 		)
 	);
 }
@@ -61,25 +189,64 @@ function devfolio_register_block_category( $categories ) {
 }
 add_filter( 'block_categories_all', 'devfolio_register_block_category' );
 
+function devfolio_get_home_block_supports() {
+	return array(
+		'align'           => array( 'wide', 'full' ),
+		'anchor'          => true,
+		'background'      => array(
+			'backgroundImage' => true,
+			'backgroundSize'  => true,
+		),
+		'border'          => array(
+			'color'  => true,
+			'radius' => true,
+			'style'  => true,
+			'width'  => true,
+		),
+		'color'           => array(
+			'background' => true,
+			'gradients'  => true,
+			'link'       => true,
+			'text'       => true,
+		),
+		'customClassName' => true,
+		'dimensions'      => array(
+			'minHeight' => true,
+		),
+		'html'            => false,
+		'multiple'        => true,
+		'reusable'        => false,
+		'spacing'         => array(
+			'margin'  => true,
+			'padding' => true,
+		),
+		'typography'      => array(
+			'fontFamily'     => true,
+			'fontSize'       => true,
+			'fontStyle'      => true,
+			'fontWeight'     => true,
+			'letterSpacing'  => true,
+			'lineHeight'     => true,
+			'textDecoration' => true,
+			'textTransform'  => true,
+		),
+	);
+}
+
 function devfolio_register_home_blocks() {
-	foreach ( devfolio_get_home_block_definitions() as $slug => $title ) {
+	foreach ( devfolio_get_home_block_specs() as $slug => $spec ) {
 		register_block_type(
 			'devfolio/' . $slug . '-section',
 			array(
 				'api_version'   => 2,
-				'title'         => $title,
+				'title'         => $spec['title'],
 				'category'      => 'devfolio',
 				'icon'          => 'layout',
-				'description'   => sprintf( __( 'Renders the %s on the homepage.', 'devfolio' ), strtolower( $title ) ),
+				'description'   => $spec['description'],
 				'editor_script' => 'devfolio-editor-blocks',
-				'supports'      => array(
-					'html'      => false,
-					'reusable'  => false,
-					'multiple'  => true,
-					'anchor'    => false,
-				),
+				'supports'      => devfolio_get_home_block_supports(),
 				'render_callback' => 'devfolio_render_home_block',
-				'attributes'      => array(),
+				'attributes'      => $spec['attributes'],
 			)
 		);
 	}
@@ -89,21 +256,40 @@ add_action( 'init', 'devfolio_register_home_blocks' );
 function devfolio_render_home_block( $attributes, $content, $block ) {
 	$block_name = isset( $block->name ) ? (string) $block->name : '';
 	$slug       = str_replace( array( 'devfolio/', '-section' ), '', $block_name );
-	$allowed    = array_keys( devfolio_get_home_block_definitions() );
+	$allowed    = array_keys( devfolio_get_home_block_specs() );
 
 	if ( ! in_array( $slug, $allowed, true ) ) {
 		return '';
 	}
 
+	$render_path = get_template_directory() . '/blocks/' . $slug . '/render.php';
+
+	if ( ! file_exists( $render_path ) ) {
+		return '';
+	}
+
 	ob_start();
-	get_template_part( 'template-parts/home/section', $slug );
-	return trim( (string) ob_get_clean() );
+	$args = $attributes;
+	require $render_path;
+	$section_html = trim( (string) ob_get_clean() );
+
+	if ( '' === $section_html ) {
+		return '';
+	}
+
+	$wrapper_attributes = get_block_wrapper_attributes(
+		array(
+			'class' => 'devfolio-section-block devfolio-' . sanitize_html_class( $slug ) . '-section-block',
+		)
+	);
+
+	return '<div ' . $wrapper_attributes . '>' . $section_html . '</div>';
 }
 
 function devfolio_get_default_home_blocks() {
 	$blocks = array();
 
-	foreach ( array_keys( devfolio_get_home_block_definitions() ) as $slug ) {
+	foreach ( array_keys( devfolio_get_home_block_specs() ) as $slug ) {
 		$blocks[] = array(
 			'blockName'    => 'devfolio/' . $slug . '-section',
 			'attrs'        => array(),
@@ -117,30 +303,15 @@ function devfolio_get_default_home_blocks() {
 }
 
 function devfolio_render_home_blocks( $blocks ) {
-	$blocks   = is_array( $blocks ) ? $blocks : array();
-	$output   = array();
-	$allowed  = array_map(
-		static function( $slug ) {
-			return 'devfolio/' . $slug . '-section';
-		},
-		array_keys( devfolio_get_home_block_definitions() )
-	);
+	$blocks = is_array( $blocks ) ? $blocks : array();
+	$output = array();
 
 	foreach ( $blocks as $block ) {
-		$name = $block['blockName'] ?? '';
+		$rendered = trim( (string) render_block( $block ) );
 
-		if ( '' === $name ) {
-			continue;
+		if ( '' !== $rendered ) {
+			$output[] = $rendered;
 		}
-
-		$rendered = render_block( $block );
-		$rendered = trim( (string) $rendered );
-
-		if ( '' === $rendered ) {
-			continue;
-		}
-
-		$output[] = $rendered;
 	}
 
 	if ( empty( $output ) ) {
@@ -163,13 +334,30 @@ function devfolio_render_home_blocks( $blocks ) {
 	return $html;
 }
 
+function devfolio_render_home_content( $content = '' ) {
+	$content = (string) $content;
+	$blocks  = has_blocks( $content ) ? parse_blocks( $content ) : array();
+
+	if ( ! empty( $blocks ) ) {
+		return devfolio_render_home_blocks( $blocks );
+	}
+
+	$content = trim( apply_filters( 'the_content', $content ) );
+
+	if ( '' !== $content ) {
+		return '<section class="devfolio-section"><div class="devfolio-container"><div class="devfolio-page-content">' . $content . '</div></div></section>';
+	}
+
+	return devfolio_render_home_blocks( array() );
+}
+
 function devfolio_register_homepage_pattern() {
 	if ( ! function_exists( 'register_block_pattern' ) ) {
 		return;
 	}
 
 	$content = '';
-	foreach ( array_keys( devfolio_get_home_block_definitions() ) as $slug ) {
+	foreach ( array_keys( devfolio_get_home_block_specs() ) as $slug ) {
 		$content .= sprintf( '<!-- wp:devfolio/%1$s-section /-->', esc_attr( $slug ) );
 	}
 

@@ -1,0 +1,59 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 3,
+  "settings": {
+    "appearanceTools": true,
+    "layout": {
+      "contentSize": "1200px",
+      "wideSize": "1200px"
+    },
+    "color": {
+      "defaultPalette": false,
+      "defaultGradients": false,
+      "palette": [
+        { "slug": "background", "name": "Background", "color": "#eff1f6" },
+        { "slug": "foreground", "name": "Foreground", "color": "#1a2e1f" },
+        { "slug": "card", "name": "Card", "color": "#fcfdfd" },
+        { "slug": "primary", "name": "Primary", "color": "#2fad4e" },
+        { "slug": "secondary", "name": "Secondary", "color": "#d6f0dc" },
+        { "slug": "accent", "name": "Accent", "color": "#24b35a" },
+        { "slug": "muted", "name": "Muted", "color": "#e4e7ed" }
+      ]
+    },
+    "spacing": {
+      "units": [ "px", "em", "rem", "%", "vw", "vh" ]
+    },
+    "typography": {
+      "defaultFontSizes": false,
+      "fluid": false,
+      "fontFamilies": [
+        {
+          "fontFamily": "\"Inter\", sans-serif",
+          "name": "Inter",
+          "slug": "inter"
+        },
+        {
+          "fontFamily": "\"Space Grotesk\", sans-serif",
+          "name": "Space Grotesk",
+          "slug": "space-grotesk"
+        }
+      ]
+    }
+  },
+  "styles": {
+    "color": {
+      "background": "var(--wp--preset--color--background)",
+      "text": "var(--wp--preset--color--foreground)"
+    },
+    "typography": {
+      "fontFamily": "var(--wp--preset--font-family--inter)"
+    },
+    "blocks": {
+      "core/button": {
+        "border": {
+          "radius": "999px"
+        }
+      }
+    }
+  }
+}

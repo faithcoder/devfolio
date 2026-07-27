@@ -7,9 +7,13 @@
 
 get_header();
 
-$post_content = get_post_field( 'post_content', get_the_ID() );
-$blocks       = has_blocks( $post_content ) ? parse_blocks( $post_content ) : array();
-
-echo devfolio_render_home_blocks( $blocks ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+if ( 'page' === get_option( 'show_on_front' ) && have_posts() ) {
+	while ( have_posts() ) {
+		the_post();
+		echo devfolio_render_home_content( get_the_content() ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	}
+} else {
+	echo devfolio_render_home_content(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+}
 
 get_footer();

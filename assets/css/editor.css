@@ -1,0 +1,46 @@
+@import url('main.css');
+
+.editor-styles-wrapper {
+  background: var(--bg);
+  color: var(--text-body);
+  font-family: var(--font-body);
+}
+
+.editor-styles-wrapper .wp-block {
+  max-width: 1200px;
+}
+
+.editor-styles-wrapper .wp-block[data-align="wide"],
+.editor-styles-wrapper .wp-block[data-align="full"] {
+  max-width: 1200px;
+}
+
+.devfolio-editor-repeater {
+  margin: 0 0 16px;
+}
+
+.editor-styles-wrapper .devfolio-editor-block-preview {
+  background: transparent;
+  border-radius: 0;
+}
+
+.editor-styles-wrapper .devfolio-editor-block-preview > .devfolio-section-block {
+  min-height: inherit;
+}
+
+.editor-styles-wrapper .devfolio-section-block {
+  background: transparent;
+}
+
+.editor-styles-wrapper .devfolio-anim,
+.editor-styles-wrapper .devfolio-anim-left {
+  opacity: 1;
+  transform: none;
+}
+
+.editor-styles-wrapper .devfolio-bg-decor,
+.editor-styles-wrapper .devfolio-navbar,
+.editor-styles-wrapper .devfolio-footer,
+.editor-styles-wrapper .devfolio-events-lightbox {
+  display: none;
+}

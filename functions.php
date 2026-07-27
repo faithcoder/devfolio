@@ -13,6 +13,12 @@ function devfolio_theme_setup() {
 	add_theme_support( 'title-tag' );
 	add_theme_support( 'post-thumbnails' );
 	add_theme_support( 'custom-logo' );
+	add_theme_support( 'align-wide' );
+	add_theme_support( 'editor-styles' );
+	add_theme_support( 'responsive-embeds' );
+	add_theme_support( 'wp-block-styles' );
+	add_theme_support( 'block-template-parts' );
+	add_editor_style( 'assets/css/editor.css' );
 	add_theme_support(
 		'html5',
 		array(
@@ -34,21 +40,6 @@ function devfolio_theme_setup() {
 	);
 }
 add_action( 'after_setup_theme', 'devfolio_theme_setup' );
-
-function devfolio_register_sidebar() {
-	register_sidebar(
-		array(
-			'name'          => __( 'Sidebar', 'devfolio' ),
-			'id'            => 'devfolio-sidebar-1',
-			'description'   => __( 'Main sidebar area.', 'devfolio' ),
-			'before_widget' => '<section id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</section>',
-			'before_title'  => '<h3 class="widget-title">',
-			'after_title'   => '</h3>',
-		)
-	);
-}
-add_action( 'widgets_init', 'devfolio_register_sidebar' );
 
 function devfolio_asset_manifest() {
 	return array(
@@ -116,6 +107,22 @@ function devfolio_enqueue_assets() {
 }
 add_action( 'wp_enqueue_scripts', 'devfolio_enqueue_assets' );
 
+function devfolio_enqueue_block_editor_assets() {
+	$theme_dir = get_template_directory();
+	$theme_uri = get_template_directory_uri();
+	$editor_css = $theme_dir . '/assets/css/editor.css';
+
+	if ( file_exists( $editor_css ) ) {
+		wp_enqueue_style(
+			'devfolio-block-editor',
+			$theme_uri . '/assets/css/editor.css',
+			array(),
+			filemtime( $editor_css )
+		);
+	}
+}
+add_action( 'enqueue_block_editor_assets', 'devfolio_enqueue_block_editor_assets' );
+
 function devfolio_allow_svg_uploads( $mimes ) {
 	if ( current_user_can( 'manage_options' ) ) {
 		$mimes['svg'] = 'image/svg+xml';
@@ -162,38 +169,8 @@ function devfolio_primary_menu_anchor_links( $atts, $item, $args ) {
 }
 add_filter( 'nav_menu_link_attributes', 'devfolio_primary_menu_anchor_links', 10, 3 );
 
-function devfolio_excerpt_text( $post_id, $length = 160 ) {
-	$text = get_the_excerpt( $post_id );
-	if ( empty( $text ) ) {
-		$text = wp_strip_all_tags( get_post_field( 'post_content', $post_id ) );
-	}
-	return wp_trim_words( $text, max( 10, (int) floor( $length / 5 ) ), '...' );
-}
-
-function devfolio_register_query_vars( $vars ) {
-	$vars[] = 'devfolio_portfolio_demo';
-
-	return $vars;
-}
-add_filter( 'query_vars', 'devfolio_register_query_vars' );
-
-function devfolio_portfolio_demo_template( $template ) {
-	$demo_slug = get_query_var( 'devfolio_portfolio_demo' );
-
-	if ( ! $demo_slug || ! devfolio_get_fallback_portfolio_item( $demo_slug ) ) {
-		return $template;
-	}
-
-	$demo_template = get_template_directory() . '/single-devfolio_portfolio.php';
-
-	return file_exists( $demo_template ) ? $demo_template : $template;
-}
-add_filter( 'template_include', 'devfolio_portfolio_demo_template' );
-
 $devfolio_includes = array(
 	'/inc/helpers.php',
-	'/inc/cpt/register-cpts.php',
-	'/inc/meta/native-meta.php',
 	'/inc/blocks/home-blocks.php',
 	'/inc/customizer/native-customizer.php',
 	'/inc/customizer/dynamic-styles.php',

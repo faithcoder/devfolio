@@ -5,8 +5,11 @@
  * @package devfolio
  */
 
-$skill_groups = devfolio_get_repeater_value(
-	'devfolio_skill_groups',
+$args = isset( $args ) && is_array( $args ) ? $args : array();
+
+$skill_groups = devfolio_get_block_array_attr(
+	$args,
+	'skillGroups',
 	array(
 		array( 'title' => 'Support Operations', 'tags' => 'Troubleshooting, Problem Solving, Customer Support, Documentation Writing, Communication, Website Migration' ),
 		array( 'title' => 'WordPress & CMS', 'tags' => 'WordPress Theme Development, Elementor Widget Development, WooCommerce, Shopify Store Design, Landing Page Design' ),
@@ -26,9 +29,9 @@ $skill_groups = array_values(
 	)
 );
 $section_id = devfolio_get_section_id( 'skills' );
-$skills_label = devfolio_get_theme_mod_value( 'devfolio_skills_label', 'Skills' );
-$skills_title = devfolio_get_theme_mod_value( 'devfolio_skills_title', 'Skills & Toolset' );
-$skills_desc  = devfolio_get_theme_mod_value( 'devfolio_skills_desc', '' );
+$skills_label = devfolio_get_block_attr( $args, 'label', 'Skills' );
+$skills_title = devfolio_get_block_attr( $args, 'titleText', 'Skills & Toolset' );
+$skills_desc  = devfolio_get_block_attr( $args, 'desc', '' );
 
 if ( empty( $skill_groups ) ) {
 	return;

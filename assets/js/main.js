@@ -77,8 +77,6 @@ var Devfolio = (function($){
     // ── Shared 3D carousels ──
     var devfolioLightboxCarousel = null;
     var devfolioLightboxIdx = 0;
-    var devfolioVideoLightboxCarousel = null;
-
     function devfolioInitCarousel($carousel) {
       var $slides = $carousel.find('.devfolio-carousel-slide');
       var total = $slides.length;
@@ -92,9 +90,7 @@ var Devfolio = (function($){
           src: String($slide.data('src') || $slide.find('img').attr('src') || ''),
           title: String($slide.data('title') || $slide.find('.devfolio-carousel-caption-title').text() || ''),
           subtitle: String($slide.data('subtitle') || $slide.find('.devfolio-carousel-caption-subtitle').text() || ''),
-          description: String($slide.data('description') || ''),
-          videoType: String($slide.data('video-type') || ''),
-          videoSrc: String($slide.data('video-src') || '')
+          description: String($slide.data('description') || '')
         };
       }).get();
 
@@ -182,11 +178,7 @@ var Devfolio = (function($){
         var idx = parseInt($(this).data('slide'), 10);
         if (idx === active && lightboxEnabled) {
           stopAutoPlay();
-          if ('video' === lightboxType) {
-            devfolioOpenVideoLightbox($carousel, idx);
-          } else {
-            devfolioOpenEventsLightbox($carousel, idx);
-          }
+          devfolioOpenEventsLightbox($carousel, idx);
           return;
         }
         if (idx !== active) {
@@ -257,71 +249,6 @@ var Devfolio = (function($){
     $(document).on('keydown', function(e) {
       if ($('.devfolio-events-lightbox').hasClass('devfolio-active') && e.key === 'Escape') devfolioCloseEventsLightbox();
     });
-
-    // ── Video Lightbox ──
-    function devfolioBuildVideoLightboxMedia(item) {
-      if (!item) {
-        return null;
-      }
-
-      if ('youtube' === item.videoType && item.videoSrc) {
-        return $('<iframe>', {
-          src: item.videoSrc,
-          title: item.title || 'Video',
-          allow: 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share',
-          allowfullscreen: 'allowfullscreen',
-          referrerpolicy: 'strict-origin-when-cross-origin'
-        });
-      }
-
-      if ('hosted' === item.videoType && item.videoSrc) {
-        return $('<video>', {
-          src: item.videoSrc,
-          controls: true,
-          autoplay: true,
-          playsinline: true
-        });
-      }
-
-      return null;
-    }
-
-    function devfolioOpenVideoLightbox($carousel, idx) {
-      var carouselData = $carousel.data('devfolioCarousel');
-      if (!carouselData || !carouselData.items.length) { return; }
-
-      var item = carouselData.items[idx];
-      if (!item || !item.videoSrc) { return; }
-
-      devfolioVideoLightboxCarousel = carouselData;
-      var $media = devfolioBuildVideoLightboxMedia(item);
-      if (!$media) { return; }
-
-      $('.devfolio-video-lightbox-media').empty().append($media);
-      $('.devfolio-video-lightbox-title').text(item.title);
-      $('.devfolio-video-lightbox-subtitle').text(item.subtitle);
-      $('.devfolio-video-lightbox-desc').text(item.description);
-      $('.devfolio-video-lightbox').addClass('devfolio-active');
-      $('body').css('overflow', 'hidden');
-    }
-
-    function devfolioCloseVideoLightbox() {
-      $('.devfolio-video-lightbox-media').empty();
-      $('.devfolio-video-lightbox').removeClass('devfolio-active');
-      $('body').css('overflow', '');
-      if (devfolioVideoLightboxCarousel) {
-        devfolioVideoLightboxCarousel.startAutoPlay();
-      }
-    }
-
-    $('.devfolio-video-lightbox-close').on('click', devfolioCloseVideoLightbox);
-    $('.devfolio-video-lightbox').on('click', function(e) {
-      if ($(e.target).hasClass('devfolio-video-lightbox')) devfolioCloseVideoLightbox();
-    });
-    $(document).on('keydown', function(e) {
-      if ($('.devfolio-video-lightbox').hasClass('devfolio-active') && e.key === 'Escape') devfolioCloseVideoLightbox();
-    });
-
     // ── Tab switching ──
     $('.devfolio-tab-trigger').on('click',function(){
       var tab=$(this).data('tab');

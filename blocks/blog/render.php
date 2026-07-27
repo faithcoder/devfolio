@@ -4,10 +4,12 @@
  *
  * @package devfolio
  */
+$args = isset( $args ) && is_array( $args ) ? $args : array();
+
 $section_id = devfolio_get_section_id( 'blog' );
-$blog_label = devfolio_get_theme_mod_value( 'devfolio_blog_label', 'Blog' );
-$blog_title = devfolio_get_theme_mod_value( 'devfolio_blog_title', 'Latest Articles' );
-$blog_desc  = devfolio_get_theme_mod_value( 'devfolio_blog_desc', '' );
+$blog_label = devfolio_get_block_attr( $args, 'label', 'Blog' );
+$blog_title = devfolio_get_block_attr( $args, 'titleText', 'Latest Articles' );
+$blog_desc  = devfolio_get_block_attr( $args, 'desc', '' );
 ?>
 <!-- Blog -->
 <section id="<?php echo esc_attr( $section_id ); ?>" class="devfolio-section">
