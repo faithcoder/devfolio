@@ -42,25 +42,35 @@ function devfolio_get_dynamic_style_vars() {
 	$overlay_blur = (int) devfolio_get_theme_mod_value( 'devfolio_style_overlay_blur', 12 );
 	$orb_blur = (int) devfolio_get_theme_mod_value( 'devfolio_style_orb_blur', 80 );
 
-	$body_typo = devfolio_get_theme_mod_value(
-		'devfolio_typography_body',
-		array( 'font-family' => 'Inter', 'font-size' => '16px', 'font-weight' => '400', 'line-height' => '1.6' )
+	$body_typo = array(
+		'font-family' => devfolio_get_theme_mod_value( 'devfolio_typography_body_font_family', 'Inter' ),
+		'font-size'   => devfolio_get_theme_mod_value( 'devfolio_typography_body_font_size', '16px' ),
+		'font-weight' => devfolio_get_theme_mod_value( 'devfolio_typography_body_font_weight', '400' ),
+		'line-height' => devfolio_get_theme_mod_value( 'devfolio_typography_body_line_height', '1.6' ),
 	);
-	$heading_typo = devfolio_get_theme_mod_value(
-		'devfolio_typography_heading',
-		array( 'font-family' => 'Space Grotesk', 'font-size' => '48px', 'font-weight' => '700', 'line-height' => '1.2' )
+	$heading_typo = array(
+		'font-family' => devfolio_get_theme_mod_value( 'devfolio_typography_heading_font_family', 'Space Grotesk' ),
+		'font-size'   => devfolio_get_theme_mod_value( 'devfolio_typography_heading_font_size', '48px' ),
+		'font-weight' => devfolio_get_theme_mod_value( 'devfolio_typography_heading_font_weight', '700' ),
+		'line-height' => devfolio_get_theme_mod_value( 'devfolio_typography_heading_line_height', '1.2' ),
 	);
-	$link_typo = devfolio_get_theme_mod_value(
-		'devfolio_typography_link',
-		array( 'font-family' => 'Inter', 'font-size' => '14px', 'font-weight' => '500', 'line-height' => '1.5' )
+	$link_typo = array(
+		'font-family' => devfolio_get_theme_mod_value( 'devfolio_typography_link_font_family', 'Inter' ),
+		'font-size'   => devfolio_get_theme_mod_value( 'devfolio_typography_link_font_size', '14px' ),
+		'font-weight' => devfolio_get_theme_mod_value( 'devfolio_typography_link_font_weight', '500' ),
+		'line-height' => devfolio_get_theme_mod_value( 'devfolio_typography_link_line_height', '1.5' ),
 	);
-	$button_typo = devfolio_get_theme_mod_value(
-		'devfolio_typography_button',
-		array( 'font-family' => 'Inter', 'font-size' => '14px', 'font-weight' => '500', 'line-height' => '1.5' )
+	$button_typo = array(
+		'font-family' => devfolio_get_theme_mod_value( 'devfolio_typography_button_font_family', 'Inter' ),
+		'font-size'   => devfolio_get_theme_mod_value( 'devfolio_typography_button_font_size', '14px' ),
+		'font-weight' => devfolio_get_theme_mod_value( 'devfolio_typography_button_font_weight', '500' ),
+		'line-height' => devfolio_get_theme_mod_value( 'devfolio_typography_button_line_height', '1.5' ),
 	);
-	$label_typo = devfolio_get_theme_mod_value(
-		'devfolio_typography_label',
-		array( 'font-family' => 'Space Grotesk', 'font-size' => '12px', 'font-weight' => '600', 'line-height' => '1.2' )
+	$label_typo = array(
+		'font-family' => devfolio_get_theme_mod_value( 'devfolio_typography_label_font_family', 'Space Grotesk' ),
+		'font-size'   => devfolio_get_theme_mod_value( 'devfolio_typography_label_font_size', '12px' ),
+		'font-weight' => devfolio_get_theme_mod_value( 'devfolio_typography_label_font_weight', '600' ),
+		'line-height' => devfolio_get_theme_mod_value( 'devfolio_typography_label_line_height', '1.2' ),
 	);
 
 	$text_body = devfolio_get_theme_mod_value( 'devfolio_text_color_body', '#1a2e1f' );

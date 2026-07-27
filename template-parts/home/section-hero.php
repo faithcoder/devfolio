@@ -16,7 +16,7 @@ $hero_cta_2_text  = devfolio_get_theme_mod_value( 'devfolio_hero_cta_secondary_t
 $hero_cta_2_url   = devfolio_get_theme_mod_value( 'devfolio_hero_cta_secondary_url', '#' . devfolio_get_section_id( 'projects' ) );
 $denim_section_title = devfolio_get_theme_mod_value( 'devfolio_denim_section_title', 'Denim Innovation' );
 $denim_section_desc  = devfolio_get_theme_mod_value( 'devfolio_denim_section_subtitle', 'Experimental washes, product ideas, and visual concept development showcased in an interactive 3D slider.' );
-$hero_image       = devfolio_get_theme_mod_value( 'devfolio_hero_image', get_template_directory_uri() . '/assets/images/profile.jpeg' );
+$hero_image       = devfolio_get_theme_mod_image_url( 'devfolio_hero_image', get_template_directory_uri() . '/assets/images/profile.jpeg' );
 $hero_section_id  = devfolio_get_section_id( 'hero' );
 $hero_stats       = devfolio_get_repeater_value(
 	'devfolio_hero_stats',

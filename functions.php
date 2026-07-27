@@ -134,19 +134,6 @@ function devfolio_fix_svg_mime_type( $data, $file, $filename, $mimes ) {
 }
 add_filter( 'wp_check_filetype_and_ext', 'devfolio_fix_svg_mime_type', 10, 4 );
 
-function devfolio_admin_assets( $hook ) {
-	$file = get_template_directory() . '/assets/css/admin-cmb2.css';
-	if ( file_exists( $file ) ) {
-		wp_enqueue_style(
-			'devfolio-admin-cmb2',
-			get_template_directory_uri() . '/assets/css/admin-cmb2.css',
-			array(),
-			filemtime( $file )
-		);
-	}
-}
-add_action( 'admin_enqueue_scripts', 'devfolio_admin_assets' );
-
 function devfolio_primary_menu_fallback() {
 	$sections = devfolio_get_nav_sections();
 	$order    = array( 'hero', 'experience', 'skills', 'projects', 'portfolio', 'services', 'process', 'origin', 'blog', 'testimonials', 'contact' );
@@ -206,21 +193,10 @@ add_filter( 'template_include', 'devfolio_portfolio_demo_template' );
 $devfolio_includes = array(
 	'/inc/helpers.php',
 	'/inc/cpt/register-cpts.php',
-	'/inc/cmb2/cmb2-experience.php',
-	'/inc/cmb2/cmb2-education.php',
-	'/inc/cmb2/cmb2-portfolio.php',
-	'/inc/cmb2/cmb2-events.php',
-	'/inc/cmb2/cmb2-denim-innovation.php',
-	'/inc/cmb2/cmb2-denim-videography.php',
-	'/inc/cmb2/cmb2-services.php',
-	'/inc/cmb2/cmb2-journey.php',
-	'/inc/cmb2/cmb2-testimonials.php',
-	'/inc/customizer/kirki-config.php',
-	'/inc/customizer/kirki-sections.php',
+	'/inc/meta/native-meta.php',
+	'/inc/blocks/home-blocks.php',
+	'/inc/customizer/native-customizer.php',
 	'/inc/customizer/dynamic-styles.php',
-	'/inc/customizer/customizer-live-preview.php',
-	'/inc/tgm/class-tgm-plugin-activation.php',
-	'/inc/tgm/tgm-init.php',
 );
 
 foreach ( $devfolio_includes as $include_file ) {

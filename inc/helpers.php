@@ -14,6 +14,19 @@ function devfolio_get_theme_mod_value( $key, $default = '' ) {
 	return null === $value ? $default : $value;
 }
 
+function devfolio_get_theme_mod_image_url( $key, $default = '' ) {
+	$value = devfolio_get_theme_mod_value( $key, $default );
+
+	if ( is_numeric( $value ) ) {
+		$image_url = wp_get_attachment_image_url( (int) $value, 'full' );
+		if ( $image_url ) {
+			return $image_url;
+		}
+	}
+
+	return (string) $value;
+}
+
 function devfolio_get_repeater_value( $key, $default = array() ) {
 	$value = get_theme_mod( $key, null );
 
