@@ -166,14 +166,24 @@ button {
 
 /* ── Utility ───────────────────────────────────── */
 .devfolio-container {
-  max-width: 1200px;
+  width: 100%;
+  max-width: none;
   margin: 0 auto;
-  padding: 0 24px
+  padding: 0 clamp(24px, 5vw, 96px)
 }
 
 .devfolio-section {
   padding: 96px 0;
   position: relative
+}
+
+.devfolio-section-block {
+  width: 100%;
+  max-width: none
+}
+
+.devfolio-section-block.alignfull {
+  width: 100%
 }
 
 .devfolio-label {
@@ -209,7 +219,8 @@ button {
 
 .devfolio-glow-line {
   height: 2px;
-  max-width: 1200px;
+  width: calc(100% - clamp(48px, 10vw, 192px));
+  max-width: none;
   margin: 0 auto;
   background: linear-gradient(90deg, transparent, var(--gradient-mint), var(--gradient-green), transparent)
 }
@@ -1339,6 +1350,232 @@ button {
 @media(max-width:768px) {
   .devfolio-services-grid {
     grid-template-columns: 1fr
+  }
+}
+
+/* ── Interactive Service Details ───────────────── */
+.devfolio-service-detail-section {
+  padding: 120px 0;
+  overflow: hidden
+}
+
+.devfolio-service-detail-layout {
+  display: grid;
+  grid-template-columns: minmax(220px, .75fr) minmax(380px, 1.35fr) minmax(320px, .9fr);
+  gap: clamp(28px, 4vw, 56px);
+  align-items: center
+}
+
+.devfolio-service-detail-intro {
+  align-self: center
+}
+
+.devfolio-service-detail-label {
+  margin: 0 0 28px;
+  color: var(--muted-fg);
+  font-size: 16px;
+  line-height: 1.5
+}
+
+.devfolio-service-detail-title {
+  margin: 0 0 30px;
+  font-size: clamp(34px, 4vw, 48px);
+  line-height: 1.12;
+  color: var(--text-heading)
+}
+
+.devfolio-service-detail-desc {
+  max-width: 360px;
+  margin: 0;
+  color: var(--muted-fg);
+  font-size: 15px;
+  line-height: 1.7
+}
+
+.devfolio-service-detail-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 48px;
+  row-gap: 0
+}
+
+.devfolio-service-detail-item {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  width: 100%;
+  min-height: 92px;
+  padding: 0 0 24px;
+  margin: 0 0 24px;
+  border-bottom: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
+  background: transparent;
+  color: var(--muted-fg);
+  text-align: left;
+  transition: color .2s, border-color .2s
+}
+
+.devfolio-service-detail-item:hover,
+.devfolio-service-detail-item:focus-visible,
+.devfolio-service-detail-item.devfolio-active {
+  color: var(--primary);
+  border-color: color-mix(in srgb, var(--primary) 28%, transparent);
+  outline: none
+}
+
+.devfolio-service-detail-num {
+  color: color-mix(in srgb, currentColor 70%, var(--muted-fg));
+  font-size: 13px;
+  line-height: 1
+}
+
+.devfolio-service-detail-name {
+  color: currentColor;
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.25
+}
+
+.devfolio-service-detail-panel {
+  position: relative;
+  min-height: 500px;
+  padding: clamp(32px, 4vw, 56px);
+  border-radius: 22px;
+  background: var(--primary);
+  color: var(--primary-fg);
+  box-shadow: 0 36px 70px color-mix(in srgb, var(--primary) 24%, transparent);
+  overflow: hidden
+}
+
+.devfolio-service-detail-empty,
+.devfolio-service-detail-content {
+  position: absolute;
+  inset: clamp(32px, 4vw, 56px);
+  display: flex;
+  flex-direction: column;
+  transition: opacity .25s ease, transform .25s ease
+}
+
+.devfolio-service-detail-empty {
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  color: color-mix(in srgb, var(--primary-fg) 65%, transparent);
+  text-align: center
+}
+
+.devfolio-service-detail-empty svg {
+  width: 64px;
+  height: 64px
+}
+
+.devfolio-service-detail-empty p {
+  margin: 0;
+  font-size: 16px
+}
+
+.devfolio-service-detail-content {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(12px)
+}
+
+.devfolio-service-detail-panel.devfolio-has-selection .devfolio-service-detail-empty {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-12px)
+}
+
+.devfolio-service-detail-panel.devfolio-has-selection .devfolio-service-detail-content {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0)
+}
+
+.devfolio-service-detail-panel-icon {
+  color: color-mix(in srgb, var(--primary-fg) 75%, transparent);
+  margin-bottom: auto
+}
+
+.devfolio-service-detail-panel-icon svg,
+.devfolio-service-detail-panel-icon img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain
+}
+
+.devfolio-service-detail-panel-title {
+  margin: 54px 0 22px;
+  color: var(--primary-fg);
+  font-size: clamp(24px, 2.35vw, 32px);
+  line-height: 1.18;
+  overflow-wrap: anywhere
+}
+
+.devfolio-service-detail-panel-desc {
+  max-width: 420px;
+  margin: 0;
+  color: color-mix(in srgb, var(--primary-fg) 76%, transparent);
+  font-size: 16px;
+  line-height: 1.65
+}
+
+.devfolio-service-detail-neighbors {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: auto;
+  color: color-mix(in srgb, var(--primary-fg) 58%, transparent);
+  font-size: 13px
+}
+
+.devfolio-service-detail-arrows {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 42px;
+  color: var(--primary-fg);
+  font-size: 38px;
+  line-height: 1
+}
+
+@media(max-width:1100px) {
+  .devfolio-service-detail-layout {
+    grid-template-columns: 1fr 1.25fr
+  }
+
+  .devfolio-service-detail-intro {
+    grid-column: 1 / -1
+  }
+
+  .devfolio-service-detail-desc {
+    max-width: 680px
+  }
+}
+
+@media(max-width:768px) {
+  .devfolio-service-detail-section {
+    padding: 80px 0
+  }
+
+  .devfolio-service-detail-layout,
+  .devfolio-service-detail-list {
+    grid-template-columns: 1fr
+  }
+
+  .devfolio-service-detail-label,
+  .devfolio-service-detail-title {
+    margin-bottom: 24px
+  }
+
+  .devfolio-service-detail-item {
+    min-height: auto;
+    margin-bottom: 20px;
+    padding-bottom: 20px
+  }
+
+  .devfolio-service-detail-panel {
+    min-height: 460px;
+    border-radius: 18px
   }
 }
 

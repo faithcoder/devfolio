@@ -4,6 +4,8 @@
 	var ServerSideRender = wp.serverSideRender && (wp.serverSideRender.default || wp.serverSideRender);
 	var registerBlockType = wp.blocks.registerBlockType;
 	var InspectorControls = wp.blockEditor.InspectorControls;
+	var MediaUpload = wp.blockEditor.MediaUpload;
+	var MediaUploadCheck = wp.blockEditor.MediaUploadCheck;
 	var useBlockProps = wp.blockEditor.useBlockProps;
 	var PanelBody = wp.components.PanelBody;
 	var TextControl = wp.components.TextControl;
@@ -67,6 +69,69 @@
 		return Array.isArray(value) ? value : [];
 	}
 
+	function isIconImageField(key) {
+		return key === 'iconImage' || key === 'icon_image';
+	}
+
+	function renderMediaField(field, value, onChange) {
+		var imageUrl = value || '';
+		var mediaButton = function(open) {
+			return el(Button, {
+				variant: imageUrl ? 'secondary' : 'primary',
+				onClick: open
+			}, imageUrl ? 'Replace Icon' : 'Upload Icon');
+		};
+
+		if (!MediaUpload) {
+			return el(TextControl, {
+				label: field.label,
+				value: imageUrl,
+				onChange: onChange
+			});
+		}
+
+		return el(
+			'div',
+			{ className: 'devfolio-editor-media-control' },
+			el('p', { className: 'devfolio-editor-media-label' }, field.label),
+			imageUrl ? el('img', {
+				className: 'devfolio-editor-media-preview',
+				src: imageUrl,
+				alt: ''
+			}) : null,
+			MediaUploadCheck ? el(
+				MediaUploadCheck,
+				{},
+				el(MediaUpload, {
+					allowedTypes: ['image'],
+					value: imageUrl,
+					onSelect: function(media) {
+						onChange(media && media.url ? media.url : '');
+					},
+					render: function(mediaProps) {
+						return mediaButton(mediaProps.open);
+					}
+				})
+			) : el(MediaUpload, {
+				allowedTypes: ['image'],
+				value: imageUrl,
+				onSelect: function(media) {
+					onChange(media && media.url ? media.url : '');
+				},
+				render: function(mediaProps) {
+					return mediaButton(mediaProps.open);
+				}
+			}),
+			imageUrl ? el(Button, {
+				isDestructive: true,
+				variant: 'tertiary',
+				onClick: function() {
+					onChange('');
+				}
+			}, 'Remove Icon') : null
+		);
+	}
+
 	function renderField(fieldKey, value, onChange) {
 		if (fieldKey === 'desc' || fieldKey === 'heroSubtitle' || fieldKey === 'featuredDesc') {
 			return el(TextareaControl, {
@@ -89,18 +154,18 @@
 				{ key: 'value', label: 'Value' },
 				{ key: 'label', label: 'Label' }
 			],
-			socialProfiles: [
-				{ key: 'label', label: 'Label' },
-				{ key: 'url', label: 'URL' },
-				{ key: 'icon_image', label: 'Icon Image URL' },
-				{ key: 'icon', label: 'SVG Markup', type: 'textarea' }
-			],
+				socialProfiles: [
+					{ key: 'label', label: 'Label' },
+					{ key: 'url', label: 'URL' },
+					{ key: 'icon_image', label: 'Icon Image' },
+					{ key: 'icon', label: 'SVG Markup', type: 'textarea' }
+				],
 			items: [
-				{ key: 'title', label: 'Title' },
-				{ key: 'meta', label: 'Meta' },
-				{ key: 'desc', label: 'Description', type: 'textarea' },
-				{ key: 'iconImage', label: 'Icon Image URL' },
-				{ key: 'image', label: 'Image URL' },
+					{ key: 'title', label: 'Title' },
+					{ key: 'meta', label: 'Meta' },
+					{ key: 'desc', label: 'Description', type: 'textarea' },
+					{ key: 'iconImage', label: 'Icon Image' },
+					{ key: 'image', label: 'Image URL' },
 				{ key: 'category', label: 'Category' },
 				{ key: 'tech', label: 'Tech / Tags' },
 				{ key: 'live', label: 'Live URL' },
@@ -123,22 +188,22 @@
 				{ key: 'tags', label: 'Tags' }
 			],
 			experienceItems: [
-				{ key: 'title', label: 'Title' },
-				{ key: 'meta', label: 'Meta' },
-				{ key: 'desc', label: 'Description', type: 'textarea' },
-				{ key: 'iconImage', label: 'Icon Image URL' }
-			],
-			educationItems: [
-				{ key: 'title', label: 'Title' },
-				{ key: 'meta', label: 'Meta' },
-				{ key: 'desc', label: 'Description', type: 'textarea' },
-				{ key: 'iconImage', label: 'Icon Image URL' }
-			],
-			contributionItems: [
-				{ key: 'title', label: 'Title' },
-				{ key: 'icon_image', label: 'Icon Image URL' },
-				{ key: 'icon_svg', label: 'SVG Markup', type: 'textarea' }
-			],
+					{ key: 'title', label: 'Title' },
+					{ key: 'meta', label: 'Meta' },
+					{ key: 'desc', label: 'Description', type: 'textarea' },
+					{ key: 'iconImage', label: 'Icon Image' }
+				],
+				educationItems: [
+					{ key: 'title', label: 'Title' },
+					{ key: 'meta', label: 'Meta' },
+					{ key: 'desc', label: 'Description', type: 'textarea' },
+					{ key: 'iconImage', label: 'Icon Image' }
+				],
+				contributionItems: [
+					{ key: 'title', label: 'Title' },
+					{ key: 'icon_image', label: 'Icon Image' },
+					{ key: 'icon_svg', label: 'SVG Markup', type: 'textarea' }
+				],
 			events: [
 				{ key: 'src', label: 'Image URL' },
 				{ key: 'title', label: 'Title' },
@@ -218,11 +283,17 @@
 								onChange: function(nextValue) {
 									updateItem(index, field.key, nextValue);
 								}
-							});
-						}
+								});
+							}
 
-						if (field.type === 'textarea') {
-							return el(TextareaControl, {
+							if (isIconImageField(field.key)) {
+								return el('div', { key: field.key }, renderMediaField(field, item[field.key], function(nextValue) {
+									updateItem(index, field.key, nextValue);
+								}));
+							}
+
+							if (field.type === 'textarea') {
+								return el(TextareaControl, {
 								key: field.key,
 								label: field.label,
 								value: item[field.key] || '',
@@ -256,6 +327,12 @@
 	Object.keys(config.specs).forEach(function(slug) {
 		var spec = config.specs[slug];
 		var name = 'devfolio/' + slug + '-section';
+		var attributes = Object.assign({
+			align: {
+				type: 'string',
+				default: 'full'
+			}
+		}, spec.attributes);
 
 		registerBlockType(name, {
 			apiVersion: 2,
@@ -263,7 +340,7 @@
 			icon: 'layout',
 			category: 'devfolio',
 			description: spec.description,
-			attributes: spec.attributes,
+			attributes: attributes,
 			supports: commonSupports,
 			edit: function(props) {
 				var attrs = props.attributes;

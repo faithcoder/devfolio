@@ -112,6 +112,8 @@ function devfolio_enqueue_block_editor_assets() {
 	$theme_uri = get_template_directory_uri();
 	$editor_css = $theme_dir . '/assets/css/editor.css';
 
+	wp_enqueue_media();
+
 	if ( file_exists( $editor_css ) ) {
 		wp_enqueue_style(
 			'devfolio-block-editor',

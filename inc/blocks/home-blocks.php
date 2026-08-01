@@ -91,20 +91,33 @@ function devfolio_get_home_block_specs() {
 				'items' => array( 'type' => 'array', 'default' => array() ),
 			),
 		),
-		'services'     => array(
-			'title'       => __( 'Services Section', 'devfolio' ),
-			'description' => __( 'Service cards.', 'devfolio' ),
-			'attributes'  => array(
-				'label' => array( 'type' => 'string', 'default' => '' ),
+			'services'     => array(
+				'title'       => __( 'Services Section', 'devfolio' ),
+				'description' => __( 'Service cards.', 'devfolio' ),
+				'attributes'  => array(
+					'label' => array( 'type' => 'string', 'default' => '' ),
 				'titleText' => array( 'type' => 'string', 'default' => '' ),
 				'desc' => array( 'type' => 'string', 'default' => '' ),
-				'items' => array( 'type' => 'array', 'default' => array() ),
+					'items' => array( 'type' => 'array', 'default' => array() ),
+				),
 			),
-		),
-		'process'      => array(
-			'title'       => __( 'Process Section', 'devfolio' ),
-			'description' => __( 'Process step cards.', 'devfolio' ),
-			'attributes'  => array(
+			'services-detail' => array(
+				'title'       => __( 'Service Details Section', 'devfolio' ),
+				'description' => __( 'Interactive service list with details displayed in a side panel.', 'devfolio' ),
+				'default_home'=> false,
+				'attributes'  => array(
+					'sectionId' => array( 'type' => 'string', 'default' => '' ),
+					'label' => array( 'type' => 'string', 'default' => '' ),
+					'titleText' => array( 'type' => 'string', 'default' => '' ),
+					'desc' => array( 'type' => 'string', 'default' => '' ),
+					'placeholderText' => array( 'type' => 'string', 'default' => '' ),
+					'items' => array( 'type' => 'array', 'default' => array() ),
+				),
+			),
+			'process'      => array(
+				'title'       => __( 'Process Section', 'devfolio' ),
+				'description' => __( 'Process step cards.', 'devfolio' ),
+				'attributes'  => array(
 				'label' => array( 'type' => 'string', 'default' => '' ),
 				'titleText' => array( 'type' => 'string', 'default' => '' ),
 				'desc' => array( 'type' => 'string', 'default' => '' ),
@@ -235,6 +248,16 @@ function devfolio_get_home_block_supports() {
 
 function devfolio_register_home_blocks() {
 	foreach ( devfolio_get_home_block_specs() as $slug => $spec ) {
+		$attributes = array_merge(
+			array(
+				'align' => array(
+					'type'    => 'string',
+					'default' => 'full',
+				),
+			),
+			$spec['attributes']
+		);
+
 		register_block_type(
 			'devfolio/' . $slug . '-section',
 			array(
@@ -246,10 +269,24 @@ function devfolio_register_home_blocks() {
 				'editor_script' => 'devfolio-editor-blocks',
 				'supports'      => devfolio_get_home_block_supports(),
 				'render_callback' => 'devfolio_render_home_block',
-				'attributes'      => $spec['attributes'],
+				'attributes'      => $attributes,
 			)
 		);
 	}
+}
+
+function devfolio_get_default_home_block_slugs() {
+	$slugs = array();
+
+	foreach ( devfolio_get_home_block_specs() as $slug => $spec ) {
+		if ( isset( $spec['default_home'] ) && false === $spec['default_home'] ) {
+			continue;
+		}
+
+		$slugs[] = $slug;
+	}
+
+	return $slugs;
 }
 add_action( 'init', 'devfolio_register_home_blocks' );
 
@@ -289,7 +326,7 @@ function devfolio_render_home_block( $attributes, $content, $block ) {
 function devfolio_get_default_home_blocks() {
 	$blocks = array();
 
-	foreach ( array_keys( devfolio_get_home_block_specs() ) as $slug ) {
+	foreach ( devfolio_get_default_home_block_slugs() as $slug ) {
 		$blocks[] = array(
 			'blockName'    => 'devfolio/' . $slug . '-section',
 			'attrs'        => array(),
@@ -357,7 +394,7 @@ function devfolio_register_homepage_pattern() {
 	}
 
 	$content = '';
-	foreach ( array_keys( devfolio_get_home_block_specs() ) as $slug ) {
+	foreach ( devfolio_get_default_home_block_slugs() as $slug ) {
 		$content .= sprintf( '<!-- wp:devfolio/%1$s-section /-->', esc_attr( $slug ) );
 	}
 

@@ -205,6 +205,44 @@ var Devfolio = (function($){
       devfolioInitCarousel($(this));
     });
 
+    // ── Interactive service detail blocks ──
+    $('.devfolio-service-detail-section').each(function() {
+      var $section = $(this);
+      var $items = $section.find('.devfolio-service-detail-item');
+      var $panel = $section.find('.devfolio-service-detail-panel');
+      var $icon = $panel.find('.devfolio-service-detail-panel-icon');
+      var $title = $panel.find('.devfolio-service-detail-panel-title');
+      var $desc = $panel.find('.devfolio-service-detail-panel-desc');
+      var $prevTitle = $panel.find('.devfolio-service-detail-prev-title');
+      var $nextTitle = $panel.find('.devfolio-service-detail-next-title');
+
+      function serviceTitleAt(index) {
+        var total = $items.length;
+        if (!total) return '';
+        var normalized = (index + total) % total;
+        return String($items.eq(normalized).data('service-title') || $items.eq(normalized).find('.devfolio-service-detail-name').text() || '');
+      }
+
+      function selectService($item) {
+        var index = parseInt($item.data('service-index'), 10);
+        if (isNaN(index)) index = $items.index($item);
+
+        $items.removeClass('devfolio-active').attr('aria-pressed', 'false');
+        $item.addClass('devfolio-active').attr('aria-pressed', 'true');
+
+        $icon.html($item.find('.devfolio-service-detail-icon-template').html() || '');
+        $title.text(String($item.data('service-title') || $item.find('.devfolio-service-detail-name').text() || ''));
+        $desc.text(String($item.data('service-desc') || ''));
+        $prevTitle.text(serviceTitleAt(index - 1));
+        $nextTitle.text(serviceTitleAt(index + 1));
+        $panel.addClass('devfolio-has-selection');
+      }
+
+      $items.on('click', function() {
+        selectService($(this));
+      });
+    });
+
     // ── Events Lightbox ──
     function devfolioOpenEventsLightbox($carousel, idx) {
       var carouselData = $carousel.data('devfolioCarousel');

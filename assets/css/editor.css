@@ -7,16 +7,49 @@
 }
 
 .editor-styles-wrapper .wp-block {
-  max-width: 1200px;
+  max-width: none;
 }
 
 .editor-styles-wrapper .wp-block[data-align="wide"],
 .editor-styles-wrapper .wp-block[data-align="full"] {
-  max-width: 1200px;
+  max-width: none;
+}
+
+.editor-styles-wrapper .devfolio-editor-block-preview,
+.editor-styles-wrapper .devfolio-section-block {
+  width: 100%;
+  max-width: none;
 }
 
 .devfolio-editor-repeater {
   margin: 0 0 16px;
+}
+
+.devfolio-editor-media-control {
+  margin: 0 0 16px;
+}
+
+.devfolio-editor-media-label {
+  margin: 0 0 8px;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.devfolio-editor-media-preview {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  padding: 8px;
+  margin: 0 0 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: #fff;
+}
+
+.devfolio-editor-media-control .components-button + .components-button {
+  margin-left: 8px;
 }
 
 .editor-styles-wrapper .devfolio-editor-block-preview {
