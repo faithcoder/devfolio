@@ -20,7 +20,7 @@ get_header();
 					<?php endif; ?>
 
 					<p class="devfolio-label"><?php echo esc_html( get_the_date( 'd F, Y' ) ); ?></p>
-					<h1 class="devfolio-section-title"><?php the_title(); ?></h1>
+						<h1 class="devfolio-section-title"><?php echo esc_html( get_the_title() ); ?></h1>
 					<div class="devfolio-job-desc"><?php the_content(); ?></div>
 				</article>
 

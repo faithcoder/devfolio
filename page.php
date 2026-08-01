@@ -13,7 +13,7 @@ get_header();
 			<?php while ( have_posts() ) : ?>
 				<?php the_post(); ?>
 				<article id="post-<?php the_ID(); ?>" <?php post_class( 'devfolio-glass' ); ?> style="padding:32px;">
-					<h1 class="devfolio-section-title"><?php the_title(); ?></h1>
+					<h1 class="devfolio-section-title"><?php echo esc_html( get_the_title() ); ?></h1>
 					<div class="devfolio-job-desc"><?php the_content(); ?></div>
 				</article>
 			<?php endwhile; ?>

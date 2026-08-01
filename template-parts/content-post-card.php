@@ -16,13 +16,13 @@ $devfolio_tag            = ! empty( $devfolio_terms ) ? $devfolio_terms[0]->name
 ?>
 <article class="devfolio-blog-card devfolio-glass devfolio-anim" data-featured-image="<?php echo esc_url( $devfolio_image_url ); ?>">
 	<span class="devfolio-blog-tag"><?php echo esc_html( $devfolio_tag ); ?></span>
-	<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+		<h3><a href="<?php echo esc_url( get_permalink() ); ?>"><?php echo esc_html( get_the_title() ); ?></a></h3>
 	<p class="devfolio-excerpt"><?php echo esc_html( devfolio_excerpt_text( get_the_ID(), 180 ) ); ?></p>
 	<div class="devfolio-blog-meta">
 		<div class="devfolio-info">
 			<span><?php echo esc_html( '📅 ' . get_the_date( 'd F, Y' ) ); ?></span>
 			<span><?php echo esc_html( '🕒 ' . $devfolio_read_minutes . ' min read' ); ?></span>
 		</div>
-		<a class="devfolio-arrow" href="<?php the_permalink(); ?>" aria-label="<?php echo esc_attr( sprintf( __( 'Read more about %s', 'devfolio' ), get_the_title() ) ); ?>">→</a>
+			<a class="devfolio-arrow" href="<?php echo esc_url( get_permalink() ); ?>" aria-label="<?php echo esc_attr( sprintf( __( 'Read more about %s', 'devfolio' ), get_the_title() ) ); ?>">→</a>
 	</div>
 </article>

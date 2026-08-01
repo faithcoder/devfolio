@@ -67,6 +67,12 @@ function devfolio_enqueue_assets() {
 	$theme_uri = get_template_directory_uri();
 	$assets    = devfolio_asset_manifest();
 
+	wp_enqueue_style(
+		'devfolio-google-fonts',
+		'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap',
+		array(),
+		null
+	);
 	wp_enqueue_style( 'devfolio-theme-style', get_stylesheet_uri(), array(), filemtime( $theme_dir . '/style.css' ) );
 	wp_enqueue_script( 'jquery' );
 	wp_enqueue_script( 'jquery-ui-core' );
@@ -113,35 +119,23 @@ function devfolio_enqueue_block_editor_assets() {
 	$editor_css = $theme_dir . '/assets/css/editor.css';
 
 	wp_enqueue_media();
+	wp_enqueue_style(
+		'devfolio-google-fonts',
+		'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap',
+		array(),
+		null
+	);
 
 	if ( file_exists( $editor_css ) ) {
 		wp_enqueue_style(
 			'devfolio-block-editor',
 			$theme_uri . '/assets/css/editor.css',
-			array(),
+			array( 'devfolio-google-fonts' ),
 			filemtime( $editor_css )
 		);
 	}
 }
 add_action( 'enqueue_block_editor_assets', 'devfolio_enqueue_block_editor_assets' );
-
-function devfolio_allow_svg_uploads( $mimes ) {
-	if ( current_user_can( 'manage_options' ) ) {
-		$mimes['svg'] = 'image/svg+xml';
-	}
-	return $mimes;
-}
-add_filter( 'upload_mimes', 'devfolio_allow_svg_uploads' );
-
-function devfolio_fix_svg_mime_type( $data, $file, $filename, $mimes ) {
-	$ext = strtolower( pathinfo( $filename, PATHINFO_EXTENSION ) );
-	if ( 'svg' === $ext ) {
-		$data['ext']  = 'svg';
-		$data['type'] = 'image/svg+xml';
-	}
-	return $data;
-}
-add_filter( 'wp_check_filetype_and_ext', 'devfolio_fix_svg_mime_type', 10, 4 );
 
 function devfolio_primary_menu_fallback() {
 	$sections = devfolio_get_nav_sections();

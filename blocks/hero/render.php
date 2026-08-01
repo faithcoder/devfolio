@@ -97,7 +97,7 @@ if (
           <?php if ( ! empty( $social_profiles ) ) : ?>
           <div class="devfolio-social-icons">
             <?php foreach ( $social_profiles as $profile ) : ?>
-            <a href="<?php echo esc_url( $profile['url'] ); ?>" target="_blank" class="devfolio-social-icon devfolio-glass" aria-label="<?php echo esc_attr( $profile['label'] ?? 'Social' ); ?>">
+            <a href="<?php echo esc_url( $profile['url'] ); ?>" target="_blank" rel="noopener noreferrer" class="devfolio-social-icon devfolio-glass" aria-label="<?php echo esc_attr( $profile['label'] ?? 'Social' ); ?>">
               <?php echo devfolio_render_icon( $profile['icon_image'] ?? '', $profile['icon'] ?? '', $profile['label'] ?? 'Social' ); ?>
             </a>
             <?php endforeach; ?>
