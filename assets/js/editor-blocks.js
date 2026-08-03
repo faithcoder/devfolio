@@ -17,6 +17,21 @@
 		return;
 	}
 
+	if (!config.specs['tabbed-showcase']) {
+		config.specs['tabbed-showcase'] = {
+			title: 'Tabbed Showcase Section',
+			description: 'Tabbed slider section with media, descriptions, and feature lists.',
+			keywords: ['tabs', 'showcase', 'slider', 'templates'],
+			attributes: {
+				sectionId: { type: 'string', default: '' },
+				label: { type: 'string', default: '' },
+				titleText: { type: 'string', default: '' },
+				desc: { type: 'string', default: '' },
+				showcaseItems: { type: 'array', default: [] }
+			}
+		};
+	}
+
 	var commonSupports = {
 		align: ['wide', 'full'],
 		anchor: true,
@@ -73,19 +88,25 @@
 		return key === 'iconImage' || key === 'icon_image';
 	}
 
+	function isMediaUploadField(key) {
+		return isIconImageField(key) || key === 'image' || key === 'src' || key === 'video';
+	}
+
 	function renderMediaField(field, value, onChange) {
-		var imageUrl = value || '';
+		var mediaUrl = value || '';
+		var isVideo = field.key === 'video';
+		var noun = isIconImageField(field.key) ? 'Icon' : (isVideo ? 'Video' : 'Image');
 		var mediaButton = function(open) {
 			return el(Button, {
-				variant: imageUrl ? 'secondary' : 'primary',
+				variant: mediaUrl ? 'secondary' : 'primary',
 				onClick: open
-			}, imageUrl ? 'Replace Icon' : 'Upload Icon');
+			}, mediaUrl ? 'Replace ' + noun : 'Upload ' + noun);
 		};
 
 		if (!MediaUpload) {
 			return el(TextControl, {
 				label: field.label,
-				value: imageUrl,
+				value: mediaUrl,
 				onChange: onChange
 			});
 		}
@@ -94,17 +115,22 @@
 			'div',
 			{ className: 'devfolio-editor-media-control' },
 			el('p', { className: 'devfolio-editor-media-label' }, field.label),
-			imageUrl ? el('img', {
+			mediaUrl && !isVideo ? el('img', {
 				className: 'devfolio-editor-media-preview',
-				src: imageUrl,
+				src: mediaUrl,
 				alt: ''
+			}) : null,
+			mediaUrl && isVideo ? el('video', {
+				className: 'devfolio-editor-media-preview devfolio-editor-video-preview',
+				src: mediaUrl,
+				controls: true
 			}) : null,
 			MediaUploadCheck ? el(
 				MediaUploadCheck,
 				{},
 				el(MediaUpload, {
-					allowedTypes: ['image'],
-					value: imageUrl,
+					allowedTypes: isVideo ? ['video'] : ['image'],
+					value: mediaUrl,
 					onSelect: function(media) {
 						onChange(media && media.url ? media.url : '');
 					},
@@ -113,8 +139,8 @@
 					}
 				})
 			) : el(MediaUpload, {
-				allowedTypes: ['image'],
-				value: imageUrl,
+				allowedTypes: isVideo ? ['video'] : ['image'],
+				value: mediaUrl,
 				onSelect: function(media) {
 					onChange(media && media.url ? media.url : '');
 				},
@@ -122,13 +148,13 @@
 					return mediaButton(mediaProps.open);
 				}
 			}),
-			imageUrl ? el(Button, {
+			mediaUrl ? el(Button, {
 				isDestructive: true,
 				variant: 'tertiary',
 				onClick: function() {
 					onChange('');
 				}
-			}, 'Remove Icon') : null
+			}, 'Remove ' + noun) : null
 		);
 	}
 
@@ -165,10 +191,10 @@
 					{ key: 'meta', label: 'Meta' },
 					{ key: 'desc', label: 'Description', type: 'textarea' },
 					{ key: 'iconImage', label: 'Icon Image' },
-					{ key: 'image', label: 'Image URL' },
-				{ key: 'category', label: 'Category' },
-				{ key: 'tech', label: 'Tech / Tags' },
-				{ key: 'live', label: 'Live URL' },
+					{ key: 'image', label: 'Image' },
+					{ key: 'category', label: 'Category' },
+					{ key: 'tech', label: 'Tech / Tags' },
+					{ key: 'live', label: 'Live URL' },
 				{ key: 'github', label: 'GitHub URL' },
 				{ key: 'year', label: 'Year' },
 				{ key: 'position', label: 'Position' },
@@ -177,12 +203,26 @@
 				{ key: 'role', label: 'Role' },
 				{ key: 'initials', label: 'Initials' },
 				{ key: 'rating', label: 'Rating' },
-				{ key: 'num', label: 'Number' },
-				{ key: 'src', label: 'Image URL' },
-				{ key: 'loc', label: 'Location' },
-				{ key: 'icon_svg', label: 'SVG Markup', type: 'textarea' },
-				{ key: 'tags', label: 'Tags' }
-			],
+					{ key: 'num', label: 'Number' },
+					{ key: 'src', label: 'Image' },
+					{ key: 'loc', label: 'Location' },
+					{ key: 'icon_svg', label: 'SVG Markup', type: 'textarea' },
+					{ key: 'tags', label: 'Tags' }
+				],
+				showcaseItems: [
+					{ key: 'title', label: 'Tab Title' },
+					{ key: 'subtitle', label: 'Subtitle' },
+					{ key: 'desc', label: 'Description', type: 'textarea' },
+					{ key: 'features', label: 'Features (comma separated)', type: 'textarea' },
+					{ key: 'mediaType', label: 'Media Type', type: 'select', options: [
+						{ label: 'Image', value: 'image' },
+						{ label: 'Video', value: 'video' }
+					] },
+					{ key: 'iconImage', label: 'Icon Image' },
+					{ key: 'image', label: 'Image' },
+					{ key: 'video', label: 'Video' },
+					{ key: 'icon_svg', label: 'SVG Markup', type: 'textarea' }
+				],
 			skillGroups: [
 				{ key: 'title', label: 'Group Title' },
 				{ key: 'tags', label: 'Tags' }
@@ -216,8 +256,8 @@
 			]
 		};
 
-		return maps[key] || maps.items;
-	}
+			return maps[key] || maps.items;
+		}
 
 	function renderRepeater(attrKey, items, setAttributes) {
 		var fields = repeaterFieldMap(attrKey);
@@ -271,8 +311,8 @@
 						key: attrKey + '-' + index
 					},
 					fields.map(function(field) {
-						if (field.key === 'position') {
-							return el(SelectControl, {
+							if (field.key === 'position') {
+								return el(SelectControl, {
 								key: field.key,
 								label: field.label,
 								value: item[field.key] || 'top',
@@ -286,7 +326,19 @@
 								});
 							}
 
-							if (isIconImageField(field.key)) {
+							if (field.type === 'select') {
+								return el(SelectControl, {
+									key: field.key,
+									label: field.label,
+									value: item[field.key] || (field.options && field.options[0] ? field.options[0].value : ''),
+									options: field.options || [],
+									onChange: function(nextValue) {
+										updateItem(index, field.key, nextValue);
+									}
+								});
+							}
+
+							if (isMediaUploadField(field.key)) {
 								return el('div', { key: field.key }, renderMediaField(field, item[field.key], function(nextValue) {
 									updateItem(index, field.key, nextValue);
 								}));
@@ -337,10 +389,11 @@
 		registerBlockType(name, {
 			apiVersion: 2,
 			title: spec.title,
-			icon: 'layout',
-			category: 'devfolio',
-			description: spec.description,
-			attributes: attributes,
+				icon: 'layout',
+				category: 'devfolio',
+				description: spec.description,
+				keywords: spec.keywords || [],
+				attributes: attributes,
 			supports: commonSupports,
 			edit: function(props) {
 				var attrs = props.attributes;

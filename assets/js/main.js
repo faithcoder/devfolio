@@ -243,6 +243,63 @@ var Devfolio = (function($){
       });
     });
 
+    // ── Tabbed showcase blocks ──
+    $('.devfolio-tabbed-showcase-section').each(function() {
+      var $section = $(this);
+      var $tabs = $section.find('.devfolio-tabbed-showcase-tab');
+      var $media = $section.find('.devfolio-tabbed-showcase-media');
+      var $kicker = $section.find('.devfolio-tabbed-showcase-kicker');
+      var $title = $section.find('.devfolio-tabbed-showcase-copy h3');
+      var $desc = $section.find('.devfolio-tabbed-showcase-panel-desc');
+      var $features = $section.find('.devfolio-tabbed-showcase-features');
+
+      function selectShowcase(index) {
+        var total = $tabs.length;
+        if (!total) return;
+        var nextIndex = (index + total) % total;
+        var $tab = $tabs.eq(nextIndex);
+        var mediaType = String($tab.data('media-type') || 'image');
+        var image = String($tab.data('image') || '');
+        var video = String($tab.data('video') || '');
+        var features = String($tab.data('features') || '').split(',').map(function(feature) {
+          return feature.trim();
+        }).filter(Boolean);
+
+        $tabs.removeClass('devfolio-active').attr('aria-selected', 'false');
+        $tab.addClass('devfolio-active').attr('aria-selected', 'true');
+
+        $kicker.text(String($tab.data('subtitle') || ''));
+        $title.text(String($tab.data('title') || $tab.find('.devfolio-tabbed-showcase-tab-title').text() || ''));
+        $desc.text(String($tab.data('desc') || ''));
+
+        $media.empty();
+        if (mediaType === 'video' && video) {
+          $('<video/>', { src: video, controls: true, playsinline: true }).appendTo($media);
+        } else if (image) {
+          $('<img/>', { src: image, alt: String($tab.data('title') || '') }).appendTo($media);
+        } else {
+          $('<div/>', { class: 'devfolio-tabbed-showcase-placeholder', text: 'Add an image or video for this tab.' }).appendTo($media);
+        }
+
+        $features.empty();
+        features.forEach(function(feature) {
+          $('<span/>', { text: feature }).appendTo($features);
+        });
+      }
+
+      $tabs.on('click', function() {
+        selectShowcase($tabs.index(this));
+      });
+      $section.find('.devfolio-tabbed-showcase-prev').on('click', function() {
+        selectShowcase($tabs.index($tabs.filter('.devfolio-active')) - 1);
+      });
+      $section.find('.devfolio-tabbed-showcase-next').on('click', function() {
+        selectShowcase($tabs.index($tabs.filter('.devfolio-active')) + 1);
+      });
+
+      selectShowcase(0);
+    });
+
     // ── Events Lightbox ──
     function devfolioOpenEventsLightbox($carousel, idx) {
       var carouselData = $carousel.data('devfolioCarousel');

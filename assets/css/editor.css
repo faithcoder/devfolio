@@ -48,6 +48,12 @@
   background: #fff;
 }
 
+.devfolio-editor-video-preview {
+  width: 180px;
+  height: 100px;
+  object-fit: cover;
+}
+
 .devfolio-editor-media-control .components-button + .components-button {
   margin-left: 8px;
 }

@@ -96,8 +96,8 @@ function devfolio_get_home_block_specs() {
 				'description' => __( 'Service cards.', 'devfolio' ),
 				'attributes'  => array(
 					'label' => array( 'type' => 'string', 'default' => '' ),
-				'titleText' => array( 'type' => 'string', 'default' => '' ),
-				'desc' => array( 'type' => 'string', 'default' => '' ),
+					'titleText' => array( 'type' => 'string', 'default' => '' ),
+					'desc' => array( 'type' => 'string', 'default' => '' ),
 					'items' => array( 'type' => 'array', 'default' => array() ),
 				),
 			),
@@ -105,6 +105,7 @@ function devfolio_get_home_block_specs() {
 				'title'       => __( 'Service Details Section', 'devfolio' ),
 				'description' => __( 'Interactive service list with details displayed in a side panel.', 'devfolio' ),
 				'default_home'=> false,
+				'keywords'    => array( __( 'services', 'devfolio' ), __( 'details', 'devfolio' ), __( 'interactive', 'devfolio' ) ),
 				'attributes'  => array(
 					'sectionId' => array( 'type' => 'string', 'default' => '' ),
 					'label' => array( 'type' => 'string', 'default' => '' ),
@@ -114,16 +115,29 @@ function devfolio_get_home_block_specs() {
 					'items' => array( 'type' => 'array', 'default' => array() ),
 				),
 			),
+			'tabbed-showcase' => array(
+				'title'       => __( 'Tabbed Showcase Section', 'devfolio' ),
+				'description' => __( 'Tabbed slider section with media, descriptions, and feature lists.', 'devfolio' ),
+				'default_home'=> false,
+				'keywords'    => array( __( 'tabs', 'devfolio' ), __( 'showcase', 'devfolio' ), __( 'slider', 'devfolio' ), __( 'templates', 'devfolio' ) ),
+				'attributes'  => array(
+					'sectionId' => array( 'type' => 'string', 'default' => '' ),
+					'label' => array( 'type' => 'string', 'default' => '' ),
+					'titleText' => array( 'type' => 'string', 'default' => '' ),
+					'desc' => array( 'type' => 'string', 'default' => '' ),
+					'showcaseItems' => array( 'type' => 'array', 'default' => array() ),
+				),
+			),
 			'process'      => array(
 				'title'       => __( 'Process Section', 'devfolio' ),
 				'description' => __( 'Process step cards.', 'devfolio' ),
 				'attributes'  => array(
-				'label' => array( 'type' => 'string', 'default' => '' ),
-				'titleText' => array( 'type' => 'string', 'default' => '' ),
-				'desc' => array( 'type' => 'string', 'default' => '' ),
-				'steps' => array( 'type' => 'array', 'default' => array() ),
+					'label' => array( 'type' => 'string', 'default' => '' ),
+					'titleText' => array( 'type' => 'string', 'default' => '' ),
+					'desc' => array( 'type' => 'string', 'default' => '' ),
+					'steps' => array( 'type' => 'array', 'default' => array() ),
+				),
 			),
-		),
 		'origin'       => array(
 			'title'       => __( 'Origin Section', 'devfolio' ),
 			'description' => __( 'Journey timeline.', 'devfolio' ),
@@ -263,12 +277,13 @@ function devfolio_register_home_blocks() {
 			array(
 				'api_version'   => 2,
 				'title'         => $spec['title'],
-				'category'      => 'devfolio',
-				'icon'          => 'layout',
-				'description'   => $spec['description'],
-				'editor_script' => 'devfolio-editor-blocks',
-				'supports'      => devfolio_get_home_block_supports(),
-				'render_callback' => 'devfolio_render_home_block',
+					'category'      => 'devfolio',
+					'icon'          => 'layout',
+					'description'   => $spec['description'],
+					'editor_script' => 'devfolio-editor-blocks',
+					'keywords'      => $spec['keywords'] ?? array(),
+					'supports'      => devfolio_get_home_block_supports(),
+					'render_callback' => 'devfolio_render_home_block',
 				'attributes'      => $attributes,
 			)
 		);
