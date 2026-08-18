@@ -17,6 +17,21 @@
 		return;
 	}
 
+	if (!config.specs['plugins']) {
+		config.specs['plugins'] = {
+			title: 'Plugins Section',
+			description: 'Plugin showcase with features and GitHub download links.',
+			default_home: false,
+			keywords: ['plugins', 'download', 'github', 'free'],
+			attributes: {
+				label: { type: 'string', default: '' },
+				titleText: { type: 'string', default: '' },
+				desc: { type: 'string', default: '' },
+				pluginItems: { type: 'array', default: [] }
+			}
+		};
+	}
+
 	if (!config.specs['tabbed-showcase']) {
 		config.specs['tabbed-showcase'] = {
 			title: 'Tabbed Showcase Section',
@@ -253,6 +268,15 @@
 				{ key: 'num', label: 'Number' },
 				{ key: 'title', label: 'Title' },
 				{ key: 'desc', label: 'Description', type: 'textarea' }
+			],
+			pluginItems: [
+				{ key: 'title', label: 'Plugin Name' },
+				{ key: 'desc', label: 'Description', type: 'textarea' },
+				{ key: 'features', label: 'Features (comma separated)', type: 'textarea' },
+				{ key: 'tags', label: 'Tags (comma separated)' },
+				{ key: 'github', label: 'GitHub URL' },
+				{ key: 'iconImage', label: 'Icon Image' },
+				{ key: 'icon', label: 'SVG Markup', type: 'textarea' }
 			]
 		};
 

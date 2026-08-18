@@ -139,7 +139,7 @@ add_action( 'enqueue_block_editor_assets', 'devfolio_enqueue_block_editor_assets
 
 function devfolio_primary_menu_fallback() {
 	$sections = devfolio_get_nav_sections();
-	$order    = array( 'hero', 'experience', 'skills', 'projects', 'portfolio', 'services', 'process', 'origin', 'blog', 'testimonials', 'contact' );
+	$order    = array( 'hero', 'experience', 'skills', 'projects', 'portfolio', 'services', 'plugins', 'process', 'origin', 'blog', 'testimonials', 'contact' );
 
 	echo '<ul id="devfolio-primary-menu" class="devfolio-nav-links menu-list">';
 	foreach ( $order as $key ) {

@@ -101,10 +101,22 @@ function devfolio_get_home_block_specs() {
 					'items' => array( 'type' => 'array', 'default' => array() ),
 				),
 			),
-			'services-detail' => array(
+			'plugins'          => array(
+				'title'        => __( 'Plugins Section', 'devfolio' ),
+				'description'  => __( 'Plugin showcase with features and GitHub download links.', 'devfolio' ),
+				'default_home' => false,
+				'keywords'     => array( __( 'plugins', 'devfolio' ), __( 'download', 'devfolio' ), __( 'github', 'devfolio' ), __( 'free', 'devfolio' ) ),
+				'attributes'   => array(
+					'label'       => array( 'type' => 'string', 'default' => '' ),
+					'titleText'   => array( 'type' => 'string', 'default' => '' ),
+					'desc'        => array( 'type' => 'string', 'default' => '' ),
+					'pluginItems' => array( 'type' => 'array', 'default' => array() ),
+				),
+			),
+			'services-detail'  => array(
 				'title'       => __( 'Service Details Section', 'devfolio' ),
 				'description' => __( 'Interactive service list with details displayed in a side panel.', 'devfolio' ),
-				'default_home'=> false,
+				'default_home' => false,
 				'keywords'    => array( __( 'services', 'devfolio' ), __( 'details', 'devfolio' ), __( 'interactive', 'devfolio' ) ),
 				'attributes'  => array(
 					'sectionId' => array( 'type' => 'string', 'default' => '' ),

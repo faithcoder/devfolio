@@ -254,6 +254,7 @@ function devfolio_get_section_defaults() {
 		'projects'     => array( 'id' => 'projects', 'label' => __( 'Projects', 'devfolio' ) ),
 		'portfolio'    => array( 'id' => 'portfolio', 'label' => __( 'Portfolio', 'devfolio' ) ),
 		'services'     => array( 'id' => 'services', 'label' => __( 'Services', 'devfolio' ) ),
+		'plugins'      => array( 'id' => 'plugins', 'label' => __( 'Plugins', 'devfolio' ) ),
 		'process'      => array( 'id' => 'process', 'label' => __( 'Process', 'devfolio' ) ),
 		'origin'       => array( 'id' => 'origin', 'label' => __( 'Origin Story', 'devfolio' ) ),
 		'blog'         => array( 'id' => 'blog', 'label' => __( 'Blog', 'devfolio' ) ),

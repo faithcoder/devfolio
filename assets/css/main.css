@@ -1351,6 +1351,93 @@ button {
   }
 }
 
+/* ── Plugins ───────────────────────────────────── */
+.devfolio-plugins-subtitle {
+  color: var(--muted-fg);
+  margin-bottom: 48px
+}
+
+.devfolio-plugins-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px
+}
+
+.devfolio-plugin-card {
+  padding: 32px;
+  display: flex;
+  flex-direction: column
+}
+
+.devfolio-plugin-icon {
+  padding: 12px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--primary) 10%, transparent);
+  color: var(--primary);
+  width: fit-content;
+  margin-bottom: 20px;
+  transition: background .2s
+}
+
+.devfolio-plugin-card:hover .devfolio-plugin-icon {
+  background: color-mix(in srgb, var(--primary) 20%, transparent)
+}
+
+.devfolio-plugin-card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px
+}
+
+.devfolio-plugin-desc {
+  font-size: 14px;
+  color: var(--muted-fg);
+  line-height: 1.7;
+  margin-bottom: 16px
+}
+
+.devfolio-plugin-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px
+}
+
+.devfolio-plugin-features li {
+  font-size: 13px;
+  color: var(--muted-fg);
+  padding-left: 18px;
+  position: relative
+}
+
+.devfolio-plugin-features li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--primary)
+}
+
+.devfolio-plugin-card .devfolio-tech-tags {
+  margin-bottom: 20px
+}
+
+.devfolio-plugin-btn {
+  margin-top: auto;
+  align-self: flex-start
+}
+
+@media(max-width:768px) {
+  .devfolio-plugins-grid {
+    grid-template-columns: 1fr
+  }
+}
+
 /* ── Interactive Service Details ───────────────── */
 .devfolio-service-detail-section {
   padding: 120px 0;
