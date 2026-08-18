@@ -33,7 +33,7 @@ $default_plugins = array(
 
 $plugin_default_icon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>';
 $plugins             = devfolio_get_block_array_attr( $args, 'pluginItems', $default_plugins );
-$section_id          = devfolio_get_section_id( 'plugins' );
+$section_id          = devfolio_get_block_section_id( $args, 'plugins' );
 $plugins_label       = devfolio_get_block_attr( $args, 'label', 'Free Plugins' );
 $plugins_title       = devfolio_get_block_attr( $args, 'titleText', 'Open Source WordPress Plugins' );
 $plugins_desc        = devfolio_get_block_attr( $args, 'desc', 'Free plugins built for the WordPress community. Download, contribute, or use them in your projects.' );

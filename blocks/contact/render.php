@@ -12,7 +12,7 @@ $contact_title = devfolio_get_block_attr( $args, 'titleText', 'Need WordPress Su
 $contact_desc  = devfolio_get_block_attr( $args, 'desc', 'For plugin support workflows, troubleshooting systems, or documentation planning, reach me at acc.arif@gmail.com or +8801769179697.' );
 $contact_email = devfolio_get_block_attr( $args, 'email', 'acc.arif@gmail.com' );
 $contact_btn   = devfolio_get_block_attr( $args, 'buttonText', 'Email Md Abdullah Al Arif' );
-$section_id    = devfolio_get_section_id( 'contact' );
+$section_id    = devfolio_get_block_section_id( $args, 'contact' );
 
 if (
 	'' === trim( (string) $contact_label ) &&

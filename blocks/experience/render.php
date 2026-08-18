@@ -16,7 +16,7 @@ $default_experience = array(
 );
 
 $default_icon      = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="7" rx="2"/><path d="M16 3h-8l-2 4h12z"/></svg>';
-$section_id        = devfolio_get_section_id( 'experience' );
+$section_id        = devfolio_get_block_section_id( $args, 'experience' );
 $experience_label  = devfolio_get_block_attr( $args, 'label', 'Experience' );
 $experience_title  = devfolio_get_block_attr( $args, 'titleText', 'Support & Technical Experience' );
 $experience_desc   = devfolio_get_block_attr( $args, 'desc', '' );

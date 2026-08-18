@@ -11,7 +11,7 @@ $items           = devfolio_get_block_array_attr( $args, 'items', $fallback_item
 $portfolio_label = devfolio_get_block_attr( $args, 'label', 'Portfolio' );
 $portfolio_title = devfolio_get_block_attr( $args, 'titleText', 'Featured Projects' );
 $portfolio_desc  = devfolio_get_block_attr( $args, 'desc', 'A selection of WordPress themes, plugins, and contributions built over the years.' );
-$section_id      = devfolio_get_section_id( 'portfolio' );
+$section_id      = devfolio_get_block_section_id( $args, 'portfolio' );
 ?>
 <section id="<?php echo esc_attr( $section_id ); ?>" class="devfolio-section">
   <div class="devfolio-container">

@@ -6,7 +6,7 @@
  */
 $args = isset( $args ) && is_array( $args ) ? $args : array();
 
-$section_id = devfolio_get_section_id( 'blog' );
+$section_id = devfolio_get_block_section_id( $args, 'blog' );
 $blog_label = devfolio_get_block_attr( $args, 'label', 'Blog' );
 $blog_title = devfolio_get_block_attr( $args, 'titleText', 'Latest Articles' );
 $blog_desc  = devfolio_get_block_attr( $args, 'desc', '' );

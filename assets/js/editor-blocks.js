@@ -407,17 +407,21 @@
 			align: {
 				type: 'string',
 				default: 'full'
+			},
+			sectionId: {
+				type: 'string',
+				default: ''
 			}
 		}, spec.attributes);
 
 		registerBlockType(name, {
 			apiVersion: 2,
 			title: spec.title,
-				icon: 'layout',
-				category: 'devfolio',
-				description: spec.description,
-				keywords: spec.keywords || [],
-				attributes: attributes,
+			icon: 'layout',
+			category: 'devfolio',
+			description: spec.description,
+			keywords: spec.keywords || [],
+			attributes: attributes,
 			supports: commonSupports,
 			edit: function(props) {
 				var attrs = props.attributes;
@@ -433,8 +437,20 @@
 						el(
 							PanelBody,
 							{ title: spec.title, initialOpen: true },
+							el(TextControl, {
+								label: 'CSS ID',
+								help: 'Use this in menu custom links, for example #services',
+								value: attrs.sectionId || '',
+								onChange: function(nextValue) {
+									setAttributes({ sectionId: nextValue });
+								}
+							}),
 							Object.keys(spec.attributes).map(function(attrKey) {
 								var attrSpec = spec.attributes[attrKey];
+
+								if (attrKey === 'sectionId') {
+									return null;
+								}
 
 								if (attrSpec.type === 'array') {
 									return el('div', { key: attrKey }, renderRepeater(attrKey, attrs[attrKey], setAttributes));

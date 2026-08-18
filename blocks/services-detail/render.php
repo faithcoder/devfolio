@@ -41,8 +41,7 @@ $default_services = array(
 	),
 );
 
-$section_id       = sanitize_title( devfolio_get_block_attr( $args, 'sectionId', 'service-details' ) );
-$section_id       = '' !== $section_id ? $section_id : 'service-details';
+$section_id       = devfolio_get_block_section_id( $args, 'services-detail' );
 $label            = devfolio_get_block_attr( $args, 'label', 'Production and Technology' );
 $title            = devfolio_get_block_attr( $args, 'titleText', 'Services' );
 $desc             = devfolio_get_block_attr( $args, 'desc', 'We provide multiple services from digital production to technology services. Based on understanding your business and goals, we tailor the right process for you.' );

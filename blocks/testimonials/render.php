@@ -16,7 +16,7 @@ $items      = devfolio_get_block_array_attr(
 		array( 'text' => 'Exceptional problem-solver with deep WordPress expertise. Built our entire SaaS integration layer from scratch - reliable, clean, and well-documented.', 'name' => 'Emily Rodriguez', 'role' => 'Founder, DevTools Co.', 'initials' => 'ER', 'rating' => '★★★★★' ),
 	)
 );
-$section_id         = devfolio_get_section_id( 'testimonials' );
+$section_id         = devfolio_get_block_section_id( $args, 'testimonials' );
 $testimonials_label = devfolio_get_block_attr( $args, 'label', 'Testimonials' );
 $testimonials_title = devfolio_get_block_attr( $args, 'titleText', 'What clients say' );
 $testimonials_desc  = devfolio_get_block_attr( $args, 'desc', '' );

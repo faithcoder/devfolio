@@ -27,7 +27,7 @@ $steps = array_values(
 	)
 );
 
-$section_id = devfolio_get_section_id( 'process' );
+$section_id = devfolio_get_block_section_id( $args, 'process' );
 $process_label = devfolio_get_block_attr( $args, 'label', 'Process' );
 $process_title = devfolio_get_block_attr( $args, 'titleText', 'How I work' );
 $process_desc  = devfolio_get_block_attr( $args, 'desc', '' );

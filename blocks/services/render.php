@@ -15,7 +15,7 @@ $default_services = array(
 
 $default_service_icon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>';
 $services             = devfolio_get_block_array_attr( $args, 'items', $default_services );
-$section_id           = devfolio_get_section_id( 'services' );
+$section_id           = devfolio_get_block_section_id( $args, 'services' );
 $services_label       = devfolio_get_block_attr( $args, 'label', 'Services' );
 $services_title       = devfolio_get_block_attr( $args, 'titleText', 'How I Can Help Your Users' );
 $services_desc        = devfolio_get_block_attr( $args, 'desc', 'Support-first execution with technical depth and clear communication.' );

@@ -280,6 +280,10 @@ function devfolio_register_home_blocks() {
 					'type'    => 'string',
 					'default' => 'full',
 				),
+				'sectionId' => array(
+					'type'    => 'string',
+					'default' => '',
+				),
 			),
 			$spec['attributes']
 		);
@@ -287,15 +291,15 @@ function devfolio_register_home_blocks() {
 		register_block_type(
 			'devfolio/' . $slug . '-section',
 			array(
-				'api_version'   => 2,
-				'title'         => $spec['title'],
-					'category'      => 'devfolio',
-					'icon'          => 'layout',
-					'description'   => $spec['description'],
-					'editor_script' => 'devfolio-editor-blocks',
-					'keywords'      => $spec['keywords'] ?? array(),
-					'supports'      => devfolio_get_home_block_supports(),
-					'render_callback' => 'devfolio_render_home_block',
+				'api_version'     => 2,
+				'title'           => $spec['title'],
+				'category'        => 'devfolio',
+				'icon'            => 'layout',
+				'description'     => $spec['description'],
+				'editor_script'   => 'devfolio-editor-blocks',
+				'keywords'        => $spec['keywords'] ?? array(),
+				'supports'        => devfolio_get_home_block_supports(),
+				'render_callback' => 'devfolio_render_home_block',
 				'attributes'      => $attributes,
 			)
 		);

@@ -18,13 +18,12 @@ function devfolio_register_native_customizer( $wp_customize ) {
 		'devfolio_options',
 		array(
 			'title'       => __( 'Devfolio Options', 'devfolio' ),
-			'description' => __( 'Native theme settings for navigation, colors, and typography.', 'devfolio' ),
+			'description' => __( 'Native theme settings for colors and typography.', 'devfolio' ),
 			'priority'    => 10,
 		)
 	);
 
 	$sections = array(
-		'devfolio_navigation_section' => __( 'Navigation', 'devfolio' ),
 		'devfolio_styles_section'     => __( 'Colors', 'devfolio' ),
 		'devfolio_typography_section' => __( 'Typography', 'devfolio' ),
 	);
@@ -35,45 +34,6 @@ function devfolio_register_native_customizer( $wp_customize ) {
 			array(
 				'title' => $section_title,
 				'panel' => 'devfolio_options',
-			)
-		);
-	}
-
-	foreach ( devfolio_get_section_defaults() as $section_key => $section_meta ) {
-		$id_setting = 'devfolio_section_id_' . $section_key;
-		$label_key  = 'devfolio_nav_label_' . $section_key;
-
-		$wp_customize->add_setting(
-			$id_setting,
-			array(
-				'default'           => $section_meta['id'],
-				'sanitize_callback' => 'sanitize_title',
-				'type'              => 'theme_mod',
-			)
-		);
-		$wp_customize->add_control(
-			$id_setting,
-			array(
-				'label'   => sprintf( __( '%s Section ID', 'devfolio' ), $section_meta['label'] ),
-				'section' => 'devfolio_navigation_section',
-				'type'    => 'text',
-			)
-		);
-
-		$wp_customize->add_setting(
-			$label_key,
-			array(
-				'default'           => $section_meta['label'],
-				'sanitize_callback' => 'sanitize_text_field',
-				'type'              => 'theme_mod',
-			)
-		);
-		$wp_customize->add_control(
-			$label_key,
-			array(
-				'label'   => sprintf( __( '%s Menu Label', 'devfolio' ), $section_meta['label'] ),
-				'section' => 'devfolio_navigation_section',
-				'type'    => 'text',
 			)
 		);
 	}

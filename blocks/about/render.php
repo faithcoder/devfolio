@@ -41,7 +41,7 @@ $about_desc       = devfolio_get_block_attr( $args, 'desc', '' );
 $about_tab_skills = devfolio_get_block_attr( $args, 'tabSkills', 'Skills' );
 $about_tab_exp    = devfolio_get_block_attr( $args, 'tabExperience', 'Experience' );
 $about_tab_edu    = devfolio_get_block_attr( $args, 'tabEducation', 'Education' );
-$section_id       = devfolio_get_section_id( 'about' );
+$section_id       = devfolio_get_block_section_id( $args, 'about' );
 ?>
 <section id="<?php echo esc_attr( $section_id ); ?>" class="devfolio-section">
   <div class="devfolio-container">

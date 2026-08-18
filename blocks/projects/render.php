@@ -30,7 +30,7 @@ $events              = devfolio_get_block_array_attr( $args, 'events', array(
 	array( 'src' => 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=800&h=500&fit=crop', 'title' => 'Hour of Code', 'loc' => 'Local Tech Meetup' ),
 	array( 'src' => 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800&h=500&fit=crop', 'title' => 'React & Node.js Conference', 'loc' => 'Attendee' ),
 ) );
-$section_id = devfolio_get_section_id( 'projects' );
+$section_id = devfolio_get_block_section_id( $args, 'projects' );
 ?>
 <section id="<?php echo esc_attr( $section_id ); ?>" class="devfolio-section">
   <div class="devfolio-container">

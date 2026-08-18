@@ -38,8 +38,7 @@ $default_items = array(
 	),
 );
 
-$section_id = sanitize_title( devfolio_get_block_attr( $args, 'sectionId', 'tabbed-showcase' ) );
-$section_id = '' !== $section_id ? $section_id : 'tabbed-showcase';
+$section_id = devfolio_get_block_section_id( $args, 'tabbed-showcase' );
 $label      = devfolio_get_block_attr( $args, 'label', 'Templates and Data' );
 $title      = devfolio_get_block_attr( $args, 'titleText', 'Ready-Made Sections For Real-World Data' );
 $desc       = devfolio_get_block_attr( $args, 'desc', 'Design tabs with images, videos, feature lists, and clear data-focused panels.' );

@@ -28,7 +28,7 @@ $skill_groups = array_values(
 		}
 	)
 );
-$section_id = devfolio_get_section_id( 'skills' );
+$section_id = devfolio_get_block_section_id( $args, 'skills' );
 $skills_label = devfolio_get_block_attr( $args, 'label', 'Skills' );
 $skills_title = devfolio_get_block_attr( $args, 'titleText', 'Skills & Toolset' );
 $skills_desc  = devfolio_get_block_attr( $args, 'desc', '' );

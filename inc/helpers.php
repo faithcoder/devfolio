@@ -247,19 +247,21 @@ function devfolio_get_fallback_portfolio_items() {
 
 function devfolio_get_section_defaults() {
 	return array(
-		'hero'         => array( 'id' => 'home', 'label' => __( 'Home', 'devfolio' ) ),
-		'experience'   => array( 'id' => 'experience', 'label' => __( 'Experience', 'devfolio' ) ),
-		'about'        => array( 'id' => 'about', 'label' => __( 'About', 'devfolio' ) ),
-		'skills'       => array( 'id' => 'skills', 'label' => __( 'Skills', 'devfolio' ) ),
-		'projects'     => array( 'id' => 'projects', 'label' => __( 'Projects', 'devfolio' ) ),
-		'portfolio'    => array( 'id' => 'portfolio', 'label' => __( 'Portfolio', 'devfolio' ) ),
-		'services'     => array( 'id' => 'services', 'label' => __( 'Services', 'devfolio' ) ),
-		'plugins'      => array( 'id' => 'plugins', 'label' => __( 'Plugins', 'devfolio' ) ),
-		'process'      => array( 'id' => 'process', 'label' => __( 'Process', 'devfolio' ) ),
-		'origin'       => array( 'id' => 'origin', 'label' => __( 'Origin Story', 'devfolio' ) ),
-		'blog'         => array( 'id' => 'blog', 'label' => __( 'Blog', 'devfolio' ) ),
-		'testimonials' => array( 'id' => 'testimonials', 'label' => __( 'Testimonials', 'devfolio' ) ),
-		'contact'      => array( 'id' => 'contact', 'label' => __( 'Contact', 'devfolio' ) ),
+		'hero'            => array( 'id' => 'home', 'label' => __( 'Home', 'devfolio' ) ),
+		'experience'      => array( 'id' => 'experience', 'label' => __( 'Experience', 'devfolio' ) ),
+		'about'           => array( 'id' => 'about', 'label' => __( 'About', 'devfolio' ) ),
+		'skills'          => array( 'id' => 'skills', 'label' => __( 'Skills', 'devfolio' ) ),
+		'projects'        => array( 'id' => 'projects', 'label' => __( 'Projects', 'devfolio' ) ),
+		'portfolio'       => array( 'id' => 'portfolio', 'label' => __( 'Portfolio', 'devfolio' ) ),
+		'services'        => array( 'id' => 'services', 'label' => __( 'Services', 'devfolio' ) ),
+		'plugins'         => array( 'id' => 'plugins', 'label' => __( 'Plugins', 'devfolio' ) ),
+		'services-detail' => array( 'id' => 'service-details', 'label' => __( 'Service Details', 'devfolio' ) ),
+		'tabbed-showcase' => array( 'id' => 'tabbed-showcase', 'label' => __( 'Tabbed Showcase', 'devfolio' ) ),
+		'process'         => array( 'id' => 'process', 'label' => __( 'Process', 'devfolio' ) ),
+		'origin'          => array( 'id' => 'origin', 'label' => __( 'Origin Story', 'devfolio' ) ),
+		'blog'            => array( 'id' => 'blog', 'label' => __( 'Blog', 'devfolio' ) ),
+		'testimonials'    => array( 'id' => 'testimonials', 'label' => __( 'Testimonials', 'devfolio' ) ),
+		'contact'         => array( 'id' => 'contact', 'label' => __( 'Contact', 'devfolio' ) ),
 	);
 }
 
@@ -269,11 +271,20 @@ function devfolio_get_section_id( $key ) {
 		return sanitize_html_class( (string) $key );
 	}
 
-	$setting = 'devfolio_section_id_' . $key;
-	$value   = devfolio_get_theme_mod_value( $setting, $defaults[ $key ]['id'] );
-	$value   = sanitize_title( (string) $value );
+	return $defaults[ $key ]['id'];
+}
 
-	return '' !== $value ? $value : $defaults[ $key ]['id'];
+function devfolio_get_block_section_id( $args, $key ) {
+	$default = devfolio_get_section_id( $key );
+	$value   = devfolio_get_block_attr( $args, 'sectionId', '' );
+
+	if ( '' === trim( (string) $value ) ) {
+		$value = devfolio_get_block_attr( $args, 'anchor', $default );
+	}
+
+	$value = sanitize_title( (string) $value );
+
+	return '' !== $value ? $value : $default;
 }
 
 function devfolio_get_section_label( $key ) {
@@ -282,10 +293,7 @@ function devfolio_get_section_label( $key ) {
 		return ucfirst( (string) $key );
 	}
 
-	$setting = 'devfolio_nav_label_' . $key;
-	$value   = trim( (string) devfolio_get_theme_mod_value( $setting, $defaults[ $key ]['label'] ) );
-
-	return '' !== $value ? $value : $defaults[ $key ]['label'];
+	return $defaults[ $key ]['label'];
 }
 
 function devfolio_get_nav_sections() {

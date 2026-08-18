@@ -17,7 +17,7 @@ $hero_cta_1_url   = devfolio_get_block_attr( $args, 'primaryUrl', '#' . devfolio
 $hero_cta_2_text  = devfolio_get_block_attr( $args, 'secondaryText', 'View Contributions' );
 $hero_cta_2_url   = devfolio_get_block_attr( $args, 'secondaryUrl', '#' . devfolio_get_section_id( 'projects' ) );
 $hero_image       = devfolio_get_block_attr( $args, 'heroImage', get_template_directory_uri() . '/assets/images/profile-placeholder.svg' );
-$hero_section_id  = devfolio_get_section_id( 'hero' );
+$hero_section_id  = devfolio_get_block_section_id( $args, 'hero' );
 $hero_stats       = devfolio_get_block_array_attr(
 	$args,
 	'heroStats',

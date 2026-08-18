@@ -19,7 +19,7 @@ $journey_items = devfolio_get_block_array_attr(
 	)
 );
 
-$section_id   = devfolio_get_section_id( 'origin' );
+$section_id   = devfolio_get_block_section_id( $args, 'origin' );
 $origin_label = devfolio_get_block_attr( $args, 'label', 'Origin Story' );
 $origin_title = devfolio_get_block_attr( $args, 'titleText', 'My Journey' );
 $origin_desc  = devfolio_get_block_attr( $args, 'desc', '' );
