@@ -13,17 +13,24 @@ function devfolio_customize_sanitize_font_family( $value ) {
 	return sanitize_text_field( (string) $value );
 }
 
+function devfolio_customize_sanitize_layout_mode( $value ) {
+	$value = sanitize_key( (string) $value );
+
+	return in_array( $value, array( 'full', 'boxed' ), true ) ? $value : 'full';
+}
+
 function devfolio_register_native_customizer( $wp_customize ) {
 	$wp_customize->add_panel(
 		'devfolio_options',
 		array(
 			'title'       => __( 'Devfolio Options', 'devfolio' ),
-			'description' => __( 'Native theme settings for colors and typography.', 'devfolio' ),
+			'description' => __( 'Native theme settings for layout, colors, and typography.', 'devfolio' ),
 			'priority'    => 10,
 		)
 	);
 
 	$sections = array(
+		'devfolio_layout_section'     => __( 'Layout', 'devfolio' ),
 		'devfolio_styles_section'     => __( 'Colors', 'devfolio' ),
 		'devfolio_typography_section' => __( 'Typography', 'devfolio' ),
 	);
@@ -37,6 +44,28 @@ function devfolio_register_native_customizer( $wp_customize ) {
 			)
 		);
 	}
+
+	$wp_customize->add_setting(
+		'devfolio_layout_mode',
+		array(
+			'default'           => 'full',
+			'sanitize_callback' => 'devfolio_customize_sanitize_layout_mode',
+			'type'              => 'theme_mod',
+		)
+	);
+	$wp_customize->add_control(
+		'devfolio_layout_mode',
+		array(
+			'label'       => __( 'Site Layout', 'devfolio' ),
+			'description' => __( 'Choose full width or a boxed layout with a 1350px maximum width.', 'devfolio' ),
+			'section'     => 'devfolio_layout_section',
+			'type'        => 'select',
+			'choices'     => array(
+				'full'  => __( 'Full Width Layout', 'devfolio' ),
+				'boxed' => __( 'Boxed Layout', 'devfolio' ),
+			),
+		)
+	);
 
 	$color_fields = array(
 		'devfolio_style_primary'         => '#2fad4e',

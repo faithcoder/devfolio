@@ -178,3 +178,13 @@ foreach ( $devfolio_includes as $include_file ) {
 		require_once $path;
 	}
 }
+
+function devfolio_body_classes( $classes ) {
+	$layout_mode = devfolio_get_theme_mod_value( 'devfolio_layout_mode', 'full' );
+	$layout_mode = in_array( $layout_mode, array( 'full', 'boxed' ), true ) ? $layout_mode : 'full';
+
+	$classes[] = 'devfolio-layout-' . $layout_mode;
+
+	return $classes;
+}
+add_filter( 'body_class', 'devfolio_body_classes' );

@@ -170,6 +170,10 @@ button {
   padding: 0 clamp(24px, 5vw, 96px)
 }
 
+body.devfolio-layout-boxed .devfolio-container {
+  max-width: 1350px
+}
+
 .devfolio-section {
   padding: 96px 0;
   position: relative
