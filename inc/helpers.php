@@ -251,7 +251,7 @@ function devfolio_get_section_defaults() {
 		'experience'      => array( 'id' => 'experience', 'label' => __( 'Experience', 'devfolio' ) ),
 		'about'           => array( 'id' => 'about', 'label' => __( 'About', 'devfolio' ) ),
 		'skills'          => array( 'id' => 'skills', 'label' => __( 'Skills', 'devfolio' ) ),
-		'projects'        => array( 'id' => 'projects', 'label' => __( 'Projects', 'devfolio' ) ),
+		'projects'        => array( 'id' => 'contributions', 'label' => __( 'Contributions', 'devfolio' ) ),
 		'portfolio'       => array( 'id' => 'portfolio', 'label' => __( 'Portfolio', 'devfolio' ) ),
 		'services'        => array( 'id' => 'services', 'label' => __( 'Services', 'devfolio' ) ),
 		'plugins'         => array( 'id' => 'plugins', 'label' => __( 'Plugins', 'devfolio' ) ),

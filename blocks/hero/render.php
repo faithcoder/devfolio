@@ -23,7 +23,7 @@ $hero_stats       = devfolio_get_block_array_attr(
 	'heroStats',
 	array(
 		array( 'value' => '6+', 'label' => 'Years Experience' ),
-		array( 'value' => '20+', 'label' => 'Projects Completed' ),
+		array( 'value' => '20+', 'label' => 'Contributions' ),
 		array( 'value' => '4+', 'label' => 'Companies Worked' ),
 		array( 'value' => 'Full Stack', 'label' => 'Development Focus' ),
 	)

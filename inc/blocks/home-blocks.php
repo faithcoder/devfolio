@@ -65,8 +65,8 @@ function devfolio_get_home_block_specs() {
 			),
 		),
 		'projects'     => array(
-			'title'       => __( 'Projects Section', 'devfolio' ),
-			'description' => __( 'Featured project, contribution cards, and event gallery.', 'devfolio' ),
+			'title'       => __( 'Contributions Section', 'devfolio' ),
+			'description' => __( 'Featured contribution, contribution cards, and event gallery.', 'devfolio' ),
 			'attributes'  => array(
 				'label' => array( 'type' => 'string', 'default' => '' ),
 				'titleText' => array( 'type' => 'string', 'default' => '' ),

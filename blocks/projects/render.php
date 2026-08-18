@@ -1,6 +1,6 @@
 <?php
 /**
- * Homepage projects and events section.
+ * Homepage contributions and events section.
  *
  * @package devfolio
  */
