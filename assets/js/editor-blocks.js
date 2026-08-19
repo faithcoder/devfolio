@@ -47,6 +47,31 @@
 		};
 	}
 
+	if (!config.specs['project-details']) {
+		config.specs['project-details'] = {
+			title: 'Project Details Section',
+			description: 'Case-study layout for individual portfolio project pages.',
+			keywords: ['project', 'portfolio', 'case study'],
+			attributes: {
+				label: { type: 'string', default: '' },
+				titleText: { type: 'string', default: '' },
+				summary: { type: 'string', default: '' },
+				image: { type: 'string', default: '' },
+				role: { type: 'string', default: '' },
+				challenge: { type: 'string', default: '' },
+				approach: { type: 'string', default: '' },
+				screenshots: { type: 'array', default: [] },
+				technologies: { type: 'string', default: '' },
+				features: { type: 'string', default: '' },
+				result: { type: 'string', default: '' },
+				liveUrl: { type: 'string', default: '' },
+				portfolioUrl: { type: 'string', default: '' },
+				liveButtonText: { type: 'string', default: '' },
+				backButtonText: { type: 'string', default: '' }
+			}
+		};
+	}
+
 	var commonSupports = {
 		align: ['wide', 'full'],
 		anchor: true,
@@ -174,7 +199,20 @@
 	}
 
 	function renderField(fieldKey, value, onChange) {
-		if (fieldKey === 'desc' || fieldKey === 'heroSubtitle' || fieldKey === 'featuredDesc') {
+		if (isMediaUploadField(fieldKey)) {
+			return renderMediaField({ key: fieldKey, label: labelFromKey(fieldKey) }, value, onChange);
+		}
+
+		if (
+			fieldKey === 'desc' ||
+			fieldKey === 'heroSubtitle' ||
+			fieldKey === 'featuredDesc' ||
+			fieldKey === 'summary' ||
+			fieldKey === 'challenge' ||
+			fieldKey === 'approach' ||
+			fieldKey === 'features' ||
+			fieldKey === 'result'
+		) {
 			return el(TextareaControl, {
 				label: labelFromKey(fieldKey),
 				value: value || '',
@@ -209,6 +247,7 @@
 					{ key: 'image', label: 'Image' },
 					{ key: 'category', label: 'Category' },
 					{ key: 'tech', label: 'Tech / Tags' },
+					{ key: 'caseStudyUrl', label: 'Case Study URL' },
 					{ key: 'live', label: 'Live URL' },
 				{ key: 'github', label: 'GitHub URL' },
 				{ key: 'year', label: 'Year' },
@@ -277,6 +316,10 @@
 				{ key: 'github', label: 'GitHub URL' },
 				{ key: 'iconImage', label: 'Icon Image' },
 				{ key: 'icon', label: 'SVG Markup', type: 'textarea' }
+			],
+			screenshots: [
+				{ key: 'src', label: 'Screenshot' },
+				{ key: 'title', label: 'Caption' }
 			]
 		};
 
