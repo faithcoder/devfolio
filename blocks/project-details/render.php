@@ -59,55 +59,79 @@ $back_button_text = devfolio_get_block_attr( $args, 'backButtonText', 'Back to P
         </div>
       </div>
       <div class="devfolio-portfolio-single-content-wrap">
-        <?php if ( ! empty( $role ) ) : ?>
-        <section class="devfolio-portfolio-single-panel devfolio-glass">
-          <h2><?php esc_html_e( 'Your Role', 'devfolio' ); ?></h2>
-          <div class="devfolio-job-desc"><?php echo wp_kses_post( wpautop( $role ) ); ?></div>
-        </section>
-        <?php endif; ?>
-        <?php if ( ! empty( $challenge ) ) : ?>
-        <section class="devfolio-portfolio-single-panel devfolio-glass">
-          <h2><?php esc_html_e( 'Client Requirements or Challenge', 'devfolio' ); ?></h2>
-          <div class="devfolio-job-desc"><?php echo wp_kses_post( wpautop( $challenge ) ); ?></div>
-        </section>
-        <?php endif; ?>
-        <?php if ( ! empty( $approach ) ) : ?>
-        <section class="devfolio-portfolio-single-panel devfolio-glass">
-          <h2><?php esc_html_e( 'Development Approach', 'devfolio' ); ?></h2>
-          <div class="devfolio-job-desc"><?php echo wp_kses_post( wpautop( $approach ) ); ?></div>
-        </section>
+        <?php if ( ! empty( $role ) || ! empty( $challenge ) || ! empty( $approach ) ) : ?>
+        <div class="devfolio-portfolio-single-trio">
+          <?php if ( ! empty( $role ) ) : ?>
+          <section class="devfolio-portfolio-single-panel devfolio-glass">
+            <h2><?php esc_html_e( 'Your Role', 'devfolio' ); ?></h2>
+            <div class="devfolio-job-desc"><?php echo wp_kses_post( wpautop( $role ) ); ?></div>
+          </section>
+          <?php endif; ?>
+          <?php if ( ! empty( $challenge ) ) : ?>
+          <section class="devfolio-portfolio-single-panel devfolio-glass">
+            <h2><?php esc_html_e( 'Client Requirements or Challenge', 'devfolio' ); ?></h2>
+            <div class="devfolio-job-desc"><?php echo wp_kses_post( wpautop( $challenge ) ); ?></div>
+          </section>
+          <?php endif; ?>
+          <?php if ( ! empty( $approach ) ) : ?>
+          <section class="devfolio-portfolio-single-panel devfolio-glass">
+            <h2><?php esc_html_e( 'Development Approach', 'devfolio' ); ?></h2>
+            <div class="devfolio-job-desc"><?php echo wp_kses_post( wpautop( $approach ) ); ?></div>
+          </section>
+          <?php endif; ?>
+        </div>
         <?php endif; ?>
         <?php if ( ! empty( $screenshots ) ) : ?>
         <section class="devfolio-portfolio-single-panel devfolio-glass">
           <h2><?php esc_html_e( 'Screenshots', 'devfolio' ); ?></h2>
-          <div class="devfolio-project-screenshots">
-            <?php foreach ( $screenshots as $screenshot ) : ?>
-            <?php if ( empty( $screenshot['src'] ) ) : continue; endif; ?>
-            <figure>
-              <img src="<?php echo esc_url( $screenshot['src'] ); ?>" alt="<?php echo esc_attr( $screenshot['title'] ?? $title ); ?>" loading="lazy"/>
-              <?php if ( ! empty( $screenshot['title'] ) ) : ?>
-              <figcaption><?php echo esc_html( $screenshot['title'] ); ?></figcaption>
-              <?php endif; ?>
-            </figure>
-            <?php endforeach; ?>
+          <div class="devfolio-carousel" data-carousel-lightbox="screenshots">
+            <div class="devfolio-carousel-wrap">
+              <div class="devfolio-carousel-viewport">
+                <div class="devfolio-carousel-track">
+                  <?php $slide_index = 0; foreach ( $screenshots as $screenshot ) : ?>
+                  <?php if ( empty( $screenshot['src'] ) ) : continue; endif; ?>
+                  <div class="devfolio-carousel-slide" data-slide="<?php echo esc_attr( $slide_index ); ?>" data-src="<?php echo esc_url( $screenshot['src'] ); ?>" data-title="<?php echo esc_attr( $screenshot['title'] ?? $title ); ?>">
+                    <div class="devfolio-carousel-card devfolio-glass">
+                      <div class="devfolio-carousel-img-wrap">
+                        <img src="<?php echo esc_url( $screenshot['src'] ); ?>" alt="<?php echo esc_attr( $screenshot['title'] ?? $title ); ?>" loading="lazy"/>
+                        <div class="devfolio-carousel-img-overlay"></div>
+                        <div class="devfolio-carousel-caption">
+                          <?php if ( ! empty( $screenshot['title'] ) ) : ?>
+                          <p class="devfolio-carousel-caption-title"><?php echo esc_html( $screenshot['title'] ); ?></p>
+                          <?php endif; ?>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <?php $slide_index++; endforeach; ?>
+                </div>
+              </div>
+              <button class="devfolio-carousel-btn devfolio-carousel-prev" aria-label="Previous"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg></button>
+              <button class="devfolio-carousel-btn devfolio-carousel-next" aria-label="Next"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></button>
+            </div>
+            <div class="devfolio-carousel-dots"></div>
           </div>
         </section>
         <?php endif; ?>
-        <?php if ( ! empty( $features ) ) : ?>
-        <section class="devfolio-portfolio-single-panel devfolio-glass">
-          <h2><?php esc_html_e( 'Key Features Delivered', 'devfolio' ); ?></h2>
-          <div class="devfolio-skill-tags">
-            <?php foreach ( $features as $feature ) : ?>
-            <span class="devfolio-skill-tag"><?php echo esc_html( $feature ); ?></span>
-            <?php endforeach; ?>
-          </div>
-        </section>
-        <?php endif; ?>
-        <?php if ( ! empty( $result ) ) : ?>
-        <section class="devfolio-portfolio-single-panel devfolio-glass">
-          <h2><?php esc_html_e( 'Result', 'devfolio' ); ?></h2>
-          <div class="devfolio-job-desc"><?php echo wp_kses_post( wpautop( $result ) ); ?></div>
-        </section>
+        <?php if ( ! empty( $features ) || ! empty( $result ) ) : ?>
+        <div class="devfolio-portfolio-single-duo">
+          <?php if ( ! empty( $features ) ) : ?>
+          <section class="devfolio-portfolio-single-panel devfolio-glass">
+            <h2><?php esc_html_e( 'Key Features Delivered', 'devfolio' ); ?></h2>
+            <div class="devfolio-skill-tags">
+              <?php foreach ( $features as $feature ) : ?>
+              <span class="devfolio-skill-tag"><?php echo esc_html( $feature ); ?></span>
+              <?php endforeach; ?>
+            </div>
+          </section>
+          <?php endif; ?>
+          <?php if ( ! empty( $result ) ) : ?>
+          <section class="devfolio-portfolio-single-panel devfolio-glass">
+            <h2><?php esc_html_e( 'Result', 'devfolio' ); ?></h2>
+            <div class="devfolio-job-desc"><?php echo wp_kses_post( wpautop( $result ) ); ?></div>
+          </section>
+          <?php endif; ?>
+        </div>
         <?php endif; ?>
       </div>
     </article>

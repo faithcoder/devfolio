@@ -22,7 +22,7 @@
 		<p><?php echo esc_html( sprintf( 'Copyright %1$s %2$s', gmdate( 'Y' ), get_bloginfo( 'name' ) ) ); ?></p>
 	</div>
 </footer>
-<?php if ( is_front_page() ) : ?>
+<?php if ( ! is_admin() ) : ?>
 <div class="devfolio-events-lightbox">
 	<div class="devfolio-events-lightbox-inner">
 		<button class="devfolio-lightbox-btn devfolio-lightbox-close devfolio-events-lightbox-close" aria-label="Close">✕</button>

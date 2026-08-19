@@ -1277,6 +1277,30 @@ body.devfolio-layout-boxed .devfolio-container {
   gap: 24px
 }
 
+.devfolio-portfolio-single-trio {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px
+}
+
+.devfolio-portfolio-single-duo {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px
+}
+
+@media(max-width:992px) {
+  .devfolio-portfolio-single-trio {
+    grid-template-columns: 1fr
+  }
+}
+
+@media(max-width:768px) {
+  .devfolio-portfolio-single-duo {
+    grid-template-columns: 1fr
+  }
+}
+
 .devfolio-portfolio-single-panel h2 {
   margin-bottom: 16px;
   font-size: 24px
@@ -1314,7 +1338,8 @@ body.devfolio-layout-boxed .devfolio-container {
 .devfolio-portfolio-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px
+  gap: 12px;
+  margin-top: 28px
 }
 
 .devfolio-portfolio-links a {
