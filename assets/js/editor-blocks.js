@@ -319,6 +319,16 @@
 				{ key: 'iconImage', label: 'Icon Image' },
 				{ key: 'icon', label: 'SVG Markup', type: 'textarea' }
 			],
+			benefitItems: [
+				{ key: 'title', label: 'Title' },
+				{ key: 'desc', label: 'Description', type: 'textarea' },
+				{ key: 'iconImage', label: 'Icon Image' },
+				{ key: 'icon', label: 'Icon Text or SVG', type: 'textarea' }
+			],
+			featureItems: [
+				{ key: 'text', label: 'Feature Text' },
+				{ key: 'iconImage', label: 'Icon Image' }
+			],
 			screenshots: [
 				{ key: 'src', label: 'Screenshot' },
 				{ key: 'title', label: 'Caption' }
