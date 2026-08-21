@@ -1511,6 +1511,12 @@ body.devfolio-layout-boxed .devfolio-container {
   transform: translateY(-1px)
 }
 
+.devfolio-plugin-learn-btn.devfolio-disabled {
+  opacity: .55;
+  pointer-events: none;
+  cursor: not-allowed
+}
+
 .devfolio-plugin-downloads {
   display: inline-flex;
   align-items: center;
@@ -1536,20 +1542,14 @@ body.devfolio-layout-boxed .devfolio-container {
 /* ── Plugin detail funnel ──────────────────────── */
 .devfolio-plugin-funnel {
   position: relative;
-  display: none;
-  margin-top: 48px;
+  display: block;
   padding: 56px clamp(24px, 6vw, 72px) 44px;
   border-radius: var(--radius);
   border: 1px solid var(--glass-border);
   background: var(--glass-bg);
   backdrop-filter: blur(var(--glass-blur));
   -webkit-backdrop-filter: blur(var(--glass-blur));
-  overflow: hidden;
-  animation: devfolioFadeUp .35s ease
-}
-
-.devfolio-plugin-funnel.devfolio-active {
-  display: block
+  overflow: hidden
 }
 
 .devfolio-plugin-funnel::before {
@@ -1696,14 +1696,23 @@ body.devfolio-layout-boxed .devfolio-container {
   color: var(--fg)
 }
 
-.devfolio-plugin-card.devfolio-plugin-card-active {
-  border-color: color-mix(in srgb, var(--primary) 45%, var(--glass-border));
-  box-shadow: 0 0 0 1px color-mix(in srgb, var(--primary) 30%, transparent), 0 0 30px var(--glow-card)
+/* ── Plugin details page ───────────────────────── */
+.devfolio-plugin-details-section {
+  padding-top: 140px
 }
 
-@keyframes devfolioFadeUp {
-  from { opacity: 0; transform: translateY(24px) }
-  to { opacity: 1; transform: translateY(0) }
+.devfolio-plugin-details-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 28px;
+  color: var(--primary);
+  font-size: 14px;
+  font-weight: 600
+}
+
+.devfolio-plugin-details-section .devfolio-plugin-funnel-title {
+  font-size: clamp(28px, 5vw, 44px)
 }
 
 @media(max-width:768px) {

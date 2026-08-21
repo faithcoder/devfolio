@@ -284,6 +284,7 @@ function devfolio_get_section_defaults() {
 		'project-details' => array( 'id' => 'project-details', 'label' => __( 'Project Details', 'devfolio' ) ),
 		'services'        => array( 'id' => 'services', 'label' => __( 'Services', 'devfolio' ) ),
 		'plugins'         => array( 'id' => 'plugins', 'label' => __( 'Plugins', 'devfolio' ) ),
+		'plugin-details'  => array( 'id' => 'plugin-details', 'label' => __( 'Plugin Details', 'devfolio' ) ),
 		'services-detail' => array( 'id' => 'service-details', 'label' => __( 'Service Details', 'devfolio' ) ),
 		'tabbed-showcase' => array( 'id' => 'tabbed-showcase', 'label' => __( 'Tabbed Showcase', 'devfolio' ) ),
 		'process'         => array( 'id' => 'process', 'label' => __( 'Process', 'devfolio' ) ),
