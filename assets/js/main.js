@@ -304,6 +304,7 @@ var Devfolio = (function($){
     $('.devfolio-plugin-funnel').each(function() {
       var $funnel = $(this);
       var $section = $funnel.closest('section');
+      var $cards = $section.find('.devfolio-plugin-card');
       var $icon = $funnel.find('.devfolio-plugin-funnel-icon');
       var $title = $funnel.find('.devfolio-plugin-funnel-title');
       var $desc = $funnel.find('.devfolio-plugin-funnel-desc');
@@ -358,26 +359,26 @@ var Devfolio = (function($){
 
         $count.text(String($card.data('downloads') || ''));
 
+        $cards.removeClass('devfolio-plugin-card-active');
+        $card.addClass('devfolio-plugin-card-active');
+
         $funnel.attr('aria-hidden', 'false');
         $funnel.addClass('devfolio-active');
-        $('body').css('overflow', 'hidden');
       }
 
       function closeFunnel() {
         $funnel.removeClass('devfolio-active');
         $funnel.attr('aria-hidden', 'true');
-        $('body').css('overflow', '');
+        $cards.removeClass('devfolio-plugin-card-active');
       }
 
-      $section.find('.devfolio-plugin-card').on('click', '[data-plugin-open]', function() {
-        openFunnel($(this).closest('.devfolio-plugin-card'));
-      });
-
-      $funnel.find('[data-plugin-close]').on('click', closeFunnel);
-
-      $(document).on('keydown', function(e) {
-        if ($funnel.hasClass('devfolio-active') && e.key === 'Escape') {
+      $cards.on('click', '[data-plugin-open]', function() {
+        var $card = $(this).closest('.devfolio-plugin-card');
+        if ($funnel.hasClass('devfolio-active') && $card.hasClass('devfolio-plugin-card-active')) {
           closeFunnel();
+        } else {
+          openFunnel($card);
+          $('html,body').animate({ scrollTop: $funnel.offset().top - 24 }, 400);
         }
       });
     });

@@ -86,21 +86,18 @@ $plugins_desc        = devfolio_get_block_attr( $args, 'desc', 'Free plugins bui
       </div>
       <?php endforeach; ?>
     </div>
-  </div>
 
-  <div class="devfolio-plugin-funnel" aria-hidden="true">
-    <button type="button" class="devfolio-plugin-funnel-backdrop" data-plugin-close aria-label="<?php esc_attr_e( 'Close', 'devfolio' ); ?>"></button>
-    <div class="devfolio-plugin-funnel-panel devfolio-glass" role="dialog" aria-modal="true" aria-label="<?php esc_attr_e( 'Plugin details', 'devfolio' ); ?>">
-      <button type="button" class="devfolio-plugin-funnel-close" data-plugin-close aria-label="<?php esc_attr_e( 'Close', 'devfolio' ); ?>">&times;</button>
+    <div class="devfolio-plugin-funnel" aria-hidden="true">
+    <div class="devfolio-plugin-funnel-inner">
       <div class="devfolio-plugin-funnel-head">
         <div class="devfolio-plugin-funnel-icon"></div>
         <h3 class="devfolio-plugin-funnel-title"></h3>
         <p class="devfolio-plugin-funnel-desc"></p>
       </div>
-      <div class="devfolio-plugin-funnel-stages"></div>
       <div class="devfolio-plugin-funnel-tags"></div>
+      <div class="devfolio-plugin-funnel-stages"></div>
       <div class="devfolio-plugin-funnel-cta">
-        <a href="#" class="devfolio-btn devfolio-btn-glow devfolio-plugin-funnel-download" target="_blank" rel="noopener noreferrer">
+        <a href="#" class="devfolio-btn devfolio-plugin-funnel-download" target="_blank" rel="noopener noreferrer">
           <?php echo $plugin_github_icon; ?>
           <?php esc_html_e( 'Free Download', 'devfolio' ); ?>
         </a>
@@ -110,6 +107,7 @@ $plugins_desc        = devfolio_get_block_attr( $args, 'desc', 'Free plugins bui
           <?php esc_html_e( 'downloads', 'devfolio' ); ?>
         </span>
       </div>
+    </div>
     </div>
   </div>
 </section>
