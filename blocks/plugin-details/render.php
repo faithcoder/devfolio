@@ -23,7 +23,7 @@ $downloads  = devfolio_format_download_count( devfolio_get_block_attr( $args, 'd
 $icon       = devfolio_get_block_attr( $args, 'icon', '' );
 $icon_image = devfolio_get_block_attr( $args, 'iconImage', '' );
 $back_text  = devfolio_get_block_attr( $args, 'backText', 'Back to Plugins' );
-$back_url   = devfolio_get_block_attr( $args, 'backUrl', '#' . devfolio_get_section_id( 'plugins' ) );
+$back_url   = devfolio_get_block_attr( $args, 'backUrl', home_url( '/' ) . '#plugins' );
 
 $feature_count = count( $features );
 ?>

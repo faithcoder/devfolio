@@ -55,18 +55,8 @@ $plugins_desc  = devfolio_get_block_attr( $args, 'desc', 'Free plugins built for
     <?php endif; ?>
     <div class="devfolio-plugins-grid">
       <?php foreach ( $plugins as $plugin_index => $plugin ) :
-        $github_url  = trim( $plugin['github'] ?? '' );
-        $detail_url  = trim( $plugin['detailUrl'] ?? '' );
-        $downloads   = devfolio_format_download_count( $plugin['downloads'] ?? '', $plugin['title'] ?? ( 'plugin-' . $plugin_index ) );
-
-        $learn_href      = '';
-        $learn_external  = false;
-        if ( devfolio_has_valid_url( $detail_url ) ) {
-          $learn_href = $detail_url;
-        } elseif ( devfolio_has_valid_url( $github_url ) ) {
-          $learn_href     = $github_url;
-          $learn_external = true;
-        }
+        $detail_url = trim( $plugin['detailUrl'] ?? '' );
+        $downloads  = devfolio_format_download_count( $plugin['downloads'] ?? '', $plugin['title'] ?? ( 'plugin-' . $plugin_index ) );
       ?>
       <div class="devfolio-plugin-card devfolio-glass devfolio-anim">
         <div class="devfolio-plugin-icon">
@@ -75,13 +65,11 @@ $plugins_desc  = devfolio_get_block_attr( $args, 'desc', 'Free plugins built for
         <h3><?php echo esc_html( $plugin['title'] ?? '' ); ?></h3>
         <p class="devfolio-plugin-desc"><?php echo esc_html( $plugin['desc'] ?? '' ); ?></p>
         <div class="devfolio-plugin-card-footer">
-          <?php if ( '' !== $learn_href ) : ?>
-          <a class="devfolio-btn devfolio-plugin-learn-btn" href="<?php echo esc_url( $learn_href ); ?>"<?php echo $learn_external ? ' target="_blank" rel="noopener noreferrer"' : ''; ?>>
+          <?php if ( devfolio_has_valid_url( $detail_url ) ) : ?>
+          <a class="devfolio-btn devfolio-plugin-learn-btn" href="<?php echo esc_url( $detail_url ); ?>">
             <?php esc_html_e( 'Learn More', 'devfolio' ); ?>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-7-7 7 7-7 7"/></svg>
           </a>
-          <?php else : ?>
-          <span class="devfolio-btn devfolio-plugin-learn-btn devfolio-disabled"><?php esc_html_e( 'Learn More', 'devfolio' ); ?></span>
           <?php endif; ?>
           <span class="devfolio-plugin-downloads" title="<?php esc_attr_e( 'Downloads', 'devfolio' ); ?>">
             <?php echo $plugin_download_icon; ?>
