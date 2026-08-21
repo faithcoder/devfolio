@@ -1822,15 +1822,17 @@ body.devfolio-layout-boxed .devfolio-container {
   font-weight: 700
 }
 
-.devfolio-checkout-preview {
+.devfolio-plugin-screenshot {
   position: relative;
-  padding: 28px;
+  overflow: hidden;
+  margin: 0;
+  padding: 12px;
   border-radius: 22px;
   background: rgba(255,255,255,.82);
   box-shadow: 0 30px 90px color-mix(in srgb, var(--primary) 18%, transparent)
 }
 
-.devfolio-checkout-preview::after {
+.devfolio-plugin-screenshot::after {
   content: "";
   position: absolute;
   z-index: -1;
@@ -1842,129 +1844,16 @@ body.devfolio-layout-boxed .devfolio-container {
   background: color-mix(in srgb, var(--primary) 20%, transparent)
 }
 
-.devfolio-preview-dots {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 24px
-}
-
-.devfolio-preview-dots span {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--primary)
-}
-
-.devfolio-preview-dots span:first-child {
-  background: #ef4444
-}
-
-.devfolio-preview-dots span:nth-child(2) {
-  background: #f59e0b
-}
-
-.devfolio-preview-steps {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 16px;
-  margin-bottom: 24px;
-  color: var(--muted-fg);
-  font-size: 12px;
-  text-align: center
-}
-
-.devfolio-preview-steps span,
-.devfolio-preview-steps strong {
-  display: grid;
-  place-items: center;
-  justify-self: center;
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  background: var(--muted)
-}
-
-.devfolio-preview-steps strong {
-  background: var(--primary);
-  color: var(--primary-fg)
-}
-
-.devfolio-preview-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 230px;
-  gap: 24px
-}
-
-.devfolio-preview-form p,
-.devfolio-preview-summary h3 {
-  margin-bottom: 14px;
-  font-size: 13px;
-  font-weight: 700
-}
-
-.devfolio-preview-payments {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-  margin-bottom: 18px
-}
-
-.devfolio-preview-payments span {
-  display: grid;
-  place-items: center;
-  min-height: 34px;
-  border-radius: 6px;
-  background: var(--fg);
-  color: #fff;
-  font-size: 12px;
-  font-weight: 700
-}
-
-.devfolio-preview-payments span:nth-child(2),
-.devfolio-preview-payments span:nth-child(3) {
-  background: var(--card);
-  color: var(--fg);
-  border: 1px solid var(--border)
-}
-
-.devfolio-preview-form label {
+.devfolio-plugin-screenshot img {
   display: block;
-  margin-bottom: 10px;
-  color: var(--muted-fg);
-  font-size: 11px
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  object-fit: cover
 }
 
-.devfolio-preview-form label span {
-  display: block;
-  margin-top: 4px;
-  padding: 10px 12px;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  color: var(--fg);
-  background: var(--card);
-  font-size: 12px
-}
-
-.devfolio-preview-summary {
-  padding: 18px;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: var(--card)
-}
-
-.devfolio-preview-summary div,
-.devfolio-preview-summary footer {
-  display: flex;
-  justify-content: space-between;
-  gap: 14px;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--border);
-  font-size: 12px
-}
-
-.devfolio-preview-summary footer {
-  border-bottom: 0;
-  font-size: 14px
+.devfolio-plugin-screenshot-hero img {
+  aspect-ratio: 3 / 2
 }
 
 .devfolio-plugin-benefit-strip {
@@ -2075,29 +1964,6 @@ body.devfolio-layout-boxed .devfolio-container {
   line-height: 1.6
 }
 
-.devfolio-plugin-card-preview {
-  display: grid;
-  gap: 8px;
-  margin-top: 22px;
-  padding: 14px;
-  border-radius: 10px;
-  background: color-mix(in srgb, var(--muted) 50%, transparent)
-}
-
-.devfolio-plugin-card-preview span {
-  height: 10px;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--primary) 22%, var(--card))
-}
-
-.devfolio-plugin-card-preview span:nth-child(2) {
-  width: 72%
-}
-
-.devfolio-plugin-card-preview span:nth-child(3) {
-  width: 48%
-}
-
 .devfolio-plugin-step-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -2152,66 +2018,6 @@ body.devfolio-layout-boxed .devfolio-container {
   line-height: 1.7
 }
 
-.devfolio-plugin-admin-window {
-  display: grid;
-  grid-template-columns: 140px minmax(0, 1fr);
-  overflow: hidden;
-  min-height: 360px;
-  background: rgba(255,255,255,.88)
-}
-
-.devfolio-plugin-admin-window aside {
-  display: grid;
-  align-content: start;
-  gap: 12px;
-  padding: 20px;
-  background: var(--fg);
-  color: rgba(255,255,255,.72);
-  font-size: 12px
-}
-
-.devfolio-plugin-admin-window aside strong {
-  color: #fff
-}
-
-.devfolio-plugin-admin-window main {
-  padding: 22px
-}
-
-.devfolio-admin-tabs {
-  display: flex;
-  gap: 20px;
-  margin-bottom: 22px;
-  border-bottom: 1px solid var(--border);
-  color: var(--muted-fg);
-  font-size: 12px
-}
-
-.devfolio-admin-tabs strong {
-  padding-bottom: 10px;
-  color: var(--primary);
-  border-bottom: 2px solid var(--primary)
-}
-
-.devfolio-admin-columns {
-  display: grid;
-  grid-template-columns: 1fr 1fr .8fr;
-  gap: 18px
-}
-
-.devfolio-admin-columns div {
-  display: grid;
-  gap: 12px
-}
-
-.devfolio-admin-columns span {
-  padding: 12px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--card);
-  font-size: 12px
-}
-
 .devfolio-plugin-customer-preview {
   grid-template-columns: minmax(220px, .52fr) minmax(280px, .48fr);
   background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 10%, var(--card)), var(--card))
@@ -2240,49 +2046,6 @@ body.devfolio-layout-boxed .devfolio-container {
   height: 20px;
   border-radius: 50%;
   background: var(--primary)
-}
-
-.devfolio-plugin-phone {
-  justify-self: center;
-  display: grid;
-  place-items: center;
-  width: min(100%, 260px);
-  min-height: 420px;
-  padding: 38px 24px;
-  border: 10px solid var(--fg);
-  border-radius: 34px;
-  background: var(--card);
-  text-align: center;
-  box-shadow: 0 24px 60px rgba(15,23,42,.16)
-}
-
-.devfolio-plugin-phone span {
-  width: 72px;
-  height: 72px;
-  margin-bottom: 22px;
-  border-radius: 50%;
-  background: var(--primary)
-}
-
-.devfolio-plugin-phone strong {
-  font-size: 22px;
-  font-family: var(--font-heading)
-}
-
-.devfolio-plugin-phone p {
-  margin: 10px 0 22px;
-  color: var(--muted-fg);
-  font-size: 14px
-}
-
-.devfolio-plugin-phone a {
-  display: inline-flex;
-  padding: 10px 18px;
-  border-radius: 8px;
-  background: var(--primary);
-  color: #fff;
-  font-size: 12px;
-  font-weight: 700
 }
 
 .devfolio-plugin-compat {
@@ -2327,7 +2090,7 @@ body.devfolio-layout-boxed .devfolio-container {
     max-width: 720px
   }
 
-  .devfolio-checkout-preview {
+  .devfolio-plugin-screenshot {
     max-width: 760px
   }
 
@@ -2384,20 +2147,17 @@ body.devfolio-layout-boxed .devfolio-container {
     font-size: 16px
   }
 
-  .devfolio-checkout-preview {
+  .devfolio-plugin-screenshot {
     padding: 18px
   }
 
-  .devfolio-checkout-preview::after {
+  .devfolio-plugin-screenshot::after {
     display: none
   }
 
-  .devfolio-preview-grid,
   .devfolio-plugin-benefit-strip,
   .devfolio-plugin-feature-grid,
-  .devfolio-plugin-step-grid,
-  .devfolio-plugin-admin-window,
-  .devfolio-admin-columns {
+  .devfolio-plugin-step-grid {
     grid-template-columns: 1fr
   }
 
@@ -2422,13 +2182,6 @@ body.devfolio-layout-boxed .devfolio-container {
     padding: 26px
   }
 
-  .devfolio-plugin-admin-window aside {
-    display: none
-  }
-
-  .devfolio-admin-tabs {
-    overflow-x: auto
-  }
 }
 
 /* ── Interactive Service Details ───────────────── */

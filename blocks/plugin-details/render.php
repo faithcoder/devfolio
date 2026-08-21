@@ -29,6 +29,7 @@ $is_checkoutly = false !== stripos( $title, 'checkoutly' );
 $hero_title    = $is_checkoutly ? __( 'A better checkout. More completed orders.', 'devfolio' ) : sprintf( __( '%s, ready for WordPress.', 'devfolio' ), $title );
 $hero_desc     = $desc ? $desc : __( 'A focused WordPress plugin built to make daily workflows faster, cleaner, and easier to manage.', 'devfolio' );
 $badge_text    = $is_checkoutly ? __( 'Free WooCommerce Plugin', 'devfolio' ) : __( 'Free WordPress Plugin', 'devfolio' );
+$screenshot    = get_template_directory_uri() . '/assets/images/checkoutly-dashboard-placeholder.svg';
 
 if ( empty( $features ) ) {
 	$features = $is_checkoutly
@@ -113,29 +114,9 @@ $steps = array(
           </div>
         </div>
 
-        <div class="devfolio-checkout-preview devfolio-glass" aria-label="<?php esc_attr_e( 'Checkout preview', 'devfolio' ); ?>">
-          <div class="devfolio-preview-dots"><span></span><span></span><span></span></div>
-          <div class="devfolio-preview-steps">
-            <span>1</span><strong>2</strong><span>3</span><span>4</span><span>5</span>
-          </div>
-          <div class="devfolio-preview-grid">
-            <div class="devfolio-preview-form">
-              <p><?php esc_html_e( 'Express checkout', 'devfolio' ); ?></p>
-              <div class="devfolio-preview-payments"><span>Pay</span><span>G Pay</span><span>PayPal</span></div>
-              <label><?php esc_html_e( 'Full name', 'devfolio' ); ?><span>Alex Johnson</span></label>
-              <label><?php esc_html_e( 'Email address', 'devfolio' ); ?><span>alex@example.com</span></label>
-              <label><?php esc_html_e( 'Phone', 'devfolio' ); ?><span>+1 (555) 123-4567</span></label>
-              <label><?php esc_html_e( 'Town / City', 'devfolio' ); ?><span>Austin</span></label>
-            </div>
-            <div class="devfolio-preview-summary">
-              <h3><?php esc_html_e( 'Order summary', 'devfolio' ); ?></h3>
-              <div><span><?php esc_html_e( 'Minimalist Watch', 'devfolio' ); ?></span><strong>$129.00</strong></div>
-              <div><span><?php esc_html_e( 'Leather Wallet', 'devfolio' ); ?></span><strong>$49.00</strong></div>
-              <div><span><?php esc_html_e( 'Sunglasses', 'devfolio' ); ?></span><strong>$59.00</strong></div>
-              <footer><span><?php esc_html_e( 'Total', 'devfolio' ); ?></span><strong>$237.00</strong></footer>
-            </div>
-          </div>
-        </div>
+        <figure class="devfolio-plugin-screenshot devfolio-plugin-screenshot-hero devfolio-glass">
+          <img src="<?php echo esc_url( $screenshot ); ?>" alt="<?php echo esc_attr( sprintf( __( '%s dashboard screenshot placeholder', 'devfolio' ), $title ) ); ?>">
+        </figure>
       </div>
 
       <div class="devfolio-plugin-benefit-strip devfolio-glass">
@@ -156,7 +137,6 @@ $steps = array(
             <span class="devfolio-plugin-feature-mark"><?php echo esc_html( $index + 1 ); ?></span>
             <h3><?php echo esc_html( $card['title'] ); ?></h3>
             <p><?php echo esc_html( $card['desc'] ); ?></p>
-            <div class="devfolio-plugin-card-preview" aria-hidden="true"><span></span><span></span><span></span></div>
           </article>
           <?php endforeach; ?>
         </div>
@@ -180,17 +160,9 @@ $steps = array(
           <h2><?php esc_html_e( 'Your checkout, controlled from WordPress', 'devfolio' ); ?></h2>
           <p><?php esc_html_e( 'Manage fields, checkout steps, order options, and the customer-facing preview without leaving your dashboard.', 'devfolio' ); ?></p>
         </div>
-        <div class="devfolio-plugin-admin-window devfolio-glass" aria-label="<?php esc_attr_e( 'WordPress control preview', 'devfolio' ); ?>">
-          <aside><span>Dashboard</span><span>WooCommerce</span><strong><?php echo esc_html( $title ); ?></strong><span>Settings</span></aside>
-          <main>
-            <div class="devfolio-admin-tabs"><strong>Fields</strong><span>Payments</span><span>Design</span><span>Advanced</span></div>
-            <div class="devfolio-admin-columns">
-              <div><span>First Name</span><span>Email Address</span><span>Phone</span><span>Town / City</span></div>
-              <div><span>Required</span><span>Enable</span><span>Show in checkout</span><span>CSS class</span></div>
-              <div><span>1</span><span>2</span><span>3</span><span>4</span></div>
-            </div>
-          </main>
-        </div>
+        <figure class="devfolio-plugin-screenshot devfolio-glass">
+          <img src="<?php echo esc_url( $screenshot ); ?>" alt="<?php esc_attr_e( 'Checkoutly WordPress dashboard screenshot placeholder', 'devfolio' ); ?>">
+        </figure>
       </div>
 
       <div class="devfolio-plugin-customer-preview">
@@ -202,12 +174,9 @@ $steps = array(
             <li><?php esc_html_e( 'Trust at every step', 'devfolio' ); ?></li>
           </ul>
         </div>
-        <div class="devfolio-plugin-phone">
-          <span></span>
-          <strong><?php esc_html_e( 'Thank you!', 'devfolio' ); ?></strong>
-          <p><?php esc_html_e( 'Your order has been placed successfully.', 'devfolio' ); ?></p>
-          <a href="<?php echo esc_url( $back_url ); ?>"><?php esc_html_e( 'Continue Shopping', 'devfolio' ); ?></a>
-        </div>
+        <figure class="devfolio-plugin-screenshot devfolio-glass">
+          <img src="<?php echo esc_url( $screenshot ); ?>" alt="<?php esc_attr_e( 'Checkoutly checkout screen screenshot placeholder', 'devfolio' ); ?>">
+        </figure>
       </div>
 
       <div class="devfolio-plugin-compat devfolio-glass">
