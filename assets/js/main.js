@@ -300,6 +300,88 @@ var Devfolio = (function($){
       selectShowcase(0);
     });
 
+    // ── Plugin detail funnel ──
+    $('.devfolio-plugin-funnel').each(function() {
+      var $funnel = $(this);
+      var $section = $funnel.closest('section');
+      var $icon = $funnel.find('.devfolio-plugin-funnel-icon');
+      var $title = $funnel.find('.devfolio-plugin-funnel-title');
+      var $desc = $funnel.find('.devfolio-plugin-funnel-desc');
+      var $stages = $funnel.find('.devfolio-plugin-funnel-stages');
+      var $tags = $funnel.find('.devfolio-plugin-funnel-tags');
+      var $download = $funnel.find('.devfolio-plugin-funnel-download');
+      var $count = $funnel.find('.devfolio-plugin-funnel-count-value');
+
+      function parseList(value) {
+        if (Array.isArray(value)) {
+          return value;
+        }
+        if (typeof value !== 'string' || !value) {
+          return [];
+        }
+        try {
+          var parsed = JSON.parse(value);
+          return Array.isArray(parsed) ? parsed : [];
+        } catch (e) {
+          return [];
+        }
+      }
+
+      function openFunnel($card) {
+        var features = parseList($card.data('features'));
+        var tags = parseList($card.data('tags'));
+
+        $icon.empty().append($card.find('.devfolio-plugin-icon').html());
+        $title.text(String($card.data('title') || ''));
+        $desc.text(String($card.data('desc') || ''));
+
+        $stages.empty();
+        features.forEach(function(feature, index) {
+          var width = Math.max(42, 100 - index * 11);
+          var $stage = $('<div class="devfolio-plugin-funnel-stage"></div>').css('width', width + '%');
+          $('<span class="devfolio-plugin-funnel-stage-num"></span>').text(index + 1).appendTo($stage);
+          $('<span class="devfolio-plugin-funnel-stage-text"></span>').text(feature).appendTo($stage);
+          $stage.appendTo($stages);
+        });
+
+        $tags.empty();
+        tags.forEach(function(tag) {
+          $('<span class="devfolio-tech-tag"></span>').text(tag).appendTo($tags);
+        });
+
+        var github = String($card.data('github') || '#');
+        if (github && github !== '#') {
+          $download.attr('href', github).removeClass('devfolio-disabled');
+        } else {
+          $download.attr('href', '#').addClass('devfolio-disabled');
+        }
+
+        $count.text(String($card.data('downloads') || ''));
+
+        $funnel.attr('aria-hidden', 'false');
+        $funnel.addClass('devfolio-active');
+        $('body').css('overflow', 'hidden');
+      }
+
+      function closeFunnel() {
+        $funnel.removeClass('devfolio-active');
+        $funnel.attr('aria-hidden', 'true');
+        $('body').css('overflow', '');
+      }
+
+      $section.find('.devfolio-plugin-card').on('click', '[data-plugin-open]', function() {
+        openFunnel($(this).closest('.devfolio-plugin-card'));
+      });
+
+      $funnel.find('[data-plugin-close]').on('click', closeFunnel);
+
+      $(document).on('keydown', function(e) {
+        if ($funnel.hasClass('devfolio-active') && e.key === 'Escape') {
+          closeFunnel();
+        }
+      });
+    });
+
     // ── Events Lightbox ──
     function devfolioOpenEventsLightbox($carousel, idx) {
       var carouselData = $carousel.data('devfolioCarousel');

@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 function devfolio_get_dynamic_style_vars() {
 	$primary = devfolio_get_theme_mod_value( 'devfolio_style_primary', '#2fad4e' );
-	$accent  = devfolio_get_theme_mod_value( 'devfolio_style_accent', '#24b35a' );
+	$accent  = devfolio_get_theme_mod_value( 'devfolio_style_accent', '#2fad4e' );
 	$bg      = devfolio_get_theme_mod_value( 'devfolio_style_bg', '#eff1f6' );
 	$fg      = devfolio_get_theme_mod_value( 'devfolio_style_fg', '#1a2e1f' );
 	$card    = devfolio_get_theme_mod_value( 'devfolio_style_card', '#fcfdfd' );
@@ -82,7 +82,7 @@ function devfolio_get_dynamic_style_vars() {
 
 	$css  = ':root{';
 	$css .= '--primary:' . devfolio_css_value( $primary, '#2fad4e' ) . ';';
-	$css .= '--accent:' . devfolio_css_value( $accent, '#24b35a' ) . ';';
+	$css .= '--accent:' . devfolio_css_value( $accent, '#2fad4e' ) . ';';
 	$css .= '--bg:' . devfolio_css_value( $bg, '#eff1f6' ) . ';';
 	$css .= '--fg:' . devfolio_css_value( $fg, '#1a2e1f' ) . ';';
 	$css .= '--card:' . devfolio_css_value( $card, '#fcfdfd' ) . ';';

@@ -22,7 +22,7 @@
   --muted: #e4e7ed;
   --muted-fg: #636b75;
 
-  --accent: #24b35a;
+  --accent: #2fad4e;
   --accent-fg: #fff;
 
   --border: #d6dbe3;
@@ -213,7 +213,7 @@ body.devfolio-layout-boxed .devfolio-container {
 }
 
 .devfolio-gradient-text-accent {
-  background: linear-gradient(135deg, var(--gradient-mint), var(--gradient-green));
+  background: linear-gradient(135deg, var(--primary), var(--secondary-fg));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text
@@ -1023,7 +1023,7 @@ body.devfolio-layout-boxed .devfolio-container {
   font-weight: 600;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--primary)
+  color: var(--secondary-fg)
 }
 
 .devfolio-featured-project h3 {
@@ -1486,48 +1486,270 @@ body.devfolio-layout-boxed .devfolio-container {
   font-size: 14px;
   color: var(--muted-fg);
   line-height: 1.7;
-  margin-bottom: 16px
-}
-
-.devfolio-plugin-features {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px
-}
-
-.devfolio-plugin-features li {
-  font-size: 13px;
-  color: var(--muted-fg);
-  padding-left: 18px;
-  position: relative
-}
-
-.devfolio-plugin-features li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 6px;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--primary)
-}
-
-.devfolio-plugin-card .devfolio-tech-tags {
   margin-bottom: 20px
 }
 
-.devfolio-plugin-btn {
+.devfolio-plugin-card-footer {
   margin-top: auto;
-  align-self: flex-start
+  padding-top: 20px;
+  border-top: 1px solid var(--glass-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px
+}
+
+.devfolio-plugin-learn-btn {
+  background: var(--primary);
+  color: var(--primary-fg);
+  padding: 10px 22px;
+  border: none
+}
+
+.devfolio-plugin-learn-btn:hover {
+  box-shadow: 0 0 26px var(--glow-primary);
+  transform: translateY(-1px)
+}
+
+.devfolio-plugin-downloads {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--muted-fg);
+  white-space: nowrap
+}
+
+.devfolio-plugin-downloads svg {
+  color: var(--primary);
+  flex-shrink: 0
+}
+
+.devfolio-plugin-downloads-count {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--fg);
+  line-height: 1
+}
+
+/* ── Plugin detail funnel ──────────────────────── */
+.devfolio-plugin-funnel {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px
+}
+
+.devfolio-plugin-funnel.devfolio-active {
+  display: flex
+}
+
+.devfolio-plugin-funnel-backdrop {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--overlay-bg);
+  backdrop-filter: blur(var(--overlay-blur));
+  -webkit-backdrop-filter: blur(var(--overlay-blur));
+  cursor: pointer;
+  animation: devfolioFadeIn .25s ease
+}
+
+.devfolio-plugin-funnel-panel {
+  position: relative;
+  z-index: 2;
+  width: min(600px, 100%);
+  max-height: 88vh;
+  overflow-y: auto;
+  padding: 44px 36px 32px;
+  border-radius: var(--radius);
+  animation: devfolioFadeUp .3s ease
+}
+
+.devfolio-plugin-funnel-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--muted);
+  color: var(--fg);
+  font-size: 22px;
+  line-height: 1;
+  transition: all .2s ease
+}
+
+.devfolio-plugin-funnel-close:hover {
+  background: color-mix(in srgb, var(--primary) 15%, var(--muted));
+  color: var(--primary)
+}
+
+.devfolio-plugin-funnel-head {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center
+}
+
+.devfolio-plugin-funnel-icon {
+  padding: 16px;
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--primary) 10%, transparent);
+  color: var(--primary);
+  width: fit-content;
+  margin-bottom: 20px
+}
+
+.devfolio-plugin-funnel-icon svg {
+  width: 30px;
+  height: 30px
+}
+
+.devfolio-plugin-funnel-title {
+  font-size: 24px;
+  margin-bottom: 10px
+}
+
+.devfolio-plugin-funnel-desc {
+  font-size: 14px;
+  color: var(--muted-fg);
+  line-height: 1.7;
+  max-width: 460px
+}
+
+.devfolio-plugin-funnel-stages {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin: 30px 0 24px
+}
+
+.devfolio-plugin-funnel-stage {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--primary) 6%, transparent);
+  border: 1px solid color-mix(in srgb, var(--primary) 12%, transparent);
+  transition: transform .2s ease
+}
+
+.devfolio-plugin-funnel-stage:hover {
+  transform: translateY(-2px);
+  background: color-mix(in srgb, var(--primary) 10%, transparent)
+}
+
+.devfolio-plugin-funnel-stage-num {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--primary);
+  color: var(--primary-fg);
+  font-family: var(--font-heading);
+  font-size: 13px;
+  font-weight: 700
+}
+
+.devfolio-plugin-funnel-stage-text {
+  font-size: 14px;
+  color: var(--fg);
+  text-align: left
+}
+
+.devfolio-plugin-funnel-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 26px
+}
+
+.devfolio-plugin-funnel-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding-top: 24px;
+  border-top: 1px solid var(--glass-border)
+}
+
+.devfolio-plugin-funnel-download {
+  background: var(--primary);
+  color: var(--primary-fg)
+}
+
+.devfolio-plugin-funnel-download:hover {
+  box-shadow: 0 0 30px var(--glow-primary);
+  transform: translateY(-1px)
+}
+
+.devfolio-plugin-funnel-download.devfolio-disabled {
+  pointer-events: none;
+  opacity: .5
+}
+
+.devfolio-plugin-funnel-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--muted-fg)
+}
+
+.devfolio-plugin-funnel-count svg {
+  color: var(--primary)
+}
+
+.devfolio-plugin-funnel-count-value {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--fg)
+}
+
+@keyframes devfolioFadeIn {
+  from { opacity: 0 }
+  to { opacity: 1 }
+}
+
+@keyframes devfolioFadeUp {
+  from { opacity: 0; transform: translateY(24px) }
+  to { opacity: 1; transform: translateY(0) }
 }
 
 @media(max-width:768px) {
   .devfolio-plugins-grid {
     grid-template-columns: 1fr
+  }
+
+  .devfolio-plugin-card-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px
+  }
+
+  .devfolio-plugin-learn-btn {
+    justify-content: center
+  }
+
+  .devfolio-plugin-downloads {
+    justify-content: center
+  }
+
+  .devfolio-plugin-funnel-panel {
+    padding: 40px 22px 28px
   }
 }
 
@@ -2031,7 +2253,7 @@ body.devfolio-layout-boxed .devfolio-container {
   font-weight: 600;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--accent)
+  color: var(--secondary-fg)
 }
 
 .devfolio-zigzag-road {

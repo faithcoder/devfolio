@@ -16,7 +16,7 @@
         { "slug": "card", "name": "Card", "color": "#fcfdfd" },
         { "slug": "primary", "name": "Primary", "color": "#2fad4e" },
         { "slug": "secondary", "name": "Secondary", "color": "#d6f0dc" },
-        { "slug": "accent", "name": "Accent", "color": "#24b35a" },
+        { "slug": "accent", "name": "Accent", "color": "#2fad4e" },
         { "slug": "muted", "name": "Muted", "color": "#e4e7ed" }
       ]
     },

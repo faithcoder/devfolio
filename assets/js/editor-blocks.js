@@ -314,6 +314,7 @@
 				{ key: 'features', label: 'Features (comma separated)', type: 'textarea' },
 				{ key: 'tags', label: 'Tags (comma separated)' },
 				{ key: 'github', label: 'GitHub URL' },
+				{ key: 'downloads', label: 'Downloads (e.g. 2.4K or 8400)' },
 				{ key: 'iconImage', label: 'Icon Image' },
 				{ key: 'icon', label: 'SVG Markup', type: 'textarea' }
 			],

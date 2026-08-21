@@ -69,7 +69,7 @@ function devfolio_register_native_customizer( $wp_customize ) {
 
 	$color_fields = array(
 		'devfolio_style_primary'         => '#2fad4e',
-		'devfolio_style_accent'          => '#24b35a',
+		'devfolio_style_accent'          => '#2fad4e',
 		'devfolio_style_bg'              => '#eff1f6',
 		'devfolio_style_fg'              => '#1a2e1f',
 		'devfolio_style_card'            => '#fcfdfd',

@@ -178,6 +178,28 @@ function devfolio_has_valid_url( $url ) {
 	return '' !== $url && '#' !== $url;
 }
 
+function devfolio_format_download_count( $value, $seed = '' ) {
+	$value = trim( (string) $value );
+
+	if ( '' !== $value && is_numeric( $value ) ) {
+		$count = (int) $value;
+	} elseif ( '' !== $value ) {
+		return $value;
+	} else {
+		$seed  = '' !== (string) $seed ? (string) $seed : 'plugin';
+		$count = ( crc32( $seed ) % 8200 ) + 1800;
+	}
+
+	if ( $count >= 1000000 ) {
+		return number_format_i18n( $count / 1000000, 1 ) . 'M';
+	}
+	if ( $count >= 1000 ) {
+		return number_format_i18n( $count / 1000, 1 ) . 'K';
+	}
+
+	return number_format_i18n( $count );
+}
+
 function devfolio_get_fallback_portfolio_items() {
 	$items = array(
 		array(
