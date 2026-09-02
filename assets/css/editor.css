@@ -249,3 +249,78 @@
   width: 52%;
   height: 52%;
 }
+
+.editor-styles-wrapper .devfolio-tabbed-showcase-section {
+  padding: 36px 0;
+}
+
+.editor-styles-wrapper .devfolio-tabbed-showcase-header {
+  margin-bottom: 24px;
+}
+
+.editor-styles-wrapper .devfolio-tabbed-showcase-title {
+  font-size: var(--font-size-30);
+}
+
+.editor-styles-wrapper .devfolio-tabbed-showcase {
+  display: grid;
+  gap: 22px;
+}
+
+.editor-styles-wrapper .devfolio-tabbed-showcase-tabs {
+  display: flex;
+  width: max-content;
+  max-width: calc(100% - 96px);
+  margin: 0 auto;
+  gap: 12px;
+  padding: 4px 2px 8px;
+  overflow-x: auto;
+}
+
+.editor-styles-wrapper .devfolio-tabbed-showcase-tab {
+  flex: 0 0 160px;
+  min-height: 92px;
+  padding: 16px 14px;
+  border-radius: 12px;
+}
+
+.editor-styles-wrapper .devfolio-tabbed-showcase-tab-icon {
+  width: 32px;
+  height: 32px;
+  margin-bottom: 8px;
+}
+
+.editor-styles-wrapper .devfolio-tabbed-showcase-tab-title {
+  font-size: var(--font-size-14);
+}
+
+.editor-styles-wrapper .devfolio-tabbed-showcase-arrow {
+  top: 30px;
+  width: 34px;
+  height: 34px;
+  font-size: var(--font-size-24);
+}
+
+.editor-styles-wrapper .devfolio-tabbed-showcase-panel {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 18px;
+  padding: 14px;
+  border-radius: 18px;
+}
+
+.editor-styles-wrapper .devfolio-tabbed-showcase-media {
+  min-height: 260px;
+  border-radius: 14px;
+}
+
+.editor-styles-wrapper .devfolio-tabbed-showcase-media img,
+.editor-styles-wrapper .devfolio-tabbed-showcase-media video {
+  height: auto;
+  max-height: 360px;
+  object-fit: contain;
+}
+
+.editor-styles-wrapper .devfolio-tabbed-showcase-copy {
+  padding: 22px;
+  border-radius: 14px;
+}
