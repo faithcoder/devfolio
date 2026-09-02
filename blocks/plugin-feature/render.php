@@ -7,6 +7,7 @@
 
 $args = isset( $args ) && is_array( $args ) ? $args : array();
 
+$default_feature_icon = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.3 6.7a1 1 0 0 1 0 1.4l-9.5 9.5a1 1 0 0 1-1.4 0l-4.7-4.7a1 1 0 1 1 1.4-1.4l4 4 8.8-8.8a1 1 0 0 1 1.4 0z" fill="currentColor"/></svg>';
 $fallback_image = get_template_directory_uri() . '/assets/images/checkoutly-dashboard-placeholder.svg';
 $section_id     = devfolio_get_block_section_id( $args, 'plugin-feature' );
 $title          = devfolio_get_block_attr( $args, 'titleText', 'A checkout your customers will love' );
@@ -35,9 +36,7 @@ if ( '' === trim( $image ) ) {
           <?php foreach ( $features as $feature ) : ?>
           <li>
             <span class="devfolio-plugin-feature-dot">
-              <?php if ( ! empty( $feature['iconImage'] ) ) : ?>
-              <img src="<?php echo esc_url( $feature['iconImage'] ); ?>" alt="">
-              <?php endif; ?>
+              <?php echo devfolio_render_icon( $feature['iconImage'] ?? '', $feature['icon'] ?? $default_feature_icon, $feature['text'] ?? __( 'Feature', 'devfolio' ) ); ?>
             </span>
             <span><?php echo esc_html( $feature['text'] ?? '' ); ?></span>
           </li>
