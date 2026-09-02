@@ -110,7 +110,7 @@
 .editor-styles-wrapper .devfolio-plugin-feature-split {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: 24px;
+  gap: 22px;
   min-height: auto;
 }
 
@@ -120,14 +120,15 @@
 }
 
 .editor-styles-wrapper .devfolio-plugin-product-mark {
+  gap: 10px;
   margin-bottom: 14px;
   font-size: var(--font-size-14);
 }
 
 .editor-styles-wrapper .devfolio-plugin-product-icon {
-  width: 32px;
-  height: 32px;
-  border-radius: 9px;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
 }
 
 .editor-styles-wrapper .devfolio-plugin-product-icon svg,
@@ -138,8 +139,8 @@
 
 .editor-styles-wrapper .devfolio-plugin-hero-copy h1 {
   max-width: 560px;
-  font-size: var(--font-size-34);
-  line-height: 1.12;
+  font-size: var(--font-size-32);
+  line-height: 1.16;
 }
 
 .editor-styles-wrapper .devfolio-plugin-feature-copy h2 {
@@ -149,14 +150,15 @@
 }
 
 .editor-styles-wrapper .devfolio-plugin-hero-copy > p {
-  max-width: 560px;
+  max-width: 520px;
   margin-top: 14px;
   font-size: var(--font-size-15);
   line-height: 1.6;
 }
 
 .editor-styles-wrapper .devfolio-plugin-hero-actions {
-  gap: 14px;
+  align-items: center;
+  gap: 12px 18px;
   margin-top: 18px;
 }
 
@@ -172,16 +174,18 @@
 
 .editor-styles-wrapper .devfolio-plugin-screen,
 .editor-styles-wrapper .devfolio-plugin-feature-screen {
-  justify-self: stretch;
-  width: min(100%, 680px);
+  justify-self: start;
+  width: min(100%, 640px);
   max-width: 100%;
-  padding: 10px;
-  border-radius: 18px;
+  padding: 8px;
+  border-radius: 16px;
   box-shadow: 0 18px 45px color-mix(in srgb, var(--primary) 12%, transparent);
 }
 
 .editor-styles-wrapper .devfolio-plugin-screen img {
+  aspect-ratio: 16 / 10;
   border-radius: 12px;
+  object-fit: contain;
 }
 
 .editor-styles-wrapper .devfolio-plugin-benefits {

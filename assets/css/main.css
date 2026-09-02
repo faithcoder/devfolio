@@ -1596,23 +1596,27 @@ body.devfolio-layout-boxed .devfolio-container {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: minmax(0, .84fr) minmax(500px, 1.16fr);
-  gap: clamp(32px, 5vw, 72px);
+  grid-template-columns: minmax(300px, .72fr) minmax(460px, 1fr);
+  gap: clamp(32px, 4.5vw, 64px);
   align-items: center
 }
 
 .devfolio-plugin-hero-layout {
-  min-height: min(720px, calc(100vh - 96px))
+  min-height: min(640px, calc(100vh - 120px))
+}
+
+.devfolio-plugin-hero-copy {
+  max-width: 620px
 }
 
 .devfolio-plugin-product-mark {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: clamp(20px, 3vw, 32px);
+  gap: 12px;
+  margin-bottom: clamp(18px, 2.4vw, 28px);
   color: var(--fg);
   font-family: var(--font-heading);
-  font-size: var(--font-size-15);
+  font-size: var(--font-size-14);
   font-weight: 800
 }
 
@@ -1628,9 +1632,9 @@ body.devfolio-layout-boxed .devfolio-container {
 }
 
 .devfolio-plugin-product-icon {
-  width: 38px;
-  height: 38px;
-  border-radius: 11px;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
   background: linear-gradient(135deg, var(--primary), var(--gradient-mint));
   color: var(--primary-fg)
 }
@@ -1646,39 +1650,39 @@ body.devfolio-layout-boxed .devfolio-container {
   margin: 0;
   color: var(--fg);
   letter-spacing: 0;
-  line-height: 1.06
+  line-height: 1.12
 }
 
 .devfolio-plugin-hero-copy h1 {
-  max-width: 620px;
+  max-width: 580px;
   font-size: var(--heading-size-h1)
 }
 
 .devfolio-plugin-hero-copy > p {
-  max-width: 560px;
-  margin: clamp(22px, 3vw, 34px) 0 0;
+  max-width: 540px;
+  margin: clamp(18px, 2.2vw, 26px) 0 0;
   color: var(--muted-fg);
-  font-size: clamp(var(--font-size-16), 1.2vw, var(--font-size-18));
-  line-height: 1.65
+  font-size: var(--font-size-16);
+  line-height: 1.7
 }
 
 .devfolio-plugin-hero-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 24px 34px;
+  gap: 18px 26px;
   align-items: center;
-  margin-top: clamp(24px, 3vw, 38px)
+  margin-top: clamp(24px, 3vw, 36px)
 }
 
 .devfolio-plugin-download-btn {
-  min-height: 54px;
-  padding: 0 28px;
+  min-height: 50px;
+  padding: 0 24px;
   border-radius: 999px;
   background: var(--primary);
   color: var(--primary-fg);
-  font-size: clamp(var(--font-size-15), 1vw, var(--font-size-17));
+  font-size: var(--font-size-15);
   font-weight: 800;
-  box-shadow: 0 24px 70px color-mix(in srgb, var(--primary) 28%, transparent)
+  box-shadow: 0 18px 44px color-mix(in srgb, var(--primary) 24%, transparent)
 }
 
 .devfolio-plugin-download-btn:hover {
@@ -1687,16 +1691,16 @@ body.devfolio-layout-boxed .devfolio-container {
 }
 
 .devfolio-plugin-download-btn svg {
-  width: 22px;
-  height: 22px
+  width: 20px;
+  height: 20px
 }
 
 .devfolio-plugin-download-meta {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   color: var(--muted-fg);
-  font-size: clamp(var(--font-size-15), 1vw, var(--font-size-17))
+  font-size: var(--font-size-15)
 }
 
 .devfolio-plugin-download-meta svg {
@@ -1713,31 +1717,38 @@ body.devfolio-layout-boxed .devfolio-container {
   position: relative;
   margin: 0;
   overflow: hidden;
-  padding: clamp(18px, 2.2vw, 32px);
+  padding: clamp(12px, 1.4vw, 20px);
   border: 1px solid color-mix(in srgb, var(--primary) 18%, var(--border));
-  border-radius: clamp(24px, 2.4vw, 46px);
-  background: color-mix(in srgb, var(--primary) 7%, var(--card));
-  box-shadow: 0 42px 120px color-mix(in srgb, var(--primary) 20%, transparent)
+  border-radius: clamp(20px, 1.8vw, 30px);
+  background: color-mix(in srgb, var(--primary) 6%, var(--card));
+  box-shadow: 0 30px 80px color-mix(in srgb, var(--primary) 16%, transparent)
 }
 
 .devfolio-plugin-screen::before {
   content: "";
   position: absolute;
-  right: 0;
-  top: 20%;
-  width: 28px;
-  height: 58%;
-  border-radius: 18px 0 0 18px;
-  background: color-mix(in srgb, var(--primary) 14%, transparent)
+  right: -1px;
+  top: 22%;
+  width: 18px;
+  height: 54%;
+  border-radius: 14px 0 0 14px;
+  background: color-mix(in srgb, var(--primary) 12%, transparent);
+  opacity: .65
 }
 
 .devfolio-plugin-screen img {
   display: block;
   width: 100%;
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 16 / 10;
   height: auto;
-  border-radius: clamp(18px, 1.8vw, 34px);
-  object-fit: cover
+  border-radius: clamp(14px, 1.2vw, 20px);
+  background: var(--card);
+  object-fit: contain
+}
+
+.devfolio-plugin-hero-screen {
+  justify-self: end;
+  width: min(100%, 760px)
 }
 
 .devfolio-plugin-benefits {
@@ -1859,6 +1870,10 @@ body.devfolio-layout-boxed .devfolio-container {
     max-width: 620px
   }
 
+  .devfolio-plugin-hero-screen {
+    justify-self: start
+  }
+
   .devfolio-plugin-screen,
   .devfolio-plugin-feature-screen {
     justify-self: stretch;
@@ -1912,7 +1927,7 @@ body.devfolio-layout-boxed .devfolio-container {
 
   .devfolio-plugin-hero-copy h1 {
     font-size: clamp(var(--font-size-30), 9vw, var(--font-size-40));
-    line-height: 1.08
+    line-height: 1.14
   }
 
   .devfolio-plugin-hero-copy > p {
@@ -1922,12 +1937,15 @@ body.devfolio-layout-boxed .devfolio-container {
 
   .devfolio-plugin-hero-actions {
     align-items: flex-start;
-    flex-direction: column
+    flex-direction: column;
+    gap: 16px
   }
 
   .devfolio-plugin-download-btn {
+    width: 100%;
     min-height: 50px;
     padding: 0 24px;
+    justify-content: center;
     font-size: var(--font-size-15)
   }
 
