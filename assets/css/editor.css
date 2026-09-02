@@ -228,17 +228,24 @@
 }
 
 .editor-styles-wrapper .devfolio-plugin-feature-copy ul {
-  gap: 14px;
+  gap: 12px;
   margin-top: 20px;
 }
 
 .editor-styles-wrapper .devfolio-plugin-feature-copy li {
-  grid-template-columns: 28px minmax(0, 1fr);
+  grid-template-columns: 30px minmax(0, 1fr);
   gap: 12px;
-  font-size: var(--font-size-16);
+  font-size: var(--font-size-15);
+  line-height: 1.4;
 }
 
 .editor-styles-wrapper .devfolio-plugin-feature-dot {
-  width: 28px;
-  height: 28px;
+  width: 30px;
+  height: 30px;
+}
+
+.editor-styles-wrapper .devfolio-plugin-feature-dot svg,
+.editor-styles-wrapper .devfolio-plugin-feature-dot img {
+  width: 52%;
+  height: 52%;
 }
